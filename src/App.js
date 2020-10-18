@@ -14,3 +14,6 @@ export default app
 //font-family: 'Raleway', sans-serif;
 // font-family: 'Nunito', sans-serif;
 // font-family: 'Poppins', sans-serif;
+//font-family: 'Raleway', sans-serif;
+// font-family: 'Nunito', sans-serif;
+// font-family: 'Poppins', sans-serif;
