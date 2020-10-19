@@ -1,10 +1,15 @@
 import React from 'react'
+import { Switch, Route } from 'react-router'
+import Homepage from './pages/Homepage'
 
 const app = () => {
     return (
         <div>
-            <h1> Final </h1>
+            <Switch>
+                <Route path="/home" component={Homepage} />
+            </Switch> 
         </div>
+
     )
 }
 
