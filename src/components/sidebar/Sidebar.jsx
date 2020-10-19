@@ -11,14 +11,14 @@ import profilePic from '../../assets/IMG_20180618_111617_HDR.jpg'
 
 
 const menuList = [ 
-    {icon: < DashboardIcon /> , name : 'Dashboard' , nav:'/home'},
-    {icon: < DashboardIcon /> , name : 'Routine' , nav:'/home/routine'},
-    {icon: < DashboardIcon /> , name : 'Inbox' , nav:'/home/inbox'},
-    {icon: < DashboardIcon /> , name : 'Profile' , nav:'/home/profile'},
-    {icon: < DashboardIcon /> , name : 'Events' , nav:'/home/events'},
-    {icon: < DashboardIcon /> , name : 'Notification' , nav:'/home/notification'},
-    {icon: < DashboardIcon /> , name : 'Setting' , nav:'/home/setting'},
-    {icon: < DashboardIcon /> , name : 'Log Out' , nav:'/home/logout'},
+    {icon: < DashboardIcon /> , name : 'Dashboard' , nav:'/Dashboard'},
+    {icon: < DashboardIcon /> , name : 'Routine' , nav:'/routine'},
+    {icon: < DashboardIcon /> , name : 'Inbox' , nav:'/inbox'},
+    {icon: < DashboardIcon /> , name : 'Profile' , nav:'/profile'},
+    {icon: < DashboardIcon /> , name : 'Events' , nav:'/events'},
+    {icon: < DashboardIcon /> , name : 'Notification' , nav:'/notification'},
+    {icon: < DashboardIcon /> , name : 'Setting' , nav:'/setting'},
+    {icon: < DashboardIcon /> , name : 'Log Out' , nav:'/logout'},
 ]
 
 const Sidebar = () => {
