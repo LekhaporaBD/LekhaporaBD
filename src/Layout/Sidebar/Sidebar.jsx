@@ -1,79 +1,90 @@
-import React from 'react'
-import {Grid} from '@material-ui/core';
-import Icon from '@material-ui/core/Icon'; 
+import React from "react";
+import { Grid, Avatar  } from "@material-ui/core";
+import Icon from "@material-ui/core/Icon";
 import { NavLink } from "react-router-dom";
 
-import DashboardIcon from '@material-ui/icons/Dashboard'; // icon
+import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
+import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
 
-import LineBreak from '../../components/utils/LineBreak'
-import logo from '../../assets/LogoMakr_2dZfJJ.png'
-import profilePic from '../../assets/IMG_20180618_111617_HDR.jpg'
+import DashboardIcon from "@material-ui/icons/Dashboard"; // icon
 
+import LineBreak from "../../components/utils/LineBreak";
+import logo from "../../assets/LogoMakr_2dZfJJ.png";
+import profilePic from "../../assets/IMG_20180618_111617_HDR.jpg";
 
-const menuList = [ 
-    {icon: < DashboardIcon /> , name : 'Dashboard' , nav:'/Dashboard'},
-    {icon: < DashboardIcon /> , name : 'Routine' , nav:'/routine'},
-    {icon: < DashboardIcon /> , name : 'Inbox' , nav:'/inbox'},
-    {icon: < DashboardIcon /> , name : 'Profile' , nav:'/profile'},
-    {icon: < DashboardIcon /> , name : 'Events' , nav:'/events'},
-    {icon: < DashboardIcon /> , name : 'Notification' , nav:'/notification'},
-    {icon: < DashboardIcon /> , name : 'Setting' , nav:'/setting'},
-    {icon: < DashboardIcon /> , name : 'Log Out' , nav:'/logout'},
-]
+import styles from "./Sidebar.module.scss";
+
+const menuList = [
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Dashboard", nav: "/" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Routine", nav: "/routine" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Inbox", nav: "/inbox" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Profile", nav: "/profile" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Events", nav: "/events" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Notification", nav: "/notification" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Setting", nav: "/setting" },
+  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Log Out", nav: "/logout" },
+];
 
 const Sidebar = () => {
-    return (
-        <div style={{backgroundColor:'rgb(234, 234, 234)'}}>
-            <div className="logoTile">
-                <img src={logo} alt=""/>
-            </div>
+  return (
+    <div className={styles.sidebar}>
+      <div className={styles.logoWrapper}>
+        <img src={logo} alt="" className={styles.logo} />
+      </div>
 
-            <LineBreak/>
+      <LineBreak />
 
-            <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center"
-                className="person-details"
-            >
-                <div className="profilePic-holder">
-                    <img src={profilePic} alt="" style={{height:100 , width: 100}}/>
-                </div>
+      <Grid
+        container
+        direction="column"
+        justify="center"
+        alignItems="center"
+        className={styles.profileWrapper}
+      >
+        <div className="profilePic-holder">
+            <Avatar alt="Remy Sharp" src={profilePic} className={styles.profileAvatar}/>
+        </div>
 
-                <h3> Md Nazrul Islam </h3>
-                <p> CSE(171) </p>
+        <h3> Md Nazrul Islam </h3>
+        <p> CSE(171) </p>
 
-                <div className="person-result">
-                    <div className="batch">
-                        <Icon> Icon</Icon>
-                        <h4> 171 batch </h4>
-                    </div>
-                    <div className="cgpa">
-                        <Icon> Icon</Icon>
-                        <h4>CGPA 3.83 </h4>
-                    </div>
-                </div>
-
+        <Grid container justify="space-between" className={styles.infoWrapper}>
+            <Grid container item justify="center" alignItems="center" xs={6}>
+                <Grid item>
+                    <EmojiFlagsIcon className={styles.infoIcon}/>
+                </Grid>
+                <Grid item style={{paddingLeft: 15}}>
+                    <h4>Batch</h4>
+                    <h4>171</h4>
+                </Grid>
             </Grid>
 
-            <LineBreak/>
+            <Grid container justify="center" alignItems="center" item xs={6}>
+                <Grid item>
+                    <EmojiEventsIcon className={styles.infoIcon}/>                    
+                </Grid>
+                <Grid item style={{paddingLeft: 15}}>
+                    <h4>CGPA</h4>
+                    <h4>3.83</h4>
+                </Grid>
+            </Grid>
+        </Grid>
+      </Grid>
 
-            {
-                menuList.map( menu => (
-                    <NavLink to={menu.nav}>
-                        <div className="menuTile">
-                            <div className="menu-icon">
-                                { menu.icon }
-                            </div>
-                            <p>{menu.name}</p>
-                        </div>
-                    </NavLink>
-                ))
-            }
+      <LineBreak />
 
-        </div>
-    )
-}
+      <Grid container className={styles.menuWrapper} spacing={2}>
+        {menuList.map((menu) => (
+          <Grid item xs={6}>
+                <NavLink exact to={menu.nav}  className={styles.menuTiles} activeClassName={styles.menuTiles_active}>
+                    <div>{menu.icon}</div>
+                    <p style={{marginTop: 5}}>{menu.name}</p>
+                </NavLink>
+          </Grid>
+        ))}
+      </Grid>
+    </div>
+  );
+};
 
-export default Sidebar
+export default Sidebar;
