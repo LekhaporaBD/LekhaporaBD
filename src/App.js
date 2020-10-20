@@ -1,18 +1,18 @@
 import React from 'react'
-import { Switch, Route } from 'react-router'
-// import { Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router';
 import Layout from './Layout/layout'
 
+import './style.css'
 
-import Dashboard from './pages/menuPages/Dashboard'
-import Events from './pages/menuPages/Events'
-import Inbox from './pages/menuPages/Inbox'
-import LogOut from './pages/menuPages/LogOut'
+import Dashboard from './pages/Main_Menu/Dashboard'
+import Events from './pages/Main_Menu/Events'
+import Inbox from './pages/Main_Menu/Inbox'
+import LogOut from './pages/Main_Menu/LogOut'
 
-import Notifications from './pages/menuPages/Notifications'
-import Profile from './pages/menuPages/Profile'
-import Routine from './pages/menuPages/Routine'
-import Setting from './pages/menuPages/Setting'
+import Notifications from './pages/Main_Menu/Notifications'
+import Profile from './pages/Main_Menu/Profile'
+import Routine from './pages/Main_Menu/Routine'
+import Setting from './pages/Main_Menu/Setting'
 
 
 const navs = [

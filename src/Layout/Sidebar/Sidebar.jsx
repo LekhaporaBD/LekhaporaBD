@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 
 import DashboardIcon from '@material-ui/icons/Dashboard'; // icon
 
-import LineBreak from '../utils/LineBreak'
+import LineBreak from '../../components/utils/LineBreak'
 import logo from '../../assets/LogoMakr_2dZfJJ.png'
 import profilePic from '../../assets/IMG_20180618_111617_HDR.jpg'
 
