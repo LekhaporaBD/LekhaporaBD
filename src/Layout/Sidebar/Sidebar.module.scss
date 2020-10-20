@@ -1,0 +1,63 @@
+.sidebar {
+  background-color: #f7f7f7;
+  height: 100vh;
+  width: 45rem;
+}
+.logoWrapper {
+  text-align: center;
+  padding: 1.5rem;
+}
+.logo {
+  transform: translateX(30px);
+}
+.profileWrapper {
+  padding: 1.5rem 0;
+}
+.profileAvatar {
+  width: 10rem !important;
+  height: 10rem !important;
+}
+.infoWrapper {
+  margin: 0 auto;
+  padding: 2rem 3rem;
+}
+.infoIcon {
+  width: 4rem !important;
+  height: 4rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.menuWrapper {
+  margin: 0 auto;
+  padding: 4rem;
+}
+.menuTiles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10.5rem;
+  width: 10.5rem;
+  border-radius: 1rem;
+  margin: auto;
+  transition: background 1s 0s ease;
+  &:hover {
+    background-color: #4d7cfe;
+    color: #fff;
+    font-weight: 300;
+  }
+}
+.menuTiles_active{
+  background-color: #4d7cfe !important;
+  color: #fff;
+  font-weight: 300;
+}
+
+.menuIcon {
+  width: 3rem !important;
+  height: 3rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
