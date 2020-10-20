@@ -6,7 +6,7 @@ import {Grid} from '@material-ui/core';
 const Layout = props => {
   return (
    
-    <Grid container spacing={3}>
+    <Grid container spacing={1}>
 
         <Grid item xs={3}>
             <Sidebar />
@@ -24,21 +24,4 @@ const Layout = props => {
 
 export default Layout;
 
-
-
-        {/* <Switch>
-            {
-                navs.map(nav => (    
-                    console.log()                                                           
-                    // <Route path={nav.path} component={nav.component}/>
-                ))
-            } 
-
-
- <Route path = '/home/inbox' component = {Inbox}/>
-<Route path = '/home/routine' component = {Routine}/> 
-<Route path = '/home' component = {Dashboard}/>  
-
-        </Switch>  
-        */}
 

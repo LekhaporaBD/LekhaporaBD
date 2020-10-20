@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router'
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Layout from './Layout/layout'
 
 
@@ -24,14 +24,14 @@ const navs = [
     { component : Profile , path : '/profile'},
     { component : Routine , path : '/routine'},
     { component : Setting , path : '/setting'},
-    { component : Dashboard , path : '/'},
+    { component : () =>  < Redirect to='/dashboard' /> , path : '/'},
 ]
 
 
 const app = () => {
     return (
         <Layout>
-            <Switch>                             
+            <Switch>            
                 {
                     navs.map(nav => (    
                         <Route path={nav.path} component={nav.component}/>                    
