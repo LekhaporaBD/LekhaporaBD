@@ -10,7 +10,7 @@ import DashboardIcon from "@material-ui/icons/Dashboard"; // icon
 
 import LineBreak from "../../components/utils/LineBreak";
 import logo from "../../assets/LogoMakr_2dZfJJ.png";
-import profilePic from "../../assets/IMG_20180618_111617_HDR.jpg";
+import profilePic from "../../assets/IMG_1648.jpg";
 
 import styles from "./Sidebar.module.scss";
 
@@ -41,7 +41,7 @@ const Sidebar = () => {
         alignItems="center"
         className={styles.profileWrapper}
       >
-        <div className="profilePic-holder">
+        <div className={styles.profileHolder}>
             <Avatar alt="Remy Sharp" src={profilePic} className={styles.profileAvatar}/>
         </div>
 
