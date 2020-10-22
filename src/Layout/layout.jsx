@@ -1,38 +1,13 @@
 import React from "react";
-import Sidebar from './Sidebar/Sidebar'
-import {Grid} from '@material-ui/core';
+import Sidebar from "./Sidebar/Sidebar";
 
-
-const Layout = props => {
+const Layout = (props) => {
   return (
-    <Grid container>
-        <Grid item xs={3}>
-            <Sidebar />
-        </Grid>
-        <Grid item xs={9}>
-            <main>{props.children}</main>
-        </Grid>
-     </Grid>
+    <div style={{ display: "flex" }}>
+      <Sidebar />
+      <main style={{backgroundColor: '#f1f1f1', width: '100% !important'}}>{props.children}</main>
+    </div>
   );
 };
 
 export default Layout;
-
-
-
-        {/* <Switch>
-            {
-                navs.map(nav => (    
-                    console.log()                                                           
-                    // <Route path={nav.path} component={nav.component}/>
-                ))
-            } 
-
-
- <Route path = '/home/inbox' component = {Inbox}/>
-<Route path = '/home/routine' component = {Routine}/> 
-<Route path = '/home' component = {Dashboard}/>  
-
-        </Switch>  
-        */}
-

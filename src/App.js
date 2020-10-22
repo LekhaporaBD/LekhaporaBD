@@ -1,6 +1,6 @@
 import React from 'react'
 import { Switch, Route } from 'react-router';
-import Layout from './Layout/layout'
+import Layout from './Layout/layout.jsx'
 
 import './style.css'
 
