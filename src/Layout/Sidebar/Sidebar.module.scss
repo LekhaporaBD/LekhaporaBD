@@ -5,17 +5,33 @@
 }
 .logoWrapper {
   text-align: center;
-  padding: 1.5rem;
+  // padding: 1.5rem;
 }
 .logo {
-  transform: translateX(30px);
+  // transform: translateX(30px);
+  height: 65px;
+  padding-top: 3px
 }
 .profileWrapper {
-  padding: 1.5rem 0;
+  padding-top: 2.5rem;
 }
+
+.profilePicHolder{
+  width: 17rem !important;
+  height: 17rem !important;
+  background: #FFB979;
+  border-radius: 50%;
+  border: 1px solid;
+
+  display: grid;
+  justify-content: center;
+  align-items: center
+}
+
 .profileAvatar {
-  width: 10rem !important;
-  height: 10rem !important;
+  width: 16rem !important;
+  height: 16rem !important;
+  border: 1px solid
 }
 .infoWrapper {
   margin: 0 auto;
