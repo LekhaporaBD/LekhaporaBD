@@ -1,0 +1,1 @@
+//If all the components are inside the Layout HOC component
