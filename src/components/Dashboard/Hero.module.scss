@@ -1,8 +1,19 @@
 .hero{
-  padding: 3rem 6rem;   
+  padding: 2rem 2rem;  
+}
+
+.heroWrapper{
   display: flex;
   justify-content: space-between;
-  width: 100%
+  background-color: #f7f7f7; 
+  width: 100%;
+  padding: 3rem 12rem;
+}
+
+.content{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .title{
@@ -26,13 +37,14 @@
   background-color: #fff;
   border: none;
   font-size: 2rem;
-  padding: 2rem 7rem;
+  padding: 2rem 3rem;
   border: 2px solid #555;
   border-radius: 5rem;
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
+  width: 25rem;
 }
 
 .image{
-  height: 30rem;
+  height: 35rem;
 }
