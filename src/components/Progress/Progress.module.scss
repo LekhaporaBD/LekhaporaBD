@@ -6,10 +6,41 @@
 }
 
 .allClassess{
-    width: 30%;
+    // width: 25%;
+    padding: 20px;
+    border-radius: 15px;
+
+    h2{
+        text-align: center;
+    }
 }
+
+.course_holder{
+    margin-top: 15px;
+
+    li{
+        align-items: center;
+
+        .course_avatar{
+            margin: 10px;
+            background: rgb(65, 142, 144);
+        }
+
+        &:hover{
+            background-color: #eafeff;
+            border: 1px solid #ccc;
+        }
+    }
+}
+
+
+.details{
+    padding: 50px
+}
+
 
 .flex{
     display: flex;
     justify-content: space-between;
+    align-items: center
 }
