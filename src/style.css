@@ -23,6 +23,12 @@ a{
   text-decoration: none;
   color: #555;
 }
+
 ul{
   list-style: none;
+}
+
+.layout-main{
+  width: 100%;
+  background-color: #eee;
 }
