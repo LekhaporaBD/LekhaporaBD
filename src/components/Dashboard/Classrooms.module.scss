@@ -1,0 +1,109 @@
+.classrooms{
+  display: flex;
+  justify-content: space-around;
+  padding: 7rem 4.5rem;
+}
+
+// .classroomWrapper{
+//   &:nth-child(1) > div.classroom >  div.hero{
+//     background: linear-gradient(123deg, #2E99B0 0%, #2E99B0 40%, #FCD77F calc(40% + 1px), #FCD77F 60%, #FF2E4C calc(60% + 1px), #FF2E4C 75%, #1E1548 calc(75% + 1px), #1E1548 100%);
+//   }
+//   &:nth-child(2) > div.classroom >  div.hero{
+//     background: linear-gradient(123deg, #461B93 0%, #461B93 40%, #6A3CBC calc(40% + 1px), #6A3CBC 60%, #8253D7 calc(60% + 1px), #8253D7 70%, #F78F1E calc(70% + 1px), #F78F1E 100%)
+//   }
+//   &:nth-child(3) > div.classroom >  div.hero{
+//     background: linear-gradient(110deg, #FFD9E8 4%, #FFD9E8 40%, #DE95BA calc(40% + 1px), #DE95BA 50%, #7F4A88 calc(50% + 1px), #7F4A88 70%, #4A266A calc(70% + 1px), #4A266A 100%);
+//   }
+// }
+
+.classroomWrapper{
+  &:nth-child(1) > div.classroom >  div.hero{
+    background-image: url('../../assets/background/bg3.jpg');
+  }
+  &:nth-child(2) > div.classroom >  div.hero{
+    background-image: url('../../assets/background/bg7.jpg');
+  }
+  &:nth-child(3) > div.classroom >  div.hero{
+    background-image: url('../../assets/background/bg4.jpg');
+  }
+}
+
+.classroom{
+  background-color: #f7f7f7;
+  width: 30rem;
+}
+
+.hero{
+  height: 20rem;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.course{
+  color: #fff;
+  font-size: 2.2rem;
+  transform: translateY(.5rem);
+}
+
+.courseCode{
+  position: absolute;
+  top: -3.5rem;
+  right: 2rem;
+  background-color: #353b48;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 7.5rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & > span{
+    display: block;
+    text-align: center;
+  }
+}
+.dept{
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+.code{
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.content{
+  position: relative;
+}
+.profileAvatar {
+  width: 10rem !important;
+  height: 10rem !important;
+  border: 2px solid white;
+  position: absolute;
+  top: -4rem;
+  margin: auto;
+}
+.teacher{
+  font-size: 1.8rem;
+  text-align: center;
+  transform: translateY(-3.5rem);
+}
+.button{
+  background-color: #fff;
+  font-size: 1.6rem;
+  padding: .8rem 1rem;
+  border: 2px solid #555;
+  border-radius: 5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  width: 15rem;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  display: block;
+}

@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Avatar  } from "@material-ui/core";
-import Icon from "@material-ui/core/Icon";
 import { NavLink } from "react-router-dom";
 
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
