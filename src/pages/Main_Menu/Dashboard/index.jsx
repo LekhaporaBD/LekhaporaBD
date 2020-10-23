@@ -1,9 +1,8 @@
 import React from 'react'
+import Progress from "./Progress";
 
 const Dashboard = () => {
-    return (
-        <div>Dashboard</div>
-    )
-}
+  return <Progress />;
+};
 
 export default Dashboard
