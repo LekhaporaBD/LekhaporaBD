@@ -1,8 +1,6 @@
 import React from 'react'
 import { PieChart, Pie, Cell } from 'recharts'
 
-const RADIAN = Math.PI / 180;                    
-
 const PieChartExtra = ({data , colors}) => {
     return (
       <PieChart width={400} height={215} >

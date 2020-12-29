@@ -15,7 +15,7 @@ import DeveloperBoardIcon from '@material-ui/icons/DeveloperBoard';
 import DvrIcon from '@material-ui/icons/Dvr';
 import EqualizerIcon from '@material-ui/icons/Equalizer';
 import LineStyleIcon from '@material-ui/icons/LineStyle';
-import { StylesContext } from '@material-ui/styles';
+
 
 const ColorlibConnector = withStyles({
     alternativeLabel: {

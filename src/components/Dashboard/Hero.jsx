@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./Hero.module.scss";
 import cover from "../../assets/cover.svg";
+import { NavLink } from "react-router-dom";
+
+
 
 const Hero = () => {
   return (
@@ -14,7 +17,10 @@ const Hero = () => {
           <br />
           Progress is very good.
         </p>
-        <button className={styles.button}>View Progress</button>
+        <NavLink to="/progress" >
+          <button className={styles.button}  >View Progress</button>
+        </NavLink>
+        
       </div>
       <div>
         <img src={cover} alt="" className={styles.image} />

@@ -1,7 +1,10 @@
 import React from 'react'
 // const {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} = Recharts;
 
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip , ResponsiveContainer  } from 'recharts'
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip ,
+    //  ResponsiveContainer  
+    } from 'recharts'
+
 
 
 const data = [
@@ -21,8 +24,8 @@ const Attendence = () => {
         <div>
 
             {/* <ResponsiveContainer width="100%" height={230} > */}
-            <AreaChart  data={data} width={710} height={230}
 
+            <AreaChart  data={data} width={640} height={230}
                 margin={{ top: 25, right: 10, left: 10, bottom: 20 }}>
                 <defs>
                     <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
