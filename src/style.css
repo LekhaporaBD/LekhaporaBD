@@ -33,4 +33,5 @@ ul{
   background-color: #eee;
   padding: 2rem;
   margin-left: 45rem;
+  min-height: 100vh;
 }
