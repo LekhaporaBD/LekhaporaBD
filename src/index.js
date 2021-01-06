@@ -5,9 +5,11 @@ import { combineReducers } from "redux";
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom";
 
+import profilePicReducer from './store/profilePicReducer'
+
 import App from './App'
 
-const rootReducer = combineReducers({ })
+const rootReducer = combineReducers({ profilePicReducer })
 
 const store = configureStore({
     reducer: rootReducer, 

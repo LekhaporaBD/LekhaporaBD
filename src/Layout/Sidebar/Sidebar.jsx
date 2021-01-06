@@ -1,20 +1,19 @@
 import React from "react";
 import { Grid, Avatar  } from "@material-ui/core";
 
-// import Icon from "@material-ui/core/Icon";
 
 import { NavLink } from "react-router-dom";
 
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
-
 import DashboardIcon from "@material-ui/icons/Dashboard"; // icon
 
 import LineBreak from "../../components/utils/LineBreak";
 import logo from "../../assets/LogoMakr_2dZfJJ.png";
-import profilePic from "../../assets/IMG_20180618_111617_HDR .jpg";
 
 import styles from "./Sidebar.module.scss";
+
+import {useSelector} from 'react-redux'
 
 const menuList = [
   { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Dashboard", nav: "/" },
@@ -28,6 +27,7 @@ const menuList = [
 ];
 
 const Sidebar = () => {
+  const profilePic = useSelector(({profilePicReducer}) => (profilePicReducer.img))
   return (
     <div className={styles.sidebar}>
       <div className={styles.logoWrapper}>
