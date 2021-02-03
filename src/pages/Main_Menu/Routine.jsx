@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   coursecode: {
-    fontSize: '1.7rem',
+    fontSize: '1.6rem',
     fontWeight: 400,
   },
   teacherID: {
