@@ -1,0 +1,79 @@
+.sidebar {
+  background-color: #f7f7f7;
+  height: 100vh;
+  max-width: 45rem;
+  overflow: hidden;
+  position: fixed;
+
+}
+.logoWrapper {
+  text-align: center;
+}
+.logo {
+  transform: translateX(-20px);
+  height: 65px;
+  padding-top: 3px
+}
+.profileWrapper {
+  padding-top: 2.5rem;
+}
+.profilePicHolder{
+  width: 17rem !important;
+  height: 17rem !important;
+  background: #FFB979;
+  border-radius: 50%;
+  border: 1px solid;
+
+  display: grid;
+  justify-content: center;
+  align-items: center
+}
+.profileAvatar {
+  width: 16rem !important;
+  height: 16rem !important;
+  border: 1px solid
+}
+.infoWrapper {
+  margin: 0 auto;
+  padding: 2rem 3rem;
+}
+.infoIcon {
+  width: 4rem !important;
+  height: 4rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.menuWrapper {
+  margin: 0 auto;
+  padding: 4rem;
+}
+.menuTiles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 10.5rem;
+  width: 10.5rem;
+  border-radius: 1rem;
+  margin: auto;
+  transition: background 1s 0s ease;
+  &:hover {
+    background-color: #4d7cfe;
+    color: #fff;
+    font-weight: 300;
+  }
+}
+.menuTiles_active{
+  background-color: #4d7cfe !important;
+  color: #fff;
+  font-weight: 300;
+}
+
+.menuIcon {
+  width: 3rem !important;
+  height: 3rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

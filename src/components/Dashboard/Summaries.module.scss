@@ -1,0 +1,36 @@
+.summaries {
+  display: flex;
+  justify-content: space-around;
+  margin: 3rem 0 !important;
+  padding: 0 4rem;
+}
+
+.summary {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 35rem;
+  background-color: #f7f7f7;
+  padding: 1.5rem 3rem;
+  border-radius: 8px;
+}
+
+.icon{
+  height: 8rem !important;
+  width: 8rem !important;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+}
+
+.title{
+  font-size: 2rem;
+}
+
+.value{
+  font-weight: 700;
+  font-size: 3rem;
+}
