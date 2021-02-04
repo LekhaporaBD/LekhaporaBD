@@ -17,8 +17,8 @@ const Hero = () => {
           <br />
           Progress is very good.
         </p>
-        <NavLink to="/progress" >
-          <button className={styles.button}  >View Progress</button>
+        <NavLink to="/dashboard/progress">
+          <button className={styles.button}>View Progress</button>
         </NavLink>
         
       </div>

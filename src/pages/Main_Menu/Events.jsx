@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../../components/utils/header'
+import Header from '../../components/utils/Header'
 import Event from '../../components/Events/Event'
 
 const Events = () => {

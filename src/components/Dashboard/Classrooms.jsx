@@ -1,5 +1,9 @@
 import React from "react";
 import { Grid, Avatar } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+import { changeMenuType } from "../../store/ui";
 
 import teacher2 from "../../assets/teachers/teacher-2.png";
 import teacher3 from "../../assets/teachers/teacher-3.webp";
@@ -47,6 +51,13 @@ const Classrooms = () => {
 const Classroom = (props) => {
   const {courseCode, title, facultyName, facultyPhoto} = props.details
   const [ dept, code ] = courseCode.split(' - ');
+
+  const history = useHistory()
+  const dispatch = useDispatch();
+  const handleNavigation = () => {
+    dispatch(changeMenuType({menuType: 'sub'}))
+    history.push(`/class/${title.toLowerCase().replace(' ', '-')}/community`);
+  }
   return (
     <Grid container item xs={4} className={styles.classroomWrapper} justify="center">
       <div className={styles.classroom}>
@@ -65,7 +76,7 @@ const Classroom = (props) => {
           />
           <h5 className={styles.teacher}>{facultyName}</h5>
         </div>
-        <button className={styles.button}>Join Class</button>
+        <button onClick={handleNavigation} className={styles.button}>Join Class</button>
       </div>
     </Grid>
   );
