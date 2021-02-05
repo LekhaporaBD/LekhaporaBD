@@ -48,7 +48,7 @@
   margin: 0 auto;
   padding: 4rem;
 }
-.menuTiles {
+.menuTitles {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,16 +64,9 @@
     font-weight: 300;
   }
 }
-.menuTiles_active{
+.menuTitles_active{
   background-color: #4d7cfe !important;
   color: #fff;
   font-weight: 300;
 }
 
-.menuIcon {
-  width: 3rem !important;
-  height: 3rem !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-}

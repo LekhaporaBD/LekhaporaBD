@@ -5,7 +5,9 @@ const Layout = (props) => {
   return (
     <div style={{ display: "flex" }}>
       <Sidebar />
-      <main className="layout-main">{props.children}</main>
+      <main className="layout-main">
+        {props.children}
+      </main>
     </div>
   );
 };

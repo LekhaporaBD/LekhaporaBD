@@ -1,11 +1,11 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    border: '1px solid #e6e6e6',
+    border: "1px solid #e6e6e6",
     width: "100%",
-    position: 'relative',
+    position: "relative",
   },
 }));
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@material-ui/core";
-import Header from '../../components/utils/header'
+import Header from '../../components/utils/Header'
 import { makeStyles } from '@material-ui/core/styles';
 import Img from '../../assets/profile.svg'
 import ProfileCompo from '../../components/Profile/ProfileCompo'

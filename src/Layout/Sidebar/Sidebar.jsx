@@ -1,33 +1,26 @@
 import React from "react";
 import { Grid, Avatar  } from "@material-ui/core";
-
-
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import EmojiFlagsIcon from '@material-ui/icons/EmojiFlags';
 import EmojiEventsIcon from '@material-ui/icons/EmojiEvents';
-import DashboardIcon from "@material-ui/icons/Dashboard"; // icon
 
+import menuList from '../../data/menu'
 import LineBreak from "../../components/utils/LineBreak";
-import logo from "../../assets/LogoMakr_2dZfJJ.png";
+import logo from "../../assets/logo.png";
 
 import styles from "./Sidebar.module.scss";
 
-import {useSelector} from 'react-redux'
-
-const menuList = [
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Dashboard", nav: "/" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Routine", nav: "/routine" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Inbox", nav: "/inbox" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Profile", nav: "/profile" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Events", nav: "/events" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Notification", nav: "/notification" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Setting", nav: "/setting" },
-  { icon: <DashboardIcon className={styles.menuIcon}/>, name: "Log Out", nav: "/logout" },
-];
 
 const Sidebar = () => {
   const profilePic = useSelector(({profilePicReducer}) => (profilePicReducer.img))
+  const menuType = useSelector(({ui}) => (ui.menuType))
+  const userType = 'student';
+
+  const params = useParams();
+  console.log(params)
   return (
     <div className={styles.sidebar}>
       <div className={styles.logoWrapper}>
@@ -37,10 +30,8 @@ const Sidebar = () => {
       <LineBreak />
 
       <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="center"
+        container direction="column"
+        justify="center" alignItems="center"
         className={styles.profileWrapper}
       >
         <div className="border">
@@ -79,11 +70,16 @@ const Sidebar = () => {
       <LineBreak />
 
       <Grid container className={styles.menuWrapper} spacing={2}>
-        {menuList.map((menu) => (
+        {menuList[userType][menuType].map(({name, icon}) => (
           <Grid item xs={6}>
-                <NavLink exact to={menu.nav}  className={styles.menuTiles} activeClassName={styles.menuTiles_active}>
-                    <div>{menu.icon}</div>
-                    <p style={{marginTop: 5}}>{menu.name}</p>
+                <NavLink 
+                  exact 
+                  to={`/${menuType==='sub' ? 'class/web-technology/':''}${name.toLowerCase().replace(' ', '-')}`} 
+                  className={styles.menuTitles} 
+                  activeClassName={styles.menuTitles_active}
+                >
+                    <div>{icon}</div>
+                    <p style={{marginTop: 5}}>{name}</p>
                 </NavLink>
           </Grid>
         ))}
