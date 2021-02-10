@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import blackboard from "../../assets/blackboard.jpg";
-import Header from '../../components/utils/Header'
+import Header from '../../components/utils/header'
 
 const useStyles = makeStyles((theme) => ({
   root: {

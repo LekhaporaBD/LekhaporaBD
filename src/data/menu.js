@@ -12,7 +12,7 @@ const Notifications = React.lazy(() => import(`../pages/Main_Menu/Notifications`
 const Setting = React.lazy(() => import(`../pages/Main_Menu/Setting`));
 const LogOut = React.lazy(() => import(`../pages/Main_Menu/LogOut`));
 
-const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
+
 const JoinClass = React.lazy(() => import(`../pages/Sub_Menu/JoinClass`));
 const JoinExam = React.lazy(() => import(`../pages/Sub_Menu/JoinExam`));
 const Assignment = React.lazy(() => import(`../pages/Sub_Menu/Assignment`));

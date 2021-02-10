@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 
-import Header from '../../components/utils/Header'
+import Header from '../../components/utils/header'
 import Gallery404 from '../../assets/Gallery404.svg'
 
 const useStyles = makeStyles((theme) => ({
