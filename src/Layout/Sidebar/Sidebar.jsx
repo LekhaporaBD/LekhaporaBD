@@ -48,7 +48,7 @@ const Sidebar = () => {
             <Grid container item justify="center" alignItems="center" xs={6}>
                 <Grid item>
                     <EmojiFlagsIcon className={styles.infoIcon}/>
-                </Grid>
+                </Grid> 
                 <Grid item style={{paddingLeft: 15}}>
                     <h4>Batch</h4>
                     <h4>171</h4>
@@ -67,7 +67,7 @@ const Sidebar = () => {
         </Grid>
       </Grid>
 
-      <LineBreak />
+      {/* <LineBreak /> */}
 
       <Grid container className={styles.menuWrapper} spacing={2}>
         {menuList[userType][menuType].map(({name, icon}) => (

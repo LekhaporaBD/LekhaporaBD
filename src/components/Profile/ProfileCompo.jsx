@@ -3,6 +3,7 @@ import { Avatar } from "@material-ui/core";
 import {DropzoneDialog} from 'material-ui-dropzone'
 import styles from './Profile.module.scss'
 import { useDispatch , useSelector} from 'react-redux' 
+import Title from '../utils/Title'
 
 
 const studentDetails = {
@@ -23,16 +24,14 @@ const ProfileCompo = () => {
   const dispatch = useDispatch()
   const picSrc = useSelector(({profilePicReducer}) => (profilePicReducer.img))
   const [open, setOpen] = useState(false);
-  
+  const [havePhoto, setPhoto] = useState(false);
+
 
     return (
       
       <div  className={`${styles.container} ${styles.center}`} >
       
-              <div className={styles.tagline} style={{justifyContent:'start'}}>
-                  <h2 > ProFile Picture. </h2>
-                  <div style={{background:'#d5d5d5', flexGrow:1 , height:2 , marginLeft:20 }}></div>
-              </div>
+            <Title title='ProFile PicTure' />
 
           <div className={`${styles.upload} ${styles.center}`}>
             <div className={styles.profilePicHolder}>
@@ -40,8 +39,15 @@ const ProfileCompo = () => {
             </div>
 
               <div className={styles.imgSetting}>
-                <button className={styles.btn} onClick={ e => dispatch({type:'DEFAULT_IMG'})}> Remove photo </button>
-                <button className={styles.btn} onClick={() => setOpen(true)}> Change photo </button>
+
+              {
+               havePhoto ? 
+               <> <button className={styles.btn} onClick={ e => {dispatch({type:'DEFAULT_IMG'}); setPhoto(false)}}> Remove photo </button>
+               <button className={styles.btn} onClick={() => setOpen(true)}> Change photo </button> </>
+               :
+               <button className={styles.btn} onClick={() => setOpen(true)}> Upload photo </button>
+
+              }
 
                 {/*  */}
                 <DropzoneDialog
@@ -57,8 +63,9 @@ const ProfileCompo = () => {
 
                                          const reader = new FileReader();
                                          reader.onload = () =>{
-                                           if(reader.readyState === 2){
+                                           if(reader.readyState === 2){                                        
                                             dispatch({type:'CHANGE_IMG' , payload : reader.result})  
+                                            setPhoto(true)
                                            }
                                      }
                                          reader.readAsDataURL(files[0])
@@ -78,10 +85,9 @@ const ProfileCompo = () => {
             <div className={styles.info}>
 
               <div >
-                <div className={styles.tagline}>
-                  <h2 > PerSonal Info. </h2>
-                  <div style={{background:'#d5d5d5', flexGrow:1 , height:2, marginLeft:20 }}></div>
-                </div>
+
+              <Title title='PerSonal InFo' />
+
 
                 <div style={{width : '80%' , margin : '0 auto'}}>
 

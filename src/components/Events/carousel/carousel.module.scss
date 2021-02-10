@@ -12,8 +12,11 @@
   .event{
     line-height: 1.6;
     padding: 20px 30px;
-    border-right: 1px dotted #666;
-    background: rgb(255, 255, 255);
+    // border-right: 1px dotted #666;
+    // background: rgb(255, 255, 255);
+    border-right: 25px solid #6660;
+    background: #ebecf0;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
   }
 
 

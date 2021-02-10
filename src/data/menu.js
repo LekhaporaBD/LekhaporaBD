@@ -16,6 +16,7 @@ const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
 const JoinClass = React.lazy(() => import(`../pages/Sub_Menu/JoinClass`));
 const JoinExam = React.lazy(() => import(`../pages/Sub_Menu/JoinExam`));
 const Assignment = React.lazy(() => import(`../pages/Sub_Menu/Assignment`));
+const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
 const Lectures = React.lazy(() => import(`../pages/Sub_Menu/Lectures`));
 const Gallery = React.lazy(() => import(`../pages/Sub_Menu/Gallery`));
 const GoHome = React.lazy(() => import(`../pages/Sub_Menu/GoHome`));
