@@ -1,12 +1,13 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import Header from '../../components/utils/Header'
 import avatar from "../../assets/wahid.jpg";
 
 const useStyles = makeStyles((theme) => ({
   notifications: {
     width: "75%",
     backgroundColor: "rgb(255 255 255 / 60%)",
-    margin: "0 auto",
+    margin: "4rem auto 0",
     padding: "6rem",
     boxShadow: 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF'
   },
@@ -65,23 +66,26 @@ const useStyles = makeStyles((theme) => ({
 const Notifications = () => {
   const classes = useStyles();
   return (
-    <div className={classes.notifications}>
-      <div className={classes.story}>
-        <figure className={classes.story__shape}>
-          <img className={classes.story__img} src={avatar} alt="" />
-          <figcaption className={classes.story__caption}></figcaption>
-        </figure>
-        <div className={classes.story__text}>
-          <h3>Computer Network class cancelled</h3>
-          <p>
-            Due to some reason, I would not be able to take any classes today.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-            consequuntur consectetur fugiat at recusandae beatae, veniam nulla
-            optio inventore sit facere repudiandae provident,
-          </p>
+    <>
+      <Header data="Notifications"/>
+      <div className={classes.notifications}>
+        <div className={classes.story}>
+          <figure className={classes.story__shape}>
+            <img className={classes.story__img} src={avatar} alt="" />
+            <figcaption className={classes.story__caption}></figcaption>
+          </figure>
+          <div className={classes.story__text}>
+            <h3>Computer Network class cancelled</h3>
+            <p>
+              Due to some reason, I would not be able to take any classes today.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
+              consequuntur consectetur fugiat at recusandae beatae, veniam nulla
+              optio inventore sit facere repudiandae provident,
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -20,20 +20,46 @@ body {
   color: #555;
 }
 
-a{
+button:focus{
+  outline: none;
+}
+
+a {
   text-decoration: none;
   color: #555;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-.layout-main{
+.layout-main {
   width: 100%;
   /* background-color: #eee; */
   background-color: #ebecf0;
   padding: 2rem;
   margin-left: 45rem;
   min-height: 100vh;
+}
+.page-heading-wrapper{
+  width: 30rem;
+}
+.page-heading-wrapper::after{
+  content: '';
+  display: inline-block;
+  height: 4px;
+  width: 50%;
+  background-color: #ff8c0f;
+  transform: translateY(-5px);
+}
+.page-heading {
+  display: block;
+  padding: 1.2rem 0;
+  color: white;
+  text-align: center;
+  background: #20367d;
+  border-top-right-radius: 20rem;
+  border-bottom-right-radius: 20rem;
+  font-size: 3rem;
+  letter-spacing: 2px;
 }

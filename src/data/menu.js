@@ -12,13 +12,14 @@ const Notifications = React.lazy(() => import(`../pages/Main_Menu/Notifications`
 const Setting = React.lazy(() => import(`../pages/Main_Menu/Setting`));
 const LogOut = React.lazy(() => import(`../pages/Main_Menu/LogOut`));
 
+const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
 const JoinClass = React.lazy(() => import(`../pages/Sub_Menu/JoinClass`));
 const JoinExam = React.lazy(() => import(`../pages/Sub_Menu/JoinExam`));
 const Assignment = React.lazy(() => import(`../pages/Sub_Menu/Assignment`));
 const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
 const Lectures = React.lazy(() => import(`../pages/Sub_Menu/Lectures`));
 const Gallery = React.lazy(() => import(`../pages/Sub_Menu/Gallery`));
-const NoticeBoard = React.lazy(() => import(`../pages/Sub_Menu/NoticeBoard`));
+const GoHome = React.lazy(() => import(`../pages/Sub_Menu/GoHome`));
 
 const menuList = {
   student: {
@@ -34,16 +35,18 @@ const menuList = {
     ],
     sub: [
       { icon: <DashboardIcon/>, component: Community, name: "Community"},
+      { icon: <DashboardIcon/>, component: Assignment, name: "Assignments"},
       { icon: <DashboardIcon/>, component: JoinClass, name: "Join Class"},
       { icon: <DashboardIcon/>, component: JoinExam, name: "Join Exam"},
-      { icon: <DashboardIcon/>, component: Assignment, name: "Assignments"},
       { icon: <DashboardIcon/>, component : Lectures, name: "Lectures"},
       { icon: <DashboardIcon/>, component: Gallery, name: "Gallery"},
       { icon: <DashboardIcon/>, component: Attendance, name: "Attendance"},
-      { icon: <DashboardIcon/>, component: NoticeBoard, name: "Go Home"},
+      { icon: <DashboardIcon/>, component: GoHome, name: "Go Home"},
     ]
   },
-  teacher: {}
+  teacher: {
+    
+  }
 };
 
 export default menuList;
