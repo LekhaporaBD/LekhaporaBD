@@ -46,7 +46,7 @@ const Progress = () => {
         <Grid container spacing={2}>
 
             <Grid item xs={3}>
-                <Paper elevation={1} className={styles.allClassess}>
+                <Paper elevation={1} className={`${styles.allClassess} ${styles.paper}`}>
                     <h2 > My Classess  </h2> <Underline/>
 
                     <ul className={styles.course_holder}>
@@ -71,7 +71,7 @@ const Progress = () => {
             </Grid>
 
             <Grid item xs={9}>
-                <Paper elevation={1} className={`${styles.flex} ${styles.details}`}>
+                <Paper elevation={1} className={`${styles.flex} ${styles.details} ${styles.paper}`}>
                     <p>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime fugiat assumenda iste.
                         Dignissimos unde aut delectus perspiciatis sint laboriosam vitae, amet aperiam eum
@@ -79,12 +79,12 @@ const Progress = () => {
                         iste. Laborum accusantium blanditiis quisquam eveniet tenetur repudiandae eius ab! 
                         Repudiandae, aliquid. Enim, numquam dolore!
                     </p>
-                    <img src={ Progress_svg } alt="" srcset="" style={{height:300}}/>
+                    <img src={ Progress_svg } alt="" srcset="" style={{height:300}} className={styles.paper}/>
                 </Paper>
             </Grid>
 
             <Grid item xs={6}>
-                <Paper elevation={1} className={styles.attendance}>
+                <Paper elevation={1} className={`${styles.attendance} ${styles.paper}`}>
                     <h2>
                         Attendance
                     </h2>
@@ -94,7 +94,7 @@ const Progress = () => {
             </Grid>
         
             <Grid item xs={3}>
-                <Paper elevation={1} className={styles.pie}>
+                <Paper elevation={1} className={`${styles.pie} ${styles.paper}`}>
                     <h2> Assignment</h2> 
                     <Underline/>
                     <div className={styles.chip} >
@@ -108,7 +108,7 @@ const Progress = () => {
             </Grid>
 
             <Grid item xs={3}>
-                <Paper elevation={1} className={styles.pie}>
+                <Paper elevation={1} className={`${styles.pie} ${styles.paper}`}>
                     <h2> Class Test </h2> 
                     <Underline/>
                     <div className={styles.chip} >
@@ -122,16 +122,16 @@ const Progress = () => {
             </Grid>
 
             <Grid item xs={8}>
-                <Paper elevation={1} className={styles.timeline}>
+                <Paper elevation={1} className={`${styles.timeline} ${styles.paper}`}>
                     {/* <h2> Course TimeLine </h2> */}
                     {/* <Underline/> */}
 
-                    <TimeLine/>
+                    <TimeLine />
                 </Paper>
             </Grid>
 
             <Grid item xs={4}>
-                <Paper elevation={1} className={styles.timeline}>
+                <Paper elevation={1} className={`${styles.timeline} ${styles.paper}`}>
                     <h2> Date </h2>
                     <Underline/>
                     <div className={styles.date}>

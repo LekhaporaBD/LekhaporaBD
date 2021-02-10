@@ -29,8 +29,11 @@
 }
 
 .classroom{
-  background-color: #f7f7f7;
+  // background-color: #f7f7f7;
+  background-color: #ebecf0;
   width: 30rem;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  border-radius: 14px
 }
 
 .hero{
@@ -40,6 +43,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  border-radius: 14px 14px 0 0
 }
 
 .course{
@@ -52,15 +56,21 @@
   position: absolute;
   top: -3.5rem;
   right: 2rem;
-  background-color: #353b48;
-  color: #fff;
-  border: 2px solid #fff;
+  // background-color: #353b48;
+  // color: #fff;
+  background-color: #ebecf0;
+  color: #202020;
+  // border: 2px solid #fff;
   width: 7.5rem;
   height: 8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  border-radius: 14px;
+
   & > span{
     display: block;
     text-align: center;
@@ -95,10 +105,10 @@
   transform: translateY(-3.5rem);
 }
 .button{
-  background-color: #fff;
+  // background-color: #fff;
   font-size: 1.6rem;
   padding: .8rem 1rem;
-  border: 2px solid #555;
+  border: 1px solid;
   border-radius: 5rem;
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
@@ -106,4 +116,21 @@
   margin: 0 auto 3rem auto;
   text-align: center;
   display: block;
+
+
+  background: #ebecf0;
+  cursor: pointer;
+  color: #0d236d;
+  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    
+  }
+  
+  &:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+    
+  }
 }

@@ -1,7 +1,8 @@
 .hero{
   display: flex;
   justify-content: space-between;
-  background-color: #f7f7f7; 
+  // background-color: #f7f7f7; 
+  background-color: #ebecf0; 
   width: 100%;
   padding: 3rem 12rem;
 }
@@ -30,16 +31,32 @@
 }
 
 .button{
-  background-color: #fff;
+  // background-color: #fff;
   border: none;
   font-size: 2rem;
   padding: 2rem 3rem;
-  border: 2px solid #555;
+  // border: 2px solid #555;
   border-radius: 5rem;
   font-family: 'Nunito', sans-serif;
-  font-weight: 600;
   width: 25rem;
+
+  background: #ebecf0;
+  border: 1px solid;
+  font-weight: 600;
   cursor: pointer;
+  color: #0d236d;
+  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
+    
+  }
+  
+  &:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+    
+  }
 }
 
 .image{

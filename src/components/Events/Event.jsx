@@ -2,6 +2,7 @@ import React from 'react'
 import Img from '../../assets/event.svg' 
 import Styles from './Event.module.scss'
 import Carousel from './carousel/carousel'
+import Title from '../utils/Title'
 
 const upEvents = [
     {date: 'April 17,2019' , title:'Startup BootCamp' , post:`There will a program regarding startup. Many industrial CEO's will be present there`},
@@ -32,10 +33,7 @@ const Event = () => {
             <div className={Styles.imgHolder}> <img src={Img} alt="" /></div>
 
             <div className={Styles.main} >
-                <div className={Styles.tagline} style={{justifyContent:'start'}}>
-                    <h2 > UpComing Events. </h2>
-                    <div style={{background:'#d5d5d5', flexGrow:1 , height:2 , marginLeft:20}}></div>
-                </div>
+                <Title title='UpComing Events' />
 
                 <div style={{width:'100%'}}>
                     <Carousel data={upEvents}/>
@@ -43,10 +41,7 @@ const Event = () => {
 
                 {/*  */}
 
-                <div className={Styles.tagline} style={{justifyContent:'start'}}>
-                    <h2 > Recent Events. </h2>
-                    <div style={{background:'#d5d5d5', flexGrow:1 , height:2 , marginLeft:20}}></div>
-                </div>
+                <Title title='Recent Events' />
 
                 <div style={{width:'100%'}}>
                     <Carousel data={recents}/>

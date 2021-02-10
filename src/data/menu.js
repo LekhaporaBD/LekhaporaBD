@@ -15,6 +15,7 @@ const LogOut = React.lazy(() => import(`../pages/Main_Menu/LogOut`));
 const JoinClass = React.lazy(() => import(`../pages/Sub_Menu/JoinClass`));
 const JoinExam = React.lazy(() => import(`../pages/Sub_Menu/JoinExam`));
 const Assignment = React.lazy(() => import(`../pages/Sub_Menu/Assignment`));
+const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
 const Lectures = React.lazy(() => import(`../pages/Sub_Menu/Lectures`));
 const Gallery = React.lazy(() => import(`../pages/Sub_Menu/Gallery`));
 const NoticeBoard = React.lazy(() => import(`../pages/Sub_Menu/NoticeBoard`));
@@ -38,7 +39,7 @@ const menuList = {
       { icon: <DashboardIcon/>, component: Assignment, name: "Assignments"},
       { icon: <DashboardIcon/>, component : Lectures, name: "Lectures"},
       { icon: <DashboardIcon/>, component: Gallery, name: "Gallery"},
-      { icon: <DashboardIcon/>, component: Setting, name: "Attendance"},
+      { icon: <DashboardIcon/>, component: Attendance, name: "Attendance"},
       { icon: <DashboardIcon/>, component: NoticeBoard, name: "Go Home"},
     ]
   },

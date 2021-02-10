@@ -111,9 +111,11 @@ const Timeline = () => {
     const steps = getSteps();
 
     return (
-      <div style={{width:'100%'}}>
+      <div style={{width:'100%',}}>
   
-        <Stepper alternativeLabel activeStep={4} connector={<ColorlibConnector />}>
+        <Stepper alternativeLabel activeStep={4} connector={<ColorlibConnector />} 
+          style={{ boxShadow : 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF' , background: "#ebecf0" , borderRadius:14}}
+        >
           {steps.map((label) => (
             <Step key={label}>
               <StepLabel StepIconComponent={ColorlibStepIcon} >{label}</StepLabel>

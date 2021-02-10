@@ -8,6 +8,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "rgb(255 255 255 / 60%)",
     margin: "0 auto",
     padding: "6rem",
+    boxShadow: 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF'
   },
   story: {
     //   display: 'flex',
