@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Avatar } from "@material-ui/core";
 import {DropzoneDialog} from 'material-ui-dropzone'
 import styles from './Profile.module.scss'

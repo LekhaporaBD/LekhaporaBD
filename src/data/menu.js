@@ -45,7 +45,27 @@ const menuList = {
     ]
   },
   teacher: {
-    
+    main: [
+      { icon: <DashboardIcon/>, component: Dashboard, name: "Dashboard"},
+      { icon: <DashboardIcon/>, component: Inbox, name: "Inbox"},
+      { icon: <DashboardIcon/>, component: Routine, name: "Schedule"}, // Class Schedule
+      { icon: <DashboardIcon/>, component : Events, name: "Events"}, // Any Seminar News
+      { icon: <DashboardIcon/>, component: Profile, name: "Profile"},
+      { icon: <DashboardIcon/>, component: Notifications, name: "Attendance"}, //Teacher can see the taken class of her
+      { icon: <DashboardIcon/>, component: Setting, name: "Setting"},
+      { icon: <DashboardIcon/>, component: LogOut, name: "Log Out"},
+    ],
+    sub: [
+      { icon: <DashboardIcon/>, component: Community, name: "Community"},
+      { icon: <DashboardIcon/>, component: Attendance, name: "Join Class"},
+      { icon: <DashboardIcon/>, component: Assignment, name: "Assignment"},
+      { icon: <DashboardIcon/>, component: JoinExam, name: "Exam"},
+      { icon: <DashboardIcon/>, component : Lectures, name: "Lectures"},
+      { icon: <DashboardIcon/>, component: Gallery, name: "Students"},
+      { icon: <DashboardIcon/>, component: JoinClass, name: "Announce"}, // To publish any announcement it will redirect to students dashboard
+      { icon: <DashboardIcon/>, component: GoHome, name: "Go Home"},
+    ]
+
   }
 };
 
