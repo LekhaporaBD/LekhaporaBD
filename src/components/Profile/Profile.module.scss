@@ -10,12 +10,12 @@
 
 .upload{
   align-items: center;
-  padding: 2rem;
-  width: 100%;
-  // border: 2px solid #008080;
+  padding: 2.3rem 2rem;
   margin: 0 auto;
   width: 85%;
-  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  // box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5), inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
+
 
   .imgSetting{
     margin-top: 20px
@@ -55,8 +55,11 @@
   .btn{
     font-size: 1.5rem;
     padding: .5rem 1.5rem;
-    background: #CCF2FF;
-    border: 1px solid #00c3ff;
+    // background: #CCF2FF;
+    // border: 1px solid #00c3ff;
+    border: 1px solid #0d236d;
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+
     cursor: pointer;
     border-radius: 3.5rem;
     font-family: 'Nunito', sans-serif;
@@ -67,7 +70,7 @@
     align-items: center;
     justify-content: space-around;
     margin: 5rem 0 2rem;
-    color: #2f4bc6;
+    color: #0d236d;
     font-size: 2.8rem;
     // flex-basis:auto
   }
@@ -89,9 +92,8 @@
     }
 
     h3{
-      color: #008080;
+      color: #0d236d;
       font-size: 2.3rem
     }
   }
-
 

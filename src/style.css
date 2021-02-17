@@ -42,7 +42,8 @@ ul {
   min-height: 100vh;
 }
 .page-heading-wrapper{
-  width: 30rem;
+  /* width: 30rem; */
+  display: inline-block;
 }
 .page-heading-wrapper::after{
   content: '';
@@ -54,12 +55,16 @@ ul {
 }
 .page-heading {
   display: block;
-  padding: 1.2rem 0;
-  color: white;
+  padding: 1.2rem 5rem;
+  color: #0d236d;
   text-align: center;
-  background: #20367d;
+  background: #ebecf0;
   border-top-right-radius: 20rem;
   border-bottom-right-radius: 20rem;
-  font-size: 3rem;
-  letter-spacing: 2px;
+  font-size: 2.5rem;
+  /* letter-spacing: 2px; */
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+              -9px -9px 16px rgba(255, 255, 255, 0.5), 
+              inset 3px 3px 7px rgba(136, 165, 191, 0.48), 
+              inset -3px -3px 7px #FFFFFF;
 }

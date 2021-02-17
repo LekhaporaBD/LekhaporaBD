@@ -33,7 +33,7 @@ const Event = () => {
             <div className={Styles.imgHolder}> <img src={Img} alt="" /></div>
 
             <div className={Styles.main} >
-                <Title title='UpComing Events' />
+                <Title title='Upcoming Events' />
 
                 <div style={{width:'100%'}}>
                     <Carousel data={upEvents}/>

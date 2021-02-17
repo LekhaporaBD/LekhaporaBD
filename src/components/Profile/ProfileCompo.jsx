@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Avatar } from "@material-ui/core";
 import {DropzoneDialog} from 'material-ui-dropzone'
 import styles from './Profile.module.scss'
@@ -31,7 +31,7 @@ const ProfileCompo = () => {
       
       <div  className={`${styles.container} ${styles.center}`} >
       
-            <Title title='ProFile PicTure' />
+            <Title title='Profile Picture' />
 
           <div className={`${styles.upload} ${styles.center}`}>
             <div className={styles.profilePicHolder}>
@@ -86,10 +86,10 @@ const ProfileCompo = () => {
 
               <div >
 
-              <Title title='PerSonal InFo' />
+              <Title title='Personal Info' />
 
 
-                <div style={{width : '80%' , margin : '0 auto'}}>
+                <div style={{width : '80%' , margin : '0 auto' }}>
 
                   <div className={styles.infoBlock}>
                     <div className={styles.infoHolder}>
