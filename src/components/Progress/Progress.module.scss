@@ -30,8 +30,8 @@
         &:hover{
             // background-color: #eafeff;
             // border: 1px solid #ccc;
-            box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-            border-radius: 14px
+            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+            border-radius: 7px
         }
     }
 }
@@ -93,3 +93,4 @@
     background: #ebecf0 !important;
     border-radius: 14px
 }
+
