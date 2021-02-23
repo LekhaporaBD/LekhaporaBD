@@ -17,7 +17,7 @@ import styles from "./Sidebar.module.scss";
 const Sidebar = () => {
   const profilePic = useSelector(({profilePicReducer}) => (profilePicReducer.img))
   const menuType = useSelector(({ui}) => (ui.menuType))
-  const userType = 'student';
+  const userType = 'teacher';
 
   const params = useParams();
   console.log(params)
