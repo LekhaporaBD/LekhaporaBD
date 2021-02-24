@@ -17,7 +17,7 @@ import styles from "./Sidebar.module.scss";
 const Sidebar = () => {
   const profilePic = useSelector(({profilePicReducer}) => (profilePicReducer.img))
   const menuType = useSelector(({ui}) => (ui.menuType))
-  const userType = 'teacher';
+  const userType = useSelector(({ui}) => (ui.userType))
 
   const params = useParams();
   console.log(params)
@@ -41,7 +41,7 @@ const Sidebar = () => {
         </div>
 
 
-        <h3 style={{marginTop:10}}> Md Nazrul Islam </h3>
+        <h3 style={{marginTop:10}}>{userType === 'teacher' ? 'Rehnuma Tasnim' : 'Nazrul Islam Rakib'}</h3>
         <p> CSE(171) </p>
 
         <Grid container justify="space-between" className={styles.infoWrapper}>

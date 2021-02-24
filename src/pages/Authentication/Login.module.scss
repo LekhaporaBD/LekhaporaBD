@@ -20,6 +20,9 @@ $color-white: #FFF;
     font-size: $ruler;
 }
 
+.container{
+  height: 100vh;
+}
 
 
 .form {
@@ -122,12 +125,12 @@ $color-white: #FFF;
 }
 
 .mainDiv{
-    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-    padding: 50px 25px 20px 25px;
-    border-radius: 14px;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  padding: 12rem 8rem 12rem;
+  border-radius: 14px;
 }
 
 .backIcon{
-  font-size: 30px;
+  font-size: 3rem;
   color: #afb0b1;
 }

@@ -3,18 +3,25 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import Layout from './Layout/index.jsx'
 import Progress from './pages/Main_Menu/Dashboard/Progress'
+import { useSelector } from "react-redux";
 
 import './style.css'
 import menuLists from './data/menu';
+import Login from "./pages/Authentication/Login.jsx";
 
-const app = () => {
-    return (
+const App = () => {
+    const isAuthenticated = useSelector(({ui}) => (ui.isAuthenticated));
+    const userType = useSelector(({ui}) => (ui.userType))
+    
+    let route;
+    if(isAuthenticated){
+        route = (
         <Layout>
             <Suspense fallback={<p>Loading.......</p>}>
                 <Switch>
                     <Route path={'/dashboard/progress'} component={Progress}/> 
                     {
-                        menuLists['student']['main'].map(nav => (    
+                        menuLists[userType]['main'].map(nav => (    
                             <Route 
                                 path={`/${nav.name.toLowerCase().replace(' ', '-')}`} 
                                 component={nav.component}
@@ -22,7 +29,7 @@ const app = () => {
                         ))
                     }
                     {
-                        menuLists['student']['sub'].map(nav => (    
+                        menuLists[userType]['sub'].map(nav => (    
                             <Route 
                                 path={`/class/:courseName/${nav.name.toLowerCase().replace(' ', '-')}`} 
                                 component={nav.component}
@@ -33,10 +40,22 @@ const app = () => {
                 </Switch>
             </Suspense>
         </Layout>
-    )
+        )
+    }
+    else{
+        route = (
+            <div>
+                <Switch>
+                    <Route path="/" component={Login} />
+                    <Redirect to="/login"/>
+                </Switch>
+            </div>
+        )
+    }
+    return route;
 }
 
-export default app
+export default App;
 
 
 //font-family: 'Raleway', sans-serif;
