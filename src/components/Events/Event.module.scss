@@ -1,0 +1,31 @@
+
+.container{
+    display: grid;
+    grid-template-columns: 3.2fr 1.3fr;
+    grid-template-rows: 215px 1fr;
+    grid-template-areas: 
+        ". imgHolder"
+        "main main";
+}
+
+.imgHolder{ 
+    grid-area: imgHolder;
+    margin-right: 7rem;
+
+    img{ height: 290px;}
+ }
+.main{ 
+    grid-area: main;
+    padding: 10px 20px 10px 10px;
+    width: 100%
+}
+
+.tagline{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5rem 0 2rem;
+    color: #2f4bc6;
+    font-size: 2.8rem;
+  }
+

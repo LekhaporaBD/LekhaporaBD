@@ -1,21 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { configureStore } from '@reduxjs/toolkit'
+import React from "react";
+import ReactDOM from "react-dom";
+import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import { Provider } from "react-redux"
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import App from './app'
+import profilePicReducer from "./store/users";
+import ui from './store/ui'
 
-const rootReducer = combineReducers({ })
+import App from "./App.jsx";
+
+const rootReducer = combineReducers({ ui, profilePicReducer });
 
 const store = configureStore({
-    reducer: rootReducer, 
-  });
+  reducer: rootReducer,
+});
 
-const app = (  
-        <Provider store = {store}>
-            <App />
-        </Provider>
-    )
+const app = (
+  <BrowserRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </BrowserRouter>
+);
 
-ReactDOM.render( app ,document.getElementById('root'));
+ReactDOM.render(app, document.getElementById("root"));
