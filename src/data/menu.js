@@ -24,7 +24,7 @@ const GoHome = React.lazy(() => import(`../pages/Sub_Menu/GoHome`));
 const menuList = {
   student: {
     main: [
-      { icon: <DashboardIcon/>, component: Dashboard, name: "Dashboard"},
+      { icon: <DashboardIcon/>, component: Community, name: "Dashboard"},
       { icon: <DashboardIcon/>, component: Inbox, name: "Inbox"},
       { icon: <DashboardIcon/>, component: Routine, name: "Routine"},
       { icon: <DashboardIcon/>, component : Events, name: "Events"},
