@@ -4,7 +4,10 @@ import Login from '../../components/Login/Login'
 const Inbox = () => {
     return (
         <div>
-           <Login />
+           {/* <Login /> */}
+
+
+
         </div>
     )
 }

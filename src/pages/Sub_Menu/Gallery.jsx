@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Gallery = () => {
-  const data = [];
+  // const data = [];
   const classes = useStyles();
   return (
     <div>

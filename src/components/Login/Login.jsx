@@ -7,7 +7,7 @@ const Login = () => {
 
     const [method, setmethod] = useState('initial')
     const [showSignUp, setshowSignUp] = useState(false)
-    const [showback, setshowback] = useState(false)
+    // const [showback, setshowback] = useState(false)
 
     let comp 
     
