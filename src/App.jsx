@@ -1,7 +1,7 @@
 import React, {Suspense} from "react";
 import { Switch, Route, Redirect } from 'react-router';
 
-import Layout from './Layout/index.jsx'
+import Layout from './layout/index.jsx'
 import Progress from './pages/Main_Menu/Dashboard/Progress'
 import { useSelector } from "react-redux";
 
@@ -12,7 +12,7 @@ import Login from "./pages/Authentication/Login.jsx";
 const App = () => {
     const isAuthenticated = useSelector(({ui}) => (ui.isAuthenticated));
     const userType = useSelector(({ui}) => (ui.userType))
-    
+
     let route;
     if(isAuthenticated){
         route = (
