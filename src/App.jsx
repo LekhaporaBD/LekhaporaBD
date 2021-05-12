@@ -6,6 +6,9 @@ import Progress from './pages/Main_Menu/Dashboard/Progress'
 import { useSelector } from "react-redux";
 
 import './style.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import menuLists from './data/menu';
 import Login from "./pages/Authentication/Login.jsx";
 
