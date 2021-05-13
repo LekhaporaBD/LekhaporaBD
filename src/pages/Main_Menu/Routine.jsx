@@ -1,7 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { useSelector } from "react-redux";
 import blackboard from "../../assets/blackboard.jpg";
+import greenboard from "../../assets/greenboard.jpg";
 import Header from '../../components/utils/header'
 
 const useStyles = makeStyles((theme) => ({
@@ -14,17 +15,15 @@ const useStyles = makeStyles((theme) => ({
     display: "grid",
     width: "100%",
     padding: '2rem',
-    backgroundImage: `url(${blackboard})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: "cover",
     color: '#e4e4e4',
     gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr 1fr",
     gridTemplateRows: "1fr 1fr 1fr 1fr 1fr 1fr",
-    border: '15px solid #f5a743',
     borderRadius: 5,
-    // placeSelf: 'center',
     '& > *': {
       border: '1px solid white',
       padding: '1.5rem 1rem',
-      // textAlign: 'center',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
@@ -114,12 +113,19 @@ const data = {
 }
 
 const Routine = () => {
+  const userType = useSelector(({ui}) => (ui.userType))
   const classes = useStyles();
   return (
     <>
       <Header data="Routine"/>
       <div className={classes.root}>
-        <div className={classes.board}>
+        <div 
+          className={classes.board} 
+          style={{
+            backgroundImage: userType === 'teacher' ? `url(${greenboard})` : `url(${blackboard})`,
+            border: `15px solid ${userType === 'teacher' ? '#56360c' : '#f5a743'}`
+          }}
+        >
           <div>TIME</div>
           <div>SUNDAY</div>
           <div>MONDAY</div>
