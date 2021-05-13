@@ -4,7 +4,7 @@ const ui = createSlice({
   name: "ui",
   initialState: {
     menuType: 'main',
-    userType: 'student',
+    userType: 'teacher',
     isAuthenticated: true,
     authToken: ''
   },
