@@ -3,7 +3,9 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import styles from "./Hero.module.scss";
-import cover from "../../assets/cover.svg";
+import studentHero from "../../assets/cover.svg";
+import teacherHero from "../../assets/teacher-hero.png";
+
 
 
 
@@ -26,7 +28,7 @@ const Hero = () => {
         </NavLink>}
       </div>
       <div>
-        <img src={cover} alt="" className={styles.image} />
+        <img src={userType === 'teacher' ? teacherHero: studentHero} alt="" className={styles.image} />
       </div>
     </div>
   );
