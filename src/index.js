@@ -8,7 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import profilePicReducer from "./store/users";
 import ui from './store/ui'
 
-import App from "./App";
+import App from "./App.jsx";
 
 const rootReducer = combineReducers({ ui, profilePicReducer });
 
