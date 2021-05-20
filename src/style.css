@@ -69,3 +69,143 @@ ul {
               inset -3px -3px 7px #FFFFFF;
 
 }
+
+
+
+/* global style for Inbox */
+
+  .ce-chat-list {
+    background-color: rgb(240, 240, 240) !important;
+    font-family: 'Poppins', sans-serif !important;
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important; 
+  }
+  .ce-chat-list::-webkit-scrollbar {
+    display: none !important;
+  }
+  
+  .ce-chats-container {
+    background-color: #ebecf0 !important;
+  }
+  
+
+  .ce-chat-card{
+    box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC !important;
+    border-radius: 14px !important;
+    background: transparent !important;
+    border: none !important;
+    margin: 0px 20px !important;
+    margin-bottom: 15px !important;
+    padding: 10px 16px 6px !important
+  }
+
+  .ce-chat-card:hover {
+    background-color: #0d236d !important;
+    color: #fff !important;
+    font-weight: 300 !important;
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC !important;
+  }
+
+  .ce-active-chat-card {
+      border: 2px solid #0d236d !important;
+      font-weight: 300 !important;
+      box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF !important;
+  }
+
+
+  .ce-chat-title-text{
+    font-size: 20px !important
+  }
+  .ce-chat-subtitle-text {
+    color: #595959 !important;
+  }
+  
+  .ce-chat-form-container {
+    padding-bottom: 38px !important;
+    background: #ebecf0 !important
+  }
+  
+  .ce-text-input {
+    margin-right: 8px !important;
+    box-shadow:  inset 2px 2px 5px #BABECC , inset -5px -5px 10px #fff !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease-in-out !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: transparent !important;
+    font-family: 'Poppins', sans-serif !important;
+    border: 1px solid #0d236d !important;
+  }
+
+  .ce-text-input:focus {
+    box-shadow:  inset 1px 1px 2px #BABECC , inset -1px -1px 2px #fff !important;
+  }
+  
+  .ce-primary-button {
+    border-radius: 6px !important;
+    box-shadow: 2px 2px 5px #BABECC, inset -5px -5px 10px #fff;
+     background-color: #ffffff00 !important;
+     color: #0d236d !important;
+     font-size: 20px !important;
+    position: relative;
+    bottom: 1px;
+  }
+  
+  .ce-danger-button {
+    background-color: #ebecf0 !important;
+    border-radius: 22px !important;
+    box-shadow: -5px -5px 20px #fff,  5px 5px 20px #BABECC !important;
+    transition: all 0.2s ease-in-out !important;
+    cursor: pointer !important;
+    color: #AE1100 !important;
+    border: 1px solid !important;
+    padding: 2px 0px !important
+  }
+  
+  .ce-settings {
+    background-color: #ebecf0 !important;
+  -ms-overflow-style: none !important;
+  scrollbar-width: none !important; 
+}
+  .ce-settings::-webkit-scrollbar {
+  display: none !important;
+}
+  
+  .ce-autocomplete-input {
+    margin-right: 8px !important;
+    box-shadow:  inset 2px 2px 5px #BABECC , inset -5px -5px 10px #fff !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease-in-out !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: transparent !important;
+    font-family: 'Poppins', sans-serif !important;
+    
+  }
+
+  .ce-autocomplete-input:focus {
+    box-shadow:  inset 1px 1px 2px #BABECC , inset -1px -1px 2px #fff !important;
+  }
+  
+  .ce-autocomplete-options {
+    border-radius: 6px !important;
+    border: 1px solid #3b2a50 !important;
+    background-color: white !important;
+  }
+  
+  .ce-chat-settings-container {
+    padding-top: 12px !important;
+  }
+  
+  .ce-chat-avatars-row {
+    display: none !important;
+  }
+  .ce-person-container{
+    padding: 5px 10px !important;
+    border-radius: 10px !important;
+    margin-bottom: 5px !important;
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF !important
+  }
+

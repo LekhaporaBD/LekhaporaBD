@@ -1,12 +1,17 @@
 import React from 'react'
-import Login from '../Authentication/Login'
+import Header from '../../components/utils/header'
+import InboxElem from '../../components/Inbox/InboxElem'
+
 
 const Inbox = () => {
     return (
         <div>
-           {/* <Login /> */}
+            <Header data={'Inbox'} />
 
+<div  style={{ boxShadow : 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF' , padding : '15px 15px 0px'}}>
+            <InboxElem />
 
+</div>
 
         </div>
     )

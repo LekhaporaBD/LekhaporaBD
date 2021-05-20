@@ -1,0 +1,101 @@
+$color-shadow: #BABECC;
+$color-white: #FFF;
+$color-bg: #EBECF0;
+$color-red: #AE1100;
+
+
+.wrapper{
+  background-color: $color-bg;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  margin-top: 20px;
+
+  h4{
+    font-size: 20px;
+  }
+  &:hover h4{
+    color: #006da0;
+  }
+}
+
+.title{
+  margin-left: 2rem;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #999;
+}
+
+.formWrapper{
+  background-color: $color-bg;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  padding: 6rem 7rem;
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+.textField{
+  width: 100%;
+  margin: auto;
+  // font-size: 1.6rem;
+  & >div{
+    background-color: #f7f7f7;
+  }
+  & label{
+    font-size: 1.5rem;
+  }
+  & textarea{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    line-height: 2.5rem;
+  }
+}
+
+.buttonWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  & button{
+    font-size: 1.2rem;
+    margin-left: 2rem;
+  }
+}
+
+.buttonAdd{
+  margin-left: 0rem;
+
+}
+
+.button {
+  font-weight: bold;
+  box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow !important;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  background: #ebecf0 !important;
+  padding: 10px 20px !important;
+  font-size: 15px !important;
+  
+  &:hover {
+    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow !important;
+    
+  }
+
+}
+ 
+.buttonCancel{
+  color: $color-red !important;
+  border: 1px solid !important;
+}
+
+.buttonPost{
+  color: #0d236d !important;
+  border: 1px solid !important;
+}

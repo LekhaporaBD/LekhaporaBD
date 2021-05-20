@@ -19,6 +19,8 @@ const Assignment = React.lazy(() => import(`../pages/Sub_Menu/Assignment`));
 const Attendance = React.lazy(() => import(`../pages/Sub_Menu/Attendance`));
 const Lectures = React.lazy(() => import(`../pages/Sub_Menu/Lectures`));
 const Gallery = React.lazy(() => import(`../pages/Sub_Menu/Gallery`));
+const Students = React.lazy(() => import(`../pages/Sub_Menu/Students`));
+const Announce = React.lazy(() => import(`../pages/Sub_Menu/Announce`));
 const GoHome = React.lazy(() => import(`../pages/Sub_Menu/GoHome`));
 
 const menuList = {
@@ -61,9 +63,9 @@ const menuList = {
       { icon: <DashboardIcon/>, component: Assignment, name: "Assignment"},
       { icon: <DashboardIcon/>, component: JoinExam, name: "Exam"},
       { icon: <DashboardIcon/>, component : Lectures, name: "Lectures"},
-      { icon: <DashboardIcon/>, component: Gallery, name: "Students"},
-      { icon: <DashboardIcon/>, component: JoinClass, name: "Announce"}, // To publish any announcement it will redirect to students dashboard
-      { icon: <DashboardIcon/>, component: GoHome, name: "Go Home"},
+      { icon: <DashboardIcon/>, component: Students, name: "Students"},
+      { icon: <DashboardIcon/>, component: Announce, name: "Announce"}, // To publish any announcement it will redirect to students dashboard
+      { icon: <DashboardIcon/>, component: GoHome, name: "Go Home"}, 
     ]
 
   }

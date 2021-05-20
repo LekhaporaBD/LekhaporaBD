@@ -22,7 +22,7 @@
     "material-ui-dropzone": "^3.5.0",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
-    "react-chat-engine": "^1.6.1",
+    "react-chat-engine": "^1.8.13",
     "react-dom": "^16.14.0",
     "react-draft-wysiwyg": "^1.14.7",
     "react-redux": "^7.2.1",

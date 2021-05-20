@@ -3,7 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid , Paper } from '@material-ui/core'
 import Title from '../../components/utils/Title'
 import Header from '../../components/utils/header'
+import { useSelector } from "react-redux";
 
+import LecturePost from '../../components/LectureTeacher/LecturePost'
+import PrevLecture from '../../components/LectureTeacher/PrevLecture'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,13 +57,17 @@ const lectures = {
 }
 
 const Lectures = () => {
+
+  const userType = useSelector(({ui}) => (ui.userType))
+
   const classes = useStyles();
   return (
 
     <>
       <Header data='Lectures' />
 
-      <Grid container spacing={3} className={classes.container}>
+    {userType === 'student' ? 
+      (<Grid container spacing={3} className={classes.container}>
       {
         Object.keys(lectures).map((lec , num) => (
           <div> 
@@ -77,7 +84,15 @@ const Lectures = () => {
           </div>
         ))
       }
-      </Grid>
+      </Grid>) :
+
+      (    <div style={{width:'70%' , margin: '0 auto' , marginTop:50}}>
+              <LecturePost />
+              <p style={{fontSize: 22 , color: '#0d236d' , margin: '40px 20px 20px'}}> Your Previous Announcements ... </p>
+             <PrevLecture />
+            </div>
+      ) }
+
     </>
   )
 }
