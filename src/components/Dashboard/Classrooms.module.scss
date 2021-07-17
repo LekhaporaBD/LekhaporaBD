@@ -1,59 +1,83 @@
-.classrooms{
+.classrooms {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 7rem 4.5rem;
+  @media (max-width: 1500px) {
+    padding: 7rem 1.5rem;
+  }
+  @media (max-width: 950px) {
+    padding: 7rem 0.5rem;
+  }
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 }
 
-// .classroomWrapper{
-//   &:nth-child(1) > div.classroom >  div.hero{
-//     background: linear-gradient(123deg, #2E99B0 0%, #2E99B0 40%, #FCD77F calc(40% + 1px), #FCD77F 60%, #FF2E4C calc(60% + 1px), #FF2E4C 75%, #1E1548 calc(75% + 1px), #1E1548 100%);
-//   }
-//   &:nth-child(2) > div.classroom >  div.hero{
-//     background: linear-gradient(123deg, #461B93 0%, #461B93 40%, #6A3CBC calc(40% + 1px), #6A3CBC 60%, #8253D7 calc(60% + 1px), #8253D7 70%, #F78F1E calc(70% + 1px), #F78F1E 100%)
-//   }
-//   &:nth-child(3) > div.classroom >  div.hero{
-//     background: linear-gradient(110deg, #FFD9E8 4%, #FFD9E8 40%, #DE95BA calc(40% + 1px), #DE95BA 50%, #7F4A88 calc(50% + 1px), #7F4A88 70%, #4A266A calc(70% + 1px), #4A266A 100%);
-//   }
-// }
+.classroomWrapper {
+  margin: 0 0 8rem 0 !important;
 
-.classroomWrapper{
-  &:nth-child(1) > div.classroom >  div.hero{
+  @media (max-width: 1300px) {
+    max-width: 34.5% !important;
+    margin: 0 0 6rem 0 !important;
+  }
+  @media (max-width: 900px) {
+    max-width: 100% !important;
+  }
+
+  &:nth-child(1) > div.classroom > div.hero {
     background-image: url('../../assets/background/bg3.jpg');
   }
-  &:nth-child(2) > div.classroom >  div.hero{
+  &:nth-child(2) > div.classroom > div.hero {
     background-image: url('../../assets/background/bg7.jpg');
   }
-  &:nth-child(3) > div.classroom >  div.hero{
+  &:nth-child(3) > div.classroom > div.hero {
     background-image: url('../../assets/background/bg4.jpg');
   }
 }
 
-.classroom{
-  // background-color: #f7f7f7;
+.classroom {
   background-color: #ebecf0;
   width: 30rem;
-  // box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5), inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
-  border-radius: 14px
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #ffffff;
+  border-radius: 14px;
+  text-align: center;
+  @media (max-width: 1500px) {
+    width: 27rem;
+  }
+  @media (max-width: 1300px) {
+    width: 25rem;
+  }
+  @media (max-width: 1240px) {
+    min-width: 28rem;
+  }
+  @media (max-width: 1050px) {
+    min-width: 25rem;
+  }
+  @media (max-width: 900px) {
+    width: 80%;
+  }
 }
 
-.hero{
+.hero {
   height: 20rem;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  border-radius: 14px 14px 0 0
+  border-radius: 14px 14px 0 0;
 }
 
-.course{
+.course {
   color: #fff;
   font-size: 2.2rem;
-  transform: translateY(.5rem);
+  transform: translateY(0.5rem);
 }
 
-.courseCode{
+.courseCode {
   position: absolute;
   top: -3.5rem;
   right: 2rem;
@@ -69,27 +93,27 @@
   justify-content: center;
   align-items: center;
 
-  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
   border-radius: 14px;
 
-  & > span{
+  & > span {
     display: block;
     text-align: center;
   }
 }
-.dept{
+.dept {
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 300;
   letter-spacing: 3px;
 }
-.code{
+.code {
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   font-size: 2rem;
 }
 
-.content{
+.content {
   position: relative;
 }
 .profileAvatar {
@@ -100,15 +124,15 @@
   top: -4rem;
   margin: auto;
 }
-.teacher{
+.teacher {
   font-size: 1.8rem;
   text-align: center;
   transform: translateY(-3.5rem);
 }
-.button{
+.button {
   // background-color: #fff;
   font-size: 1.6rem;
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
   border: 1px solid;
   border-radius: 5rem;
   font-family: 'Nunito', sans-serif;
@@ -118,20 +142,17 @@
   text-align: center;
   display: block;
 
-
   background: #ebecf0;
   cursor: pointer;
   color: #0d236d;
-  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
-    
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
   }
-  
+
   &:active {
-    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-    
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
   }
 }

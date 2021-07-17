@@ -1,36 +1,44 @@
-.hero{
+.hero {
   display: flex;
   justify-content: space-between;
-  // background-color: #f7f7f7; 
-  background-color: #ebecf0; 
+  // background-color: #f7f7f7;
+  background-color: #ebecf0;
   width: 100%;
   padding: 3rem 12rem;
+  @media (max-width: 1400px) {
+    padding: 3rem 5rem;
+  }
+  @media (max-width: 1200px) {
+    flex-direction: column-reverse;
+    padding: 0rem 2rem 1rem;
+    text-align: center;
+  }
 }
 
-.content{
+.content {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
 
-.title{
+.title {
   font-size: 5rem;
   font-weight: 400;
   font-family: 'Nunito', sans-serif;
   margin-bottom: 1rem;
+  line-height: 5rem;
 }
 
-.subtitle{
+.subtitle {
   font-family: 'Poppins', sans-serif;
   font-weight: 200;
   font-size: 2.5rem;
   line-height: 3.5rem;
   color: #777;
   margin-bottom: 3rem;
-
 }
 
-.button{
+.button {
   // background-color: #fff;
   border: none;
   font-size: 2rem;
@@ -45,20 +53,18 @@
   font-weight: 600;
   cursor: pointer;
   color: #0d236d;
-  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
-    
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
   }
-  
+
   &:active {
-    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-    
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
   }
 }
 
-.image{
+.image {
   height: 35rem;
 }

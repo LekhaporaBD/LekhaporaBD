@@ -5,7 +5,7 @@ import Layout from './layout'
 import Progress from './pages/Main_Menu/Dashboard/Progress'
 import { useSelector } from "react-redux";
 
-import './style.css'
+import './style.scss'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
