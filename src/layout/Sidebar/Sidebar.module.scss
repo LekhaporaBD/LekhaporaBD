@@ -6,7 +6,15 @@
   overflow: hidden;
   position: fixed;
   box-shadow: inset 2px 2px 5px #FFF, inset -5px -5px 10px #BABECC;
-
+  @media (max-width: 1200px) {
+    max-width: 40rem;
+  }
+  @media (max-width: 960px) {
+    max-width: 35rem;
+  }
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 .logoWrapper {
   text-align: center;

@@ -41,6 +41,22 @@ ul {
   margin-left: 45rem;
   min-height: 100vh;
 }
+@media (max-width: 1200px) {
+  .layout-main {
+    margin-left: 40rem;
+  }
+}
+@media (max-width: 960px) {
+  .layout-main {
+    margin-left: 35rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-main {
+    margin-left: 0rem;
+  }
+}
 .page-heading-wrapper{
   /* width: 30rem; */
   display: inline-block;

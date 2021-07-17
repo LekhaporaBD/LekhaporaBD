@@ -1,7 +1,7 @@
 import React, {Suspense} from "react";
 import { Switch, Route, Redirect } from 'react-router';
 
-import Layout from './Layout/index'
+import Layout from './layout'
 import Progress from './pages/Main_Menu/Dashboard/Progress'
 import { useSelector } from "react-redux";
 
