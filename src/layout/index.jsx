@@ -17,9 +17,10 @@ const Layout = (props) => {
           aria-label="add"
           style={{
             position: 'absolute',
-            left: '1.3rem',
-            top: '1.3rem',
+            left: '2rem',
+            top: '2rem',
             zIndex: 100,
+            backgroundColor: '#0d236d',
           }}
           onClick={() => setActiveSidedrawer(true)}
         >
