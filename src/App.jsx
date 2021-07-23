@@ -1,7 +1,7 @@
 import React, {Suspense} from "react";
 import { Switch, Route, Redirect } from 'react-router';
 
-import Layout from './layout'
+import Layout from './Layout'
 import Progress from './pages/Main_Menu/Dashboard/Progress'
 import { useSelector } from "react-redux";
 
@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import menuLists from './data/menu';
-import Login from "./pages/Authentication/Login.jsx";
+import Login from "./pages/Authentication/Login";
 
 const App = () => {
     const isAuthenticated = useSelector(({ui}) => (ui.isAuthenticated));

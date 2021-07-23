@@ -13,13 +13,16 @@ const Layout = (props) => {
       {medium && (
         <Fab
           size="medium"
-          color="primary"
+          // color="primary"
           aria-label="add"
           style={{
             position: 'absolute',
             left: '1.3rem',
             top: '1.3rem',
             zIndex: 100,
+            boxShadow:'9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5), inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFF',
+            background: '#ebecf0',
+            color: '#0d236d'
           }}
           onClick={() => setActiveSidedrawer(true)}
         >
