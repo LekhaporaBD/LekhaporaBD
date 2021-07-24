@@ -23,6 +23,9 @@ const Sidebar = (props) => {
   const menuType = useSelector(({ ui }) => ui.menuType);
   const userType = useSelector(({ ui }) => ui.userType);
 
+  const menuClickHandler = (name) => {
+    setOpen(false);
+  };
   return (
     <div
       className={styles.sidebar}
@@ -44,12 +47,12 @@ const Sidebar = (props) => {
             style={{
               position: 'absolute',
               right: '3rem',
-              top: '1.3rem',
+              top: '2rem',
               zIndex: 10000,
               // background:'#0d236d',
               color: '#0d236d',
               border: '1px solid',
-              boxShadow:'-5px -5px 20px #fff, 5px 5px 20px #babecc'
+              boxShadow: '-5px -5px 20px #fff, 5px 5px 20px #babecc',
             }}
             onClick={() => setOpen(false)}
           >
@@ -115,6 +118,7 @@ const Sidebar = (props) => {
               to={`/${
                 menuType === 'sub' ? 'class/web-technology/' : ''
               }${name.toLowerCase().replace(' ', '-')}`}
+              onClick={() => menuClickHandler(name)}
               className={styles.menuTitles}
               activeClassName={styles.menuTitles_active}
             >

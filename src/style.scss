@@ -63,17 +63,36 @@ ul {
   }
 }
 .page-heading-wrapper {
-  /* width: 30rem; */
+  min-width: 30rem;
   display: inline-block;
 }
 .page-heading-wrapper::after {
   content: '';
   display: inline-block;
   height: 4px;
-  width: 50%;
+  min-width: 30rem;
   background-color: #ff8c0f;
   transform: translateY(-5px);
 }
+@media (max-width: 768px) {
+  .page-heading {
+    padding-left: 5rem;
+    min-width: 35rem;
+  }
+  .page-heading-wrapper::after {
+    min-width: 35rem;
+  }
+}
+@media (max-width: 768px) {
+  .page-heading {
+    padding-left: 5rem;
+    min-width: 30rem;
+  }
+  .page-heading-wrapper::after {
+    min-width: 30rem;
+  }
+}
+
 .page-heading {
   display: block;
   padding: 1.2rem 5rem;

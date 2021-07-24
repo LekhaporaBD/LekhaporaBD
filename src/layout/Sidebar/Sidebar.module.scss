@@ -20,6 +20,9 @@
 }
 .logoWrapper {
   text-align: center;
+  @media (max-width: 768px) {
+    padding: 5px;
+  }
 }
 .logo {
   transform: translateX(-20px);
