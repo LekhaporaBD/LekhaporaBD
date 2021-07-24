@@ -24,6 +24,15 @@ const Corousel = ({data}) => {
         }
       },
       {
+        breakpoint: 851,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false
+        }
+      },
+      {
         breakpoint: 768,
         settings: {
           slidesToShow: 2,

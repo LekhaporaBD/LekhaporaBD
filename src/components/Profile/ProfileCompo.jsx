@@ -89,6 +89,7 @@ const ProfileCompo = () => {
               <Title title='Personal Info' />
 
 
+ 
                 <div style={{width : '80%' , margin : '0 auto' }}>
 
                   <div className={styles.infoBlock}>
