@@ -41,15 +41,18 @@ const Sidebar = (props) => {
         <img src={logo} alt="" className={styles.logo} />
         {medium && (
           <Fab
-            size="medium"
-            color="primary"
+            size="small"
+            // color="primary"
             aria-label="add"
             style={{
               position: 'absolute',
               right: '3rem',
               top: '2rem',
               zIndex: 10000,
-              backgroundColor: '#0d236d',
+              // background:'#0d236d',
+              color: '#0d236d',
+              border: '1px solid',
+              boxShadow: '-5px -5px 20px #fff, 5px 5px 20px #babecc',
             }}
             onClick={() => setOpen(false)}
           >

@@ -1,6 +1,6 @@
 import React from 'react'
 import { AppConfig, UserSession, showConnect } from '@stacks/connect';
-import { Person } from '@stacks/profile';
+// import { Person } from '@stacks/profile';
 
 import { useDispatch } from "react-redux";
 import { changeUserType, changeAuth } from "../../../store/ui";
