@@ -8,10 +8,11 @@ const Inbox = () => {
         <div>
             <Header data={'Inbox'} />
 
-<div  style={{ boxShadow : 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF' , padding : '15px 15px 0px'}}>
-            <InboxElem />
-
-</div>
+            <div style={{ boxShadow : 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF' ,
+                            padding : '15px 15px 0px' ,
+                            background:'#ebecf0 !important'}}>
+                <InboxElem />
+            </div>
 
         </div>
     )

@@ -23,6 +23,5 @@ const InboxElem = () => {
   );
 };
 
-// infinite scroll, logout, more customizations...
 
 export default InboxElem;

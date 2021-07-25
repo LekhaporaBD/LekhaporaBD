@@ -1,7 +1,7 @@
 $color-shadow: #BABECC;
 $color-white: #FFF;
 
-/* CHAT STYLES */
+/* CHAT STYLES */ 
 // * {
 //     font-family: Avenir, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 //       Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji,
@@ -10,11 +10,11 @@ $color-white: #FFF;
 //   }
   
   .ce-chat-list {
-    background-color: rgb(240, 240, 240) !important;
+    background-color: #ebecf0 !important;
   }
   
   .ce-chats-container {
-    background-color: rgb(240, 240, 240) !important;
+    background-color: #ebecf0 !important;
   }
   
   .ce-active-chat-card {
@@ -45,12 +45,12 @@ $color-white: #FFF;
   }
   
   .ce-danger-button {
-    background-color: white !important;
+    background-color: #ebecf0 !important;
     border-radius: 22px !important;
   }
   
   .ce-settings {
-    background-color: rgb(240, 240, 240) !important;
+    background-color: #ebecf0 !important;
   }
   
   .ce-autocomplete-input {
@@ -61,7 +61,7 @@ $color-white: #FFF;
   .ce-autocomplete-options {
     border-radius: 6px !important;
     border: 1px solid #3b2a50 !important;
-    background-color: white !important;
+    background-color: #ebecf0 !important;
   }
   
   .ce-chat-settings-container {
@@ -80,11 +80,41 @@ $color-white: #FFF;
     font-family: 'Poppins', sans-serif;
     overflow: scroll;
     // background-color: rgb(240, 240, 240);
-    background-color: #ebecf0;
+    background-color: #ebecf0 !important;
 
     -ms-overflow-style: none !important;
     scrollbar-width: none !important; 
     // overflow-y: hidden !important;
+
+    @media (max-width : 1250px ) {
+      width: 140% !important;
+      transform: translateX(46px);
+      border-left: 1px solid #a4a4a4;
+    }
+
+    @media (max-width : 1110px ) {
+      width: 140% !important;
+      // transform: translateX(55px);
+      border-left: 1px solid #a4a4a4;
+    }
+
+    @media (max-width : 981px ) and (min-width : 769px) {
+      border: 0;
+      width: 200% !important;
+      transform: translateX(-25%);
+    }
+
+    // @media (max-width : 640px ) and (min-width : 576px) {
+    //   border: 0;
+    //   width: 200% !important;
+    //   transform: translateX(-25%);
+    // }
+
+    @media (max-width : 640px ) {
+      border: 0;
+      width: 100% !important;
+      transform: translateX(0%);
+    }
     
   }
 
@@ -182,7 +212,7 @@ $color-white: #FFF;
     bottom: 0px;
     width: calc(100% - 36px);
     padding: 18px;
-    background-color: rgb(240, 240, 240);
+    background-color: #ebecf0;
   }
   
   .messageForm {
@@ -283,7 +313,7 @@ $color-white: #FFF;
     font-size: 2.3em;;
   }
   
-  .button {
+  .buttona {
     border-radius: 4px;
     border: none;
     background-color: white;
