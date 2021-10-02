@@ -1,24 +1,24 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const ui = createSlice({
-  name: "ui",
+  name: 'ui',
   initialState: {
     menuType: 'main',
-    userType: 'teacher',
+    userType: 'student',
     isAuthenticated: true,
-    authToken: ''
+    authToken: '',
   },
   reducers: {
     changeMenuType: (ui, action) => {
       ui.menuType = action.payload.menuType;
     },
     changeUserType: (ui, action) => {
-      ui.userType = action.payload.userType
+      ui.userType = action.payload.userType;
     },
     changeAuth: (ui, action) => {
-      ui.isAuthenticated = action.payload.isAuthenticated
-      ui.authToken = action.payload.authToken
-    }
+      ui.isAuthenticated = action.payload.isAuthenticated;
+      ui.authToken = action.payload.authToken;
+    },
   },
 });
 
