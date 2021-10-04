@@ -1,7 +1,9 @@
 import React from 'react';
-import { Grid } from '@material-ui/core';
-import Header from '../../components/utils/header';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
+import { Grid } from '@material-ui/core';
+
+import Header from '../../components/utils/header';
 import Img from '../../assets/profile.svg';
 import ProfileCompo from '../../components/Profile/ProfileCompo';
 
@@ -11,7 +13,6 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
   },
-
   img: {
     width: '100%',
     paddingTop: 75,
@@ -20,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Profile = () => {
   const classes = useStyles();
+  const matches = useMediaQuery('(max-width:1200px)');
   return (
     <div style={{ padding: '2rem' }}>
       <Header data="Profile" />
@@ -30,11 +32,11 @@ const Profile = () => {
         alignItems="center"
         // style={{ width: '90%', margin: '0 auto' }}
       >
-        <Grid item lg={4} md={12}>
+        <Grid item xs={matches ? 12 : 6}>
           <img src={Img} alt="" className={classes.img} />
         </Grid>
 
-        <Grid item lg={8} md={12}>
+        <Grid item xs={matches ? 12 : 6}>
           <ProfileCompo />
         </Grid>
       </Grid>

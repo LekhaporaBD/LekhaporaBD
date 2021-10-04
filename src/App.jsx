@@ -1,9 +1,10 @@
 import React, { Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
+import { useSelector } from 'react-redux';
+import io from 'socket.io-client';
 
 import Layout from './layout';
 import Progress from './pages/Main_Menu/Dashboard/Progress';
-import { useSelector } from 'react-redux';
 
 import './style.scss';
 import 'slick-carousel/slick/slick.css';
@@ -11,6 +12,9 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import menuLists from './data/menu';
 import Login from './pages/Authentication/Login';
+import Classroom from './components/Classes/Classroom';
+
+const socket = io.connect('http://localhost:5000/');
 
 const App = () => {
   const isAuthenticated = useSelector(({ ui }) => ui.isAuthenticated);
@@ -37,6 +41,10 @@ const App = () => {
                 component={nav.component}
               />
             ))}
+            <Route
+              path="/class/:courseCode/"
+              render={(props) => <Classroom socket={socket} {...props} />}
+            />
             <Redirect to="/dashboard" />
           </Switch>
         </Suspense>
@@ -46,9 +54,6 @@ const App = () => {
     route = (
       <div>
         <Switch>
-          {/* <Route path="/dashboard" component={dashboard} />
-                    <Redirect to="/dashboard"/> */}
-
           <Route path="/" component={Login} />
           <Redirect to="/login" />
         </Switch>

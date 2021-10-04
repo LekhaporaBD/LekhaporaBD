@@ -86,10 +86,10 @@ ul {
 @media (max-width: 768px) {
   .page-heading {
     padding-left: 5rem;
-    min-width: 30rem;
+    min-width: 35rem;
   }
   .page-heading-wrapper::after {
-    min-width: 30rem;
+    min-width: 35rem;
   }
 }
 
@@ -116,19 +116,19 @@ ul {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
 
-  @media (max-width : 1250px ) {
+  @media (max-width: 1250px) {
     width: 128% !important;
   }
 
-  @media (max-width : 1110px ) {
+  @media (max-width: 1110px) {
     width: 135% !important;
   }
 
-  @media (max-width : 981px ) and (min-width : 769px) {
-      display: none;
+  @media (max-width: 981px) and (min-width: 769px) {
+    display: none;
   }
 
-  @media (max-width :640px ) {
+  @media (max-width: 640px) {
     display: none;
   }
 }
@@ -174,12 +174,10 @@ ul {
   padding-bottom: 38px !important;
   background: #ebecf0 !important;
 
-  & > div{
+  & > div {
     display: flex;
     flex-direction: column;
   }
-
-  
 }
 
 .ce-text-input {
@@ -225,9 +223,9 @@ ul {
   -ms-overflow-style: none !important;
   scrollbar-width: none !important;
 
-  @media (max-width : 1250px ) {
-    display: none ;
- }
+  @media (max-width: 1250px) {
+    display: none;
+  }
 }
 .ce-settings::-webkit-scrollbar {
   display: none !important;

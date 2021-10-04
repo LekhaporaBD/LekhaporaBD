@@ -1,43 +1,54 @@
-import React from 'react'
-import Header from '../../components/utils/header'
-import { Grid } from "@material-ui/core";
+import React from 'react';
+import Header from '../../components/utils/header';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Img from '../../assets/studentList.svg'
-import StudentList from '../../components/studentList/studentList'
+import Img from '../../assets/studentList.svg';
+import StudentList from '../../components/studentList/studentList';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-      },
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
     },
-  
-    img : {
-        width : '100%',
-        
-        // paddingTop : 75
-    },
-  
-  }));
-
+  },
+  img: {
+    width: '100%',
+  },
+}));
 
 const Students = () => {
-    const classes = useStyles();
-    return (
-        <div className={classes.container}>
-            <Header data='Students' />
+  const classes = useStyles();
+  const matches = useMediaQuery('(max-width:1400px)');
+  const u900 = useMediaQuery('(max-width:900px)');
+  return (
+    <div className={classes.container}>
+      <Header data="Students" />
+      <Grid
+        container
+        spacing={3}
+        alignItems="center"
+        style={{
+          width: u900 ? '100%' : '90%',
+          margin: '0 auto',
+          height: matches ? '' : '94vh',
+        }}
+      >
+        <Grid item xs={matches ? 12 : 6}>
+          <img src={Img} alt="" className={classes.img} />
+        </Grid>
 
-            <Grid container spacing={3} alignItems="center" style={{width:'90%', margin:'0 auto' , height : '94vh',}}>
-                <Grid item xs={6} > 
-                    <img src={Img} alt="" className={classes.img} />
-                </Grid>
+        <Grid
+          item
+          xs={matches ? 12 : 6}
+          style={{ margin: matches ? '5rem auto' : '0 auto' }}
+        >
+          <StudentList />
+        </Grid>
+      </Grid>
+    </div>
+  );
+};
 
-                <Grid item xs={6}> 
-                    <StudentList />
-                </Grid>
-            </Grid>
-        </div>
-    )
-}
-
-export default Students
+export default Students;

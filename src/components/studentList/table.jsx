@@ -11,7 +11,13 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
-    fontSize : 20
+    fontSize: 20,
+    '& th': {
+      fontWeight: 'bold',
+    },
+    '& th, & td': {
+      fontSize: 14,
+    },
   },
 });
 
@@ -20,11 +26,11 @@ function createData(name, calories, fat, carbs, protein) {
 }
 
 const rows = [
-  createData('Nazrul Islam', '171-054-042', 3.84 , 15, 45 ),
-  createData('Rakib Islam', '171-054-042', 3.84 , 15, 45 ),
-  createData('Wahid Hoquee', '171-054-042', 3.84 , 15, 45 ),
-  createData('Anonto Ashraf ', '171-054-042', 3.84 , 15, 45 ),
-  createData('Wahid Ashraf ', '171-054-042', 3.84 , 15, 45 ),
+  createData('Nazrul Islam', '171-054-042', 3.84, 15, 45),
+  createData('Rakib Islam', '171-054-042', 3.84, 15, 45),
+  createData('Wahid Hoquee', '171-054-042', 3.84, 15, 45),
+  createData('Anonto Ashraf ', '171-054-042', 3.84, 15, 45),
+  createData('Wahid Ashraf ', '171-054-042', 3.84, 15, 45),
 ];
 
 export default function BasicTable() {

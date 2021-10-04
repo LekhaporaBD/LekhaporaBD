@@ -1,10 +1,10 @@
-.classrooms{
+.classrooms {
   display: flex;
   justify-content: space-around;
   padding: 7rem 4.5rem;
 }
 
-.classroom{
+.classroom {
   background-color: #ebecf0;
   background-repeat: no-repeat;
   background-size: cover;
@@ -12,11 +12,13 @@
   height: 30rem;
   margin: 2rem auto;
   // box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
-  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5), inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #FFFFFF;
-  border-radius: 14px
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #ffffff;
+  border-radius: 14px;
 }
 
-.hero{
+.hero {
   height: 100%;
   background-size: cover;
   display: flex;
@@ -28,13 +30,13 @@
   color: #fff;
 }
 
-.course{
+.course {
   color: #fff;
   font-size: 6rem;
-  transform: translateY(.5rem);
+  transform: translateY(0.5rem);
 }
 
-.courseCode{
+.courseCode {
   position: absolute;
   top: 1.6rem;
   right: 2rem;
@@ -50,27 +52,27 @@
   justify-content: center;
   align-items: center;
 
-  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
   border-radius: 14px;
 
-  & > span{
+  & > span {
     display: block;
     text-align: center;
   }
 }
-.dept{
+.dept {
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 300;
   letter-spacing: 3px;
 }
-.code{
+.code {
   font-family: 'Nunito', sans-serif;
   font-weight: 600;
   font-size: 2rem;
 }
 
-.content{
+.content {
   position: absolute;
   bottom: 2rem;
   left: 2rem;
@@ -86,15 +88,15 @@
   // top: -4rem;
   margin: auto;
 }
-.teacher{
+.teacher {
   font-size: 1.8rem;
   text-align: center;
   margin-left: 1.5rem;
 }
-.button{
+.button {
   // background-color: #fff;
   font-size: 1.6rem;
-  padding: .8rem 1rem;
+  padding: 0.8rem 1rem;
   border: 1px solid;
   border-radius: 5rem;
   font-family: 'Nunito', sans-serif;
@@ -104,20 +106,47 @@
   text-align: center;
   display: block;
 
-
   background: #ebecf0;
   cursor: pointer;
   color: #0d236d;
-  box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #BABECC;
-    
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
   }
-  
+
   &:active {
-    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
-    
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .course {
+    font-size: 4rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .course {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (max-width: 765px) {
+  .course {
+    font-size: 5rem;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .course {
+    font-size: 4rem;
+    transform: translateY(-1rem);
+  }
+}
+@media only screen and (max-width: 550px) {
+  .course {
+    font-size: 3rem;
+    transform: translateY(-1rem);
   }
 }
