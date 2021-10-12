@@ -101,7 +101,7 @@ const Timeline = () => {
     <div style={{ width: '100%' }}>
       <Stepper
         alternativeLabel
-        activeStep={4}
+        activeStep={2}
         connector={<ColorlibConnector />}
         style={{
           boxShadow: 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF',

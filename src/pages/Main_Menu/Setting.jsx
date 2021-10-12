@@ -82,7 +82,7 @@ const Settings = () => {
   return (
     <>
       <Header data="Settings" />
-      <div className={Styles.container}>
+      <div className={Styles.container} style={{ width: '100%' }}>
         <div className={Styles.mainDiv} style={{ padding: 0 }}>
           <div className={classes.settings}>
             <Grid

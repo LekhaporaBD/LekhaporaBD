@@ -1,12 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Sidebar from './Sidebar/Sidebar';
 import Fab from '@material-ui/core/Fab';
 import MenuIcon from '@material-ui/icons/Menu';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import axios from '../config/axios';
+import { setProfile } from '../store/ui';
 
 const Layout = (props) => {
   const [activeSidedrawer, setActiveSidedrawer] = useState(false);
   const medium = useMediaQuery('(max-width:768px)');
+
+  const userType = useSelector(({ ui }) => ui.userType);
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    axios.get(`${userType}/getProfile`).then((res) => {
+      dispatch(setProfile({ profile: res.data.profile }));
+    });
+  }, [userType, dispatch]);
 
   return (
     <div style={{ display: 'flex' }}>

@@ -21,6 +21,8 @@ const studentDetails = {
 const ProfileCompo = () => {
   const dispatch = useDispatch();
   const picSrc = useSelector(({ profilePicReducer }) => profilePicReducer.img);
+  const studentDetails = useSelector(({ ui }) => ui.profile);
+
   const [open, setOpen] = useState(false);
   const [havePhoto, setPhoto] = useState(false);
 
@@ -117,7 +119,7 @@ const ProfileCompo = () => {
 
               <div className={styles.infoHolder}>
                 <h2> Phone : </h2>
-                <h3> {studentDetails.phone} </h3>
+                <h3> {studentDetails.contact_number} </h3>
               </div>
             </div>
 
@@ -129,7 +131,7 @@ const ProfileCompo = () => {
 
               <div className={styles.infoHolder}>
                 <h2> Credit Earned : </h2>
-                <h3> {studentDetails.CreditEarned} </h3>
+                <h3> {studentDetails.credit_earned} </h3>
               </div>
             </div>
 
@@ -141,7 +143,7 @@ const ProfileCompo = () => {
 
               <div className={styles.infoHolder}>
                 <h2> Course Completed : </h2>
-                <h3> {studentDetails.CourseCompleted} </h3>
+                <h3> {studentDetails.course_completed} </h3>
               </div>
             </div>
           </div>

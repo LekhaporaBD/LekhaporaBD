@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '../../components/utils/header';
 import avatar from '../../assets/wahid.jpg';
+import axios from '../../config/axios';
 
 const useStyles = makeStyles((theme) => ({
   notifications: {
@@ -26,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     float: 'left',
     clipPath: 'circle(50% at 50% 50%)',
     shapeOutside: 'circle(50% at 50% 50%)',
-    transform: 'translateX(-3rem) skewX(11deg)',
+    transform: 'translate(-2rem,-2rem) skewX(11deg)',
     position: 'relative',
   },
   story__img: {
@@ -50,26 +53,32 @@ const useStyles = makeStyles((theme) => ({
 
 const Notifications = () => {
   const classes = useStyles();
+  const [notifications, setNotifications] = useState([]);
+  const userType = useSelector(({ ui }) => ui.userType);
+
+  useEffect(() => {
+    axios.get(`${userType}/notification`).then((res) => {
+      setNotifications(res.data);
+    });
+  }, [setNotifications, userType]);
+  console.log(notifications);
   return (
     <>
       <Header data="Notifications" />
-      <div className={classes.notifications}>
-        <div className={classes.story}>
-          <figure className={classes.story__shape}>
-            <img className={classes.story__img} src={avatar} alt="" />
-            <figcaption className={classes.story__caption}></figcaption>
-          </figure>
-          <div className={classes.story__text}>
-            <h3>Computer Network class cancelled</h3>
-            <p>
-              Due to some reason, I would not be able to take any classes today.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-              consequuntur consectetur fugiat at recusandae beatae, veniam nulla
-              optio inventore sit facere repudiandae provident,
-            </p>
+      {notifications.map(({ notifications }) => (
+        <div className={classes.notifications}>
+          <div className={classes.story}>
+            <figure className={classes.story__shape}>
+              <img className={classes.story__img} src={avatar} alt="" />
+              <figcaption className={classes.story__caption}></figcaption>
+            </figure>
+            <div className={classes.story__text}>
+              <h3>{notifications[0].title}</h3>
+              <p>{notifications[0].body}</p>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </>
   );
 };

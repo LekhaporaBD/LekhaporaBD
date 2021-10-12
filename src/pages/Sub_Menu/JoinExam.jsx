@@ -1,16 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { Button, Grid, Paper } from '@material-ui/core';
+import { Grid, Paper } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-
+import { makeStyles } from '@material-ui/core/styles';
 import { Editor } from 'react-draft-wysiwyg';
-import { EditorState, convertToRaw } from 'draft-js';
+import { EditorState } from 'draft-js';
+
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import Header from '../../components/utils/header';
-import { makeStyles } from '@material-ui/core/styles';
 import OnlineExam from '../../assets/onlineExam.svg';
 import Title from '../../components/utils/Title';
+import axios from '../../config/axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -114,7 +115,7 @@ const Exam = () => {
   const userType = useSelector(({ ui }) => ui.userType);
   const matches = useMediaQuery('(max-width:1300px)');
   const sm500 = useMediaQuery('(max-width:1300px)');
-  console.log(matches);
+
   return (
     <div>
       <Header data={userType === 'teacher' ? 'Create Exam' : 'Join Exam'} />
@@ -177,30 +178,41 @@ const CreateExam = ({ classes }) => {
   );
 };
 
-const JoinExam = ({ classes }) => (
-  <Grid container spacing={3} className={classes.container}>
-    {Object.keys(Exams).map((exm, num) => (
-      <div>
-        <Title title={Object.keys(Exams)[num]} />
+const JoinExam = ({ classes }) => {
+  const courseId = useSelector(({ ui }) => ui.classroom.courseId);
 
-        <Grid item xs={12}>
-          <Paper className={classes.cardHolder}>
-            <p className={classes.text}>
-              Exam Type :
-              <span className={classes.textValue}>{Exams[exm].examType}</span>
-            </p>
-            <p className={classes.text}>
-              Exam Date :
-              <span className={classes.textValue}> {Exams[exm].ExamDate} </span>
-            </p>
-            <button disabled={Exams[exm].disabled} className={classes.btn}>
-              Join Exam
-            </button>
-          </Paper>
-        </Grid>
-      </div>
-    ))}
-  </Grid>
-);
+  const [exams, setExams] = useState([]);
+
+  useEffect(() => {
+    axios.get(`student/course/${courseId}/exam`).then((res) => {
+      setExams(res.data);
+    });
+  }, [courseId]);
+
+  return (
+    <Grid container spacing={3} className={classes.container}>
+      {exams.map((exm, num) => (
+        <div>
+          <Title title={exm.name} />
+
+          <Grid item xs={12}>
+            <Paper className={classes.cardHolder}>
+              <p className={classes.text}>
+                Exam Type :<span className={classes.textValue}>{exm.term}</span>
+              </p>
+              <p className={classes.text}>
+                Exam Date :
+                <span className={classes.textValue}>{exm.start_at}</span>
+              </p>
+              <button disabled={exm.disabled} className={classes.btn}>
+                Join Exam
+              </button>
+            </Paper>
+          </Grid>
+        </div>
+      ))}
+    </Grid>
+  );
+};
 
 export default Exam;

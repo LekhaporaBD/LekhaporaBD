@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, IconButton, Collapse } from '@material-ui/core';
 import Title from '../../components/utils/Title';
 import Header from '../../components/utils/header';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close';
+import axios from '../../config/axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,6 +81,18 @@ const Assignments = {
 const Assignment = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
+  const [Assignments, setAssignments] = useState([]);
+  useEffect(() => {
+    axios.get(`student/assignments`).then((res) => {
+      const assignments = res.data.map((assignment) => ({
+        AssignmentOn: assignment.name,
+        GivenOn: assignment.deadline,
+        SubmissionDate: assignment.deadline,
+      }));
+      setAssignments(assignments);
+    });
+  }, []);
+
   return (
     <>
       <Header data="Assignments" />
@@ -120,27 +133,21 @@ const Assignment = () => {
             <Grid item xs={12}>
               <Paper className={classes.cardHolder}>
                 <p className={classes.text}>
-                  {' '}
-                  Assignment On :{' '}
+                  Assignment On :
                   <span className={classes.textValue}>
-                    {' '}
-                    {Assignments[asnmt].AssignmentOn}{' '}
-                  </span>{' '}
+                    {Assignments[asnmt].AssignmentOn}
+                  </span>
                 </p>
                 <p className={classes.text}>
-                  {' '}
-                  Given On :{' '}
+                  Given On :
                   <span className={classes.textValue}>
-                    {' '}
-                    {Assignments[asnmt].GivenOn}{' '}
-                  </span>{' '}
+                    {Assignments[asnmt].GivenOn}
+                  </span>
                 </p>
                 <p className={classes.text}>
-                  {' '}
-                  Submission Date :{' '}
+                  Submission Date :
                   <span className={classes.textValue}>
-                    {' '}
-                    {Assignments[asnmt].SubmissionDate}{' '}
+                    {Assignments[asnmt].SubmissionDate}
                   </span>
                 </p>
                 <button className={classes.btn}> Submit </button>

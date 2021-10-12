@@ -22,16 +22,11 @@ const useStyles = makeStyles((theme) => ({
 const Profile = () => {
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:1200px)');
+
   return (
     <div style={{ padding: '2rem' }}>
       <Header data="Profile" />
-
-      <Grid
-        container
-        spacing={3}
-        alignItems="center"
-        // style={{ width: '90%', margin: '0 auto' }}
-      >
+      <Grid container spacing={3} alignItems="center">
         <Grid item xs={matches ? 12 : 6}>
           <img src={Img} alt="" className={classes.img} />
         </Grid>

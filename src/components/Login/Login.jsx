@@ -16,7 +16,7 @@ const Login = () => {
   } = useForm();
 
   let comp;
-
+  // Math.random()*(95-50)+50
   if (method === 'initial') {
     comp = (
       <div>

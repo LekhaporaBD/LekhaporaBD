@@ -9,6 +9,10 @@ import { useSelector } from 'react-redux';
 
 import LecturePost from '../../components/LectureTeacher/LecturePost';
 import PrevLecture from '../../components/LectureTeacher/PrevLecture';
+import { useState } from 'react';
+import { useEffect } from 'react';
+
+import axios from '../../config/axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -81,10 +85,24 @@ const lectures = {
 };
 
 const Lectures = () => {
-  const userType = useSelector(({ ui }) => ui.userType);
-
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:1200px)');
+
+  const [lectures, setLectures] = useState([]);
+
+  const userType = useSelector(({ ui }) => ui.userType);
+  const courseId = useSelector(({ ui }) => ui.classroom.courseId);
+
+  useEffect(() => {
+    axios.get(`${userType}/course/${courseId}/lecture`).then((res) => {
+      const lectures = res.data.map((assignment) => ({
+        fileName: 'Make A Website',
+        date: '5-01-2021',
+        fileType: 'ppt',
+      }));
+      setLectures(lectures);
+    });
+  }, [courseId, userType]);
 
   return (
     <>
