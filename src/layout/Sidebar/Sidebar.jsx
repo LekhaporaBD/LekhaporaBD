@@ -22,6 +22,7 @@ const Sidebar = (props) => {
   );
   const menuType = useSelector(({ ui }) => ui.menuType);
   const userType = useSelector(({ ui }) => ui.userType);
+  const profile = useSelector(({ ui }) => ui.profile);
 
   const menuClickHandler = (name) => {
     setOpen(false);
@@ -80,10 +81,8 @@ const Sidebar = (props) => {
           </div>
         </div>
 
-        <h3 style={{ marginTop: 10 }}>
-          {userType === 'teacher' ? 'Rehnuma Tasnim' : 'Nazrul Islam Rakib'}
-        </h3>
-        <p> CSE(171) </p>
+        <h3 style={{ marginTop: 10 }}>{profile.name || 'Loading..'}</h3>
+        <p> CSE({profile.batch || '...'}) </p>
 
         <Grid container justify="space-between" className={styles.infoWrapper}>
           <Grid container item justify="center" alignItems="center" xs={6}>
@@ -92,7 +91,7 @@ const Sidebar = (props) => {
             </Grid>
             <Grid item style={{ paddingLeft: 15 }}>
               <h4>Batch</h4>
-              <h4>171</h4>
+              <h4>{profile.batch || '...'}</h4>
             </Grid>
           </Grid>
 
@@ -102,7 +101,7 @@ const Sidebar = (props) => {
             </Grid>
             <Grid item style={{ paddingLeft: 15 }}>
               <h4>CGPA</h4>
-              <h4>3.83</h4>
+              <h4>{profile.cgpa || '...'}</h4>
             </Grid>
           </Grid>
         </Grid>

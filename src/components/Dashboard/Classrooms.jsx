@@ -3,66 +3,11 @@ import { Grid, Avatar } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
-import { changeMenuType } from '../../store/ui';
-
-import teacher2 from '../../assets/teachers/teacher-2.png';
-import teacher3 from '../../assets/teachers/teacher-3.webp';
-import teacher5 from '../../assets/teachers/teacher-5.jpg';
+import { changeMenuType, setClassroom } from '../../store/ui';
 
 import styles from './Classrooms.module.scss';
 
-const classrooms = [
-  {
-    courseCode: 'CSE - 421',
-    title: 'Web Technology',
-    facultyName: 'Kazi Farzana',
-    facultyPhoto: teacher2,
-  },
-  {
-    courseCode: 'EEE - 305',
-    title: 'Computer Graphics',
-    facultyName: 'Maria Afnan',
-    facultyPhoto: teacher3,
-  },
-  {
-    courseCode: 'Mat - 218',
-    title: 'Differential Equations',
-    facultyName: 'Dr Shahadat',
-    facultyPhoto: teacher5,
-  },
-  {
-    courseCode: 'CSE - 421',
-    title: 'Web Technology',
-    facultyName: 'Kazi Farzana',
-    facultyPhoto: teacher2,
-  },
-  {
-    courseCode: 'CSE - 421',
-    title: 'Web Technology',
-    facultyName: 'Kazi Farzana',
-    facultyPhoto: teacher2,
-  },
-  {
-    courseCode: 'EEE - 305',
-    title: 'Computer Graphics',
-    facultyName: 'Maria Afnan',
-    facultyPhoto: teacher3,
-  },
-  {
-    courseCode: 'Mat - 218',
-    title: 'Differential Equations',
-    facultyName: 'Dr Shahadat',
-    facultyPhoto: teacher5,
-  },
-  {
-    courseCode: 'CSE - 421',
-    title: 'Web Technology',
-    facultyName: 'Kazi Farzana',
-    facultyPhoto: teacher2,
-  },
-];
-
-const Classrooms = () => {
+const Classrooms = ({ classrooms }) => {
   return (
     <Grid container wrap={'wrap'} className={styles.classrooms}>
       {classrooms.map((classroom) => (
@@ -80,6 +25,7 @@ const Classroom = (props) => {
   const dispatch = useDispatch();
   const handleNavigation = () => {
     dispatch(changeMenuType({ menuType: 'sub' }));
+    dispatch(setClassroom({ classroom: { ...props.details } }));
     history.push(`/class/${title.toLowerCase().replace(' ', '-')}/community`);
   };
   return (

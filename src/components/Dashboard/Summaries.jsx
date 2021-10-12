@@ -28,8 +28,8 @@ const studentSummaries = [
     icon: (
       <PeopleAltIcon className={styles.icon} style={{ color: '#81BB8B' }} />
     ),
-    title: 'Total Students',
-    value: 41,
+    title: 'Semester No',
+    value: 10,
     color: ['#027313'],
   },
 ];
@@ -61,21 +61,25 @@ const teacherSummaries = [
   },
 ];
 
-const Summaries = () => {
+const Summaries = (props) => {
   const userType = useSelector(({ ui }) => ui.userType);
   const summaries =
     userType === 'teacher' ? teacherSummaries : studentSummaries;
   return (
     <div className={styles.summaries}>
-      {summaries.map((summary) => (
-        <Summary key={summary.title} details={summary} />
+      {summaries.map((summary, idx) => (
+        <Summary
+          key={summary.title}
+          values={props.data[idx]}
+          details={summary}
+        />
       ))}
     </div>
   );
 };
 
 const Summary = (props) => {
-  const { icon, title, value, color } = props.details;
+  const { icon, title, color } = props.details;
   return (
     <div
       className={styles.summary}
@@ -84,7 +88,7 @@ const Summary = (props) => {
       <div>{icon}</div>
       <div className={styles.content}>
         <span className={styles.title}>{title}</span>
-        <span className={styles.value}>{value}</span>
+        <span className={styles.value}>{props.values || 0}</span>
       </div>
     </div>
   );

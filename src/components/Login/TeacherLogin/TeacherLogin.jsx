@@ -1,43 +1,76 @@
-import React from 'react'
-import { AppConfig, UserSession, showConnect } from '@stacks/connect';
-// import { Person } from '@stacks/profile';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
-import { useDispatch } from "react-redux";
-import { changeUserType, changeAuth } from "../../../store/ui";
+import { changeUserType, changeAuth } from '../../../store/ui';
 
-import Styles from '../../../pages/Authentication/Login.module.scss'
+import Styles from '../../../pages/Authentication/Login.module.scss';
+import Axios from '../../../config/axios';
 
-const appConfig = new AppConfig(['store_write', 'publish_data']);
+const TeacherLogin = ({ setshowSignUp }) => {
+  const [values, setValues] = useState({
+    studentid: '222',
+    password: '222333444',
+  });
 
-export const userSession = new UserSession({ appConfig });
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
 
-const TeacherLogin = () => {
   const dispatch = useDispatch();
-  const initAuthRequest = () => {
-    showConnect({
-      appDetails: {
-        name: 'Lekhapora',
-        icon: window.location.origin + '/favicon.png',
-      },
-      redirectTo: '/',
-      finished: () => {
-        dispatch(changeUserType({userType: 'teacher'}))
-        dispatch(changeAuth({isAuthenticated: true, authToken: 'Teacher'}))
-      },
-      userSession: userSession,
+
+  const handleSubmit = (e) => {
+    Axios.post('teacher/login', {
+      id_number: values.studentid,
+      password: values.password,
+    }).then((res) => {
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('profile_id', res.data.user.profile_id);
+      localStorage.setItem('profile_type', res.data.user.profile_type);
+      // history.push('/dashboard');
+      dispatch(changeUserType({ userType: 'student' }));
+      dispatch(
+        changeAuth({
+          isAuthenticated: true,
+          authToken: res.data,
+        }),
+      );
     });
-  }
+  };
 
   return (
-    <button 
-      className={`${Styles.red} ${Styles.button}`} 
-      type="button" 
-      onClick={initAuthRequest}
-    >
+    <form className={Styles.form}>
+      <label className={Styles.label}>
+        <input
+          type="text"
+          placeholder="Student ID"
+          className={Styles.input}
+          onChange={handleChange('studentid')}
+          value={values.studentid}
+        />
+      </label>
+      <label className={Styles.label}>
+        <input
+          type="password"
+          placeholder="Password"
+          className={Styles.input}
+          onChange={handleChange('password')}
+          value={values.password}
+        />
+      </label>
+      <button
+        className={`${Styles.red} ${Styles.button}`}
+        type="button"
+        onClick={handleSubmit}
+      >
         <i className={`${Styles.icon}`}></i>
-        Login As A Teacher
-    </button> 
-  )
-}
+        Log in
+      </button>
 
-export default TeacherLogin
+      <p style={{ textAlign: 'right', marginTop: 28 }}>
+        <a href="http://localhost:3000/">Forgot Password?</a>
+      </p>
+    </form>
+  );
+};
+
+export default TeacherLogin;

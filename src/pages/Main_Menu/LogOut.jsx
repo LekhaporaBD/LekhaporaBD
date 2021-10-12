@@ -1,11 +1,24 @@
-import React from 'react'
+import React from 'react';
+import { Redirect } from 'react-router';
+import { useDispatch } from 'react-redux';
+import { changeAuth } from '../../store/ui';
+import axios from '../../config/axios';
 
 const LogOut = () => {
-    return (
-        <div>
-            Logout
-        </div>
-    )
-}
+  const dispatch = useDispatch();
+  (function () {
+    localStorage.removeItem('token');
+    localStorage.removeItem('profile_id');
+    localStorage.removeItem('tokprofile_typeen');
+    dispatch(
+      changeAuth({
+        isAuthenticated: false,
+        authToken: '',
+      }),
+    );
+    axios.defaults.headers.common['Authorization'] = null;
+  })();
+  return <Redirect to="/login" />;
+};
 
-export default LogOut
+export default LogOut;

@@ -1,10 +1,12 @@
 import React, { Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
-import { useSelector } from 'react-redux';
-import io from 'socket.io-client';
+import { useSelector, useDispatch } from 'react-redux';
+// import io from 'socket.io-client';
 
 import Layout from './layout';
 import Progress from './pages/Main_Menu/Dashboard/Progress';
+
+import { changeUserType, changeAuth } from './store/ui';
 
 import './style.scss';
 import 'slick-carousel/slick/slick.css';
@@ -12,13 +14,40 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import menuLists from './data/menu';
 import Login from './pages/Authentication/Login';
-import Classroom from './components/Classes/Classroom';
+// import Classroom from './components/Classes/Classroom';
+import axios from './config/axios';
+import { useEffect } from 'react';
 
-const socket = io.connect('http://localhost:5000/');
+// const socket = io.connect('http://localhost:5000/');
 
 const App = () => {
   const isAuthenticated = useSelector(({ ui }) => ui.isAuthenticated);
   const userType = useSelector(({ ui }) => ui.userType);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      dispatch(
+        changeAuth({
+          isAuthenticated: true,
+          authToken: token,
+        }),
+      );
+
+      const profile_type = localStorage.getItem('profile_type');
+      if (profile_type === 'student_profile') {
+        dispatch(changeUserType({ userType: 'student' }));
+      } else if (profile_type === 'teacher_profile') {
+        dispatch(changeUserType({ userType: 'teacher' }));
+      }
+
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    } else {
+      axios.defaults.headers.common['Authorization'] = null;
+    }
+  }, [dispatch]);
 
   let route;
   if (isAuthenticated) {
@@ -41,10 +70,10 @@ const App = () => {
                 component={nav.component}
               />
             ))}
-            <Route
+            {/* <Route
               path="/class/:courseCode/"
               render={(props) => <Classroom socket={socket} {...props} />}
-            />
+            /> */}
             <Redirect to="/dashboard" />
           </Switch>
         </Suspense>
