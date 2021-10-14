@@ -6,6 +6,7 @@ import Header from '../../components/utils/header';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from '../../config/axios';
+import { useSelector } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,39 +61,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Assignments = {
-  '1st Assignment': {
-    AssignmentOn: 'All About HTML',
-    GivenOn: '21-12-2020',
-    SubmissionDate: '28-12-2020',
-  },
-  '2nd Assignment': {
-    AssignmentOn: 'Learn About CSS',
-    GivenOn: '28-12-2020',
-    SubmissionDate: '12-01-2021',
-  },
-  '3rd Assignment': {
-    AssignmentOn: 'Make A Website',
-    GivenOn: '5-01-2021',
-    SubmissionDate: '21-01-2021',
-  },
-};
-
 const Assignment = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
   const [Assignments, setAssignments] = useState([]);
+
+  const courseId = useSelector(({ ui }) => ui.classroom.courseId);
+
   useEffect(() => {
-    axios.get(`student/assignments`).then((res) => {
+    axios.get(`student/course/${courseId}/assignments`).then((res) => {
       const assignments = res.data.map((assignment) => ({
         AssignmentOn: assignment.name,
-        GivenOn: assignment.deadline,
+        GivenOn: assignment.mark,
         SubmissionDate: assignment.deadline,
       }));
       setAssignments(assignments);
     });
-  }, []);
-
+  }, [courseId]);
+  console.log(Assignments);
   return (
     <>
       <Header data="Assignments" />
@@ -126,9 +112,9 @@ const Assignment = () => {
       </Collapse>
 
       <Grid container spacing={3} className={classes.container}>
-        {Object.keys(Assignments).map((asnmt, num) => (
+        {Object.keys(Assignments).map((asnmt, idx) => (
           <div>
-            <Title title={Object.keys(Assignments)[num]} />
+            <Title title={`Assignment - ${idx + 1}`} />
 
             <Grid item xs={12}>
               <Paper className={classes.cardHolder}>
@@ -139,7 +125,7 @@ const Assignment = () => {
                   </span>
                 </p>
                 <p className={classes.text}>
-                  Given On :
+                  Mark :
                   <span className={classes.textValue}>
                     {Assignments[asnmt].GivenOn}
                   </span>

@@ -1,16 +1,8 @@
-import React from 'react'
-import Header from '../../components/utils/header'
+import React from 'react';
+import { Redirect } from 'react-router';
 
 const JoinClass = () => {
-  return (
-    <div>
-      <Header data='Join Class' />
+  return <Redirect to="/class/web-technology/webtech-05" />;
+};
 
-      <div>
-        
-      </div>
-    </div>
-  )
-}
-
-export default JoinClass
+export default JoinClass;

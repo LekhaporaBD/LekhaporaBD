@@ -59,7 +59,7 @@ const menuList = {
       { icon: <DashboardIcon />, component: Routine, name: 'Schedule' }, // Class Schedule
       { icon: <DashboardIcon />, component: Events, name: 'Events' }, // Any Seminar News
       { icon: <DashboardIcon />, component: Profile, name: 'Profile' },
-      { icon: <DashboardIcon />, component: Notifications, name: 'Attendance' }, //Teacher can see the taken class of her
+      { icon: <DashboardIcon />, component: Attendance, name: 'Attendance' }, //Teacher can see the taken class of her
       { icon: <DashboardIcon />, component: Setting, name: 'Setting' },
       { icon: <DashboardIcon />, component: LogOut, name: 'Log Out' },
     ],

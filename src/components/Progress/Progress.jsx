@@ -18,9 +18,16 @@ const courses = {
   Compiler_Design: { progress: '78%' },
 };
 
+const passed = Math.random() * 51 + 50;
 const data = [
-  { classState: 'Passed Classes', value: 23 },
-  { classState: 'All Classes', value: 48 },
+  { classState: 'Passed Classes', value: Math.ceil(100 - passed) },
+  { classState: 'All Classes', value: Math.ceil(passed) },
+];
+const classTest = Math.random() * 51 + 50;
+
+const test = [
+  { classState: 'Passed Classes', value: Math.ceil(100 - classTest) },
+  { classState: 'All Classes', value: Math.ceil(classTest) },
 ];
 
 const colors = ['#bdecff', '#42a9d6'];
@@ -65,13 +72,12 @@ const Progress = () => {
                 <li className={styles.flex}>
                   <div className={styles.flex}>
                     <Avatar className={styles.course_avatar}>
-                      {' '}
-                      {nameShorter(course)}{' '}
+                      {nameShorter(course)}
                     </Avatar>
                     <span> {course} </span>
                   </div>
                   <div className={styles.flex}>
-                    <h4> {courses[course].progress} </h4>
+                    <h4>{Math.floor(Math.random() * 51) + 50}</h4>
                     <ArrowForwardIosIcon
                       style={{ fill: 'red', margin: '0 6px' }}
                     />
@@ -88,12 +94,12 @@ const Progress = () => {
             className={`${styles.flex} ${styles.details} ${styles.paper}`}
           >
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime
-              fugiat assumenda iste. Dignissimos unde aut delectus perspiciatis
-              sint laboriosam vitae, amet aperiam eum earum dolorem nobis eos
-              libero repellat nostrum quasi, quo commodi cupiditate dolorum
-              iste. Laborum accusantium blanditiis quisquam eveniet tenetur
-              repudiandae eius ab! Repudiandae, aliquid. Enim, numquam dolore!
+              Your child is able to add and subtract numbers up to 20 using
+              various manipulatives. This was evident when he was working
+              independently to solve a real-world problem by adding toys in the
+              classroom toy bin. As a next step, they should continue to add to
+              larger numbers to encourage his skills. You can support him by
+              asking him to add his own toy piles at home.
             </p>
             <img
               src={Progress_svg}
@@ -147,19 +153,19 @@ const Progress = () => {
             <div className={styles.chip}>
               <Chip
                 style={{ fontSize: '1.2rem' }}
-                label="All Classes"
+                label="All Class Test"
                 variant="outlined"
                 avatar={<Avatar style={{ background: '#bdecff' }}> </Avatar>}
               />
               <Chip
                 style={{ fontSize: '1.2rem' }}
-                label="Class Done"
+                label="Attended"
                 variant="outlined"
                 avatar={<Avatar style={{ background: '#42a9d6' }}> </Avatar>}
               />
             </div>
             <div>
-              <PieChartExtra data={data} colors={colors} />
+              <PieChartExtra data={test} colors={colors} />
             </div>
           </Paper>
         </Grid>

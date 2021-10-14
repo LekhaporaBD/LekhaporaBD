@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Avatar } from '@material-ui/core';
+import { useSelector } from 'react-redux';
+
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import IconButton from '@material-ui/core/IconButton';
-import { useSelector } from 'react-redux';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
@@ -12,54 +13,25 @@ import teacher3 from '../../assets/teachers/teacher-3.webp';
 import styles from './PostList.module.scss';
 import axios from '../../config/axios';
 
-const posts = [
-  {
-    postId: 1,
-    classId: 1,
-    userId: 1,
-    timeStamp: 'Sep 26, 2020',
-    postBody: {
-      content: `Please check out the assignment.
-                Instructions:
-                1. Last date of submission: 9 October, 2020 (within 11.59 pm).
-                2. Summarize the paper in 2 pages (Times new roman, font size 11) and prepare a presentation of 10-12 slides.
-                3. Give at least 2 reference at the end of your summary.
-                4. Name of your files should be your student id.
-                5. Mail your files to mariaafnan6@gmail.com  (subject of your mail should be CSE 421_assignment_student id.)`,
-      files: [],
-    },
-    comments: [
-      {
-        commentId: 1,
-        userId: 2,
-        timeStamp: 'Sep 26, 2020',
-        content: `Maam i don't have a laptop or webcam,Since i use desktop but i can use my mobiles  camera but it's barely visible on the camera.Just to let you know maam.`,
-      },
-      {
-        commentId: 2,
-        userId: 3,
-        timeStamp: 'Sep 21, 2020',
-        content: `mam google meet e amar camera on hoy na...`,
-      },
-    ],
-  },
-];
-
-const PostList = () => {
-  const [posts, setPosts] = useState([]);
-
+const PostList = ({ posts }) => {
+  const [comments, setComments] = useState(posts.comments);
+  const [comment, setComment] = useState('');
   const userType = useSelector(({ ui }) => ui.userType);
   const courseId = useSelector(({ ui }) => ui.classroom.courseId);
 
-  useEffect(() => {
-    axios.get(`${userType}/course/${courseId}/post`).then((res) => {
-      setPosts(res.data);
+  const postComment = (id) => {
+    axios.post(`${userType}/post/${id}/comment`, {
+      comment,
     });
-  }, [courseId, posts, userType]);
-
-  console.log(posts);
-
-  // const postBlock =
+    const newPosts = [
+      ...comments,
+      {
+        body: comment,
+      },
+    ];
+    setComments(newPosts);
+    setComment('');
+  };
   return posts.map((post) => {
     return (
       <div className={styles.postWrapper}>
@@ -73,32 +45,35 @@ const PostList = () => {
           </div>
           <p className={styles.postContent}>{post.body}</p>
         </div>
-        <div className={styles.comments}>
-          {post.comments.map((comment) => (
-            <div className={styles.comment}>
-              <Avatar alt={'facultyName'} src={teacher3} />
-              <div className={styles.commentContent}>
-                <div className={styles.timestamp}>
-                  <h5>Maria Afnan</h5>
-                  <h6>Oct 8, 2020</h6>
+        {comments && comments.length > 0 && (
+          <div className={styles.comments}>
+            {comments &&
+              comments.map((comment) => (
+                <div className={styles.comment}>
+                  <Avatar alt={'facultyName'} src={teacher3} />
+                  <div className={styles.commentContent}>
+                    <div className={styles.timestamp}>
+                      <h5>Maria Afnan</h5>
+                      <h6>Oct 8, 2020</h6>
+                    </div>
+                    <p>{comment.body}</p>
+                  </div>
                 </div>
-                <p>{comment.body}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+              ))}
+          </div>
+        )}
         <div className={styles.postComment}>
           <Avatar alt={'facultyName'} src={teacher3} />
           <FormControl className={styles.commentBox} variant="outlined">
             <OutlinedInput
               id="outlined-adornment-weight"
-              // value={values.weight}
-              // onChange={handleChange('weight')}
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
               endAdornment={
                 <InputAdornment position="end">
                   <IconButton
                     aria-label="toggle password visibility"
-                    // onClick={handleClickShowPassword}
+                    onClick={() => postComment(post.id)}
                     // onMouseDown={handleMouseDownPassword}
                     edge="end"
                   >

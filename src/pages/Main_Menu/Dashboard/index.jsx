@@ -17,9 +17,12 @@ const Dashboard = () => {
   useEffect(() => {
     axios.get(`${userType}/dashboard`).then((res) => {
       const classrooms = [];
-      const totalCourse = res.data.student_courses.length;
+      const courses =
+        userType === 'student' ? 'student_courses' : 'teacher_courses';
+
+      const totalCourse = res.data[courses].length;
       let totalCredits = 0;
-      res.data.student_courses.forEach((course) => {
+      res.data[courses].forEach((course) => {
         classrooms.push({
           courseId: course.id,
           courseTeacher: course.teacher_id,
@@ -31,7 +34,13 @@ const Dashboard = () => {
         totalCredits += +course.credit;
       });
       setClassrooms(classrooms);
-      setSummaries([totalCourse, totalCredits, 10]);
+      if (userType === 'student') setSummaries([totalCourse, totalCredits, 10]);
+      else
+        setSummaries([
+          totalCourse,
+          totalCredits,
+          res.data.profile.total_taken_courses,
+        ]);
     });
   }, [userType, dispatch]);
 

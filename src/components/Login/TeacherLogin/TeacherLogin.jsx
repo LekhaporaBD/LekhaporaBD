@@ -27,7 +27,7 @@ const TeacherLogin = ({ setshowSignUp }) => {
       localStorage.setItem('profile_id', res.data.user.profile_id);
       localStorage.setItem('profile_type', res.data.user.profile_type);
       // history.push('/dashboard');
-      dispatch(changeUserType({ userType: 'student' }));
+      dispatch(changeUserType({ userType: 'teacher' }));
       dispatch(
         changeAuth({
           isAuthenticated: true,

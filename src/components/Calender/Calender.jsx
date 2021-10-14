@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
-import dateFns from 'date-fns';
+import {
+  format,
+  startOfWeek,
+  addDays,
+  startOfMonth,
+  endOfMonth,
+  endOfWeek,
+  isSameMonth,
+  addMonths,
+  subMonths,
+} from 'date-fns';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import styles from './Calender.module.scss';
@@ -9,7 +19,7 @@ import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 const Calender = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  const dateFormat = 'D';
+  const dateFormat = 'd';
   const attendanceList = [
     '2-0-2021',
     '7-0-2021',
@@ -38,7 +48,7 @@ const Calender = () => {
   });
 
   const renderHeader = () => {
-    const dateFormate = 'MMMM YYYY';
+    const dateFormate = 'MMMM yyyy';
 
     return (
       <div className={`${styles.header} ${styles.row} ${styles.flexMiddle}`}>
@@ -50,7 +60,7 @@ const Calender = () => {
 
         <div className={`${styles.col} ${styles.colCenter}`}>
           <span style={{ color: '#0d236d', fontSize: 28 }}>
-            {dateFns.format(currentMonth, dateFormate)}
+            {format(currentMonth, dateFormate)}
           </span>
         </div>
 
@@ -67,12 +77,12 @@ const Calender = () => {
     const dataFormate = 'dddd';
     const days = [];
 
-    let startDate = dateFns.startOfWeek(currentMonth);
+    let startDate = startOfWeek(currentMonth);
 
     for (let i = 0; i < 7; i++) {
       days.push(
         <div className={`${styles.col} ${styles.colCenter}`}>
-          {dateFns.format(dateFns.addDays(startDate, i), dataFormate)}
+          {format(addDays(startDate, i), dataFormate)}
         </div>,
       );
     }
@@ -81,10 +91,10 @@ const Calender = () => {
   };
 
   const renderCells = () => {
-    const monthStart = dateFns.startOfMonth(currentMonth);
-    const monthEnd = dateFns.endOfMonth(monthStart);
-    const startDate = dateFns.startOfWeek(monthStart);
-    const endDate = dateFns.endOfWeek(monthEnd);
+    const monthStart = startOfMonth(currentMonth);
+    const monthEnd = endOfMonth(monthStart);
+    const startDate = startOfWeek(monthStart);
+    const endDate = endOfWeek(monthEnd);
 
     const rows = [];
 
@@ -94,12 +104,12 @@ const Calender = () => {
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
-        formattedDate = dateFns.format(day, dateFormat);
+        formattedDate = format(day, dateFormat);
 
         days.push(
           <div
             className={`${styles.col} ${styles.cell} ${
-              !dateFns.isSameMonth(day, monthStart)
+              !isSameMonth(day, monthStart)
                 ? styles.disabled
                 : attendanceArray.find(
                     (dt) => JSON.stringify(dt) === JSON.stringify(day),
@@ -114,7 +124,7 @@ const Calender = () => {
           </div>,
         );
 
-        day = dateFns.addDays(day, 1);
+        day = addDays(day, 1);
       }
       rows.push(
         <div className={styles.row} key={day}>
@@ -127,11 +137,11 @@ const Calender = () => {
   };
 
   const nextMonthHandler = () => {
-    setCurrentMonth(dateFns.addMonths(currentMonth, 1));
+    setCurrentMonth(addMonths(currentMonth, 1));
   };
 
   const pervMonthHandler = () => {
-    setCurrentMonth(dateFns.subMonths(currentMonth, 1));
+    setCurrentMonth(subMonths(currentMonth, 1));
   };
 
   const matches = useMediaQuery('(max-width:600px)');

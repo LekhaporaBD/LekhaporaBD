@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import Avatar from '@material-ui/core/Avatar';
 import { makeStyles } from '@material-ui/core/styles';
 import Header from '../../components/utils/header';
 import avatar from '../../assets/wahid.jpg';
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     width: '75%',
     backgroundColor: 'rgb(255 255 255 / 60%)',
     margin: '4rem auto 0',
-    padding: '6rem',
+    padding: '3rem',
     boxShadow: 'inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF',
     [theme.breakpoints.down('600')]: {
       padding: '1.5rem ',
@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     transform: 'skewX(-12deg)',
     textOverflow: 'hidden',
     fontSize: 'inherit',
+    display: 'flex',
   },
   story__shape: {
     width: '10rem',
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     transition: 'all 0.5s',
   },
   story__text: {
-    transform: 'skewX(12deg)',
+    transform: 'skewX(12deg) translateY(1.2rem)',
   },
   story__caption: {
     color: '#fff',
@@ -48,6 +49,16 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'uppercase',
     transition: 'all 0.5s',
     opacity: 0,
+  },
+  purple: {
+    background: '#ff8c0f',
+    padding: '4.5rem',
+    marginRight: '3rem',
+    fontWeight: '600',
+    lineHeight: '1.9rem',
+    fontSize: '1.7rem',
+    textAlign: 'center',
+    transform: 'skewX(12deg)',
   },
 }));
 
@@ -65,16 +76,13 @@ const Notifications = () => {
   return (
     <>
       <Header data="Notifications" />
-      {notifications.map(({ notifications }) => (
+      {notifications.map((notification) => (
         <div className={classes.notifications}>
           <div className={classes.story}>
-            <figure className={classes.story__shape}>
-              <img className={classes.story__img} src={avatar} alt="" />
-              <figcaption className={classes.story__caption}></figcaption>
-            </figure>
+            <Avatar className={classes.purple}>{notification.code}</Avatar>
             <div className={classes.story__text}>
-              <h3>{notifications[0].title}</h3>
-              <p>{notifications[0].body}</p>
+              <h3>{notification.notifications[0].title}</h3>
+              <p>{notification.notifications[0].body}</p>
             </div>
           </div>
         </div>

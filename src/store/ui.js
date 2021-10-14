@@ -27,6 +27,11 @@ const ui = createSlice({
     setClassroom: (ui, action) => {
       ui.classroom = action.payload.classroom;
     },
+    resetState: (ui) => {
+      ui.profile = {};
+      ui.classroom = {};
+      ui.userType = '';
+    },
   },
 });
 
@@ -35,6 +40,7 @@ export const {
   changeMenuType,
   changeUserType,
   changeAuth,
+  resetState,
   setProfile,
   setClassroom,
 } = ui.actions;

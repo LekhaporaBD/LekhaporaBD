@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
-import { TextField, Button, Avatar } from "@material-ui/core";
+import { useSelector } from 'react-redux';
+
+import { TextField, Button, Avatar } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
-import profilePhoto from "../../assets/wahid.jpg";
+import profilePhoto from '../../assets/wahid.jpg';
 import styles from './AnnouncePost.module.scss';
+import axios from '../../config/axios';
 
-const AnnouncePost = () => {
-  const [ isAnnounceClicked, setAnnounceClicked ] = useState(false);
-  if(isAnnounceClicked){
+const AnnouncePost = ({ posts, setPosts }) => {
+  const [isAnnounceClicked, setAnnounceClicked] = useState(false);
+  const [body, setBody] = useState('');
+
+  const userType = useSelector(({ ui }) => ui.userType);
+  const courseId = useSelector(({ ui }) => ui.classroom.courseId);
+
+  if (isAnnounceClicked) {
     return (
       <div className={styles.formWrapper}>
         <TextField
@@ -17,21 +25,22 @@ const AnnouncePost = () => {
           rows={4}
           variant="filled"
           className={styles.textField}
+          onChange={(e) => setBody(e.target.value)}
         />
         <div className={styles.buttonWrapper}>
           <div>
             <input
               accept="image/*"
-              style={{display: 'none'}}
+              style={{ display: 'none' }}
               id="contained-button-file"
               multiple
               type="file"
             />
             <label htmlFor="contained-button-file">
-              <Button 
+              <Button
                 variant="outlined"
                 color="primary"
-                className={styles.buttonAdd} 
+                className={styles.buttonAdd}
                 startIcon={<CloudUploadIcon />}
               >
                 Add
@@ -39,20 +48,49 @@ const AnnouncePost = () => {
             </label>
           </div>
           <div>
-            <Button variant="contained"  size="large" onClick={() => {setAnnounceClicked(false)}}>
+            <Button
+              variant="contained"
+              size="large"
+              onClick={() => {
+                setAnnounceClicked(false);
+              }}
+            >
               Cancel
             </Button>
-            <Button variant="contained"  size="large" color="primary">
+            <Button
+              variant="contained"
+              size="large"
+              color="primary"
+              onClick={() => {
+                setAnnounceClicked(false);
+                axios.post(`${userType}/course/${courseId}/post`, {
+                  body,
+                });
+                const newPosts = [
+                  ...posts,
+                  {
+                    body,
+                    comments: [],
+                  },
+                ];
+                setPosts(newPosts);
+                setBody('');
+              }}
+            >
               Post
             </Button>
           </div>
         </div>
       </div>
-    )
-  }
-  else{
+    );
+  } else {
     return (
-      <div className={styles.wrapper} onClick={() => {setAnnounceClicked(true)}}>
+      <div
+        className={styles.wrapper}
+        onClick={() => {
+          setAnnounceClicked(true);
+        }}
+      >
         <Avatar
           alt={'facultyName'}
           src={profilePhoto}
@@ -60,8 +98,8 @@ const AnnouncePost = () => {
         />
         <h4 className={styles.title}>Share something with your class...</h4>
       </div>
-    )
+    );
   }
-}
+};
 
-export default AnnouncePost
+export default AnnouncePost;

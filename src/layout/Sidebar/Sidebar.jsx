@@ -82,29 +82,38 @@ const Sidebar = (props) => {
         </div>
 
         <h3 style={{ marginTop: 10 }}>{profile.name || 'Loading..'}</h3>
-        <p> CSE({profile.batch || '...'}) </p>
-
-        <Grid container justify="space-between" className={styles.infoWrapper}>
-          <Grid container item justify="center" alignItems="center" xs={6}>
-            <Grid item>
-              <EmojiFlagsIcon className={styles.infoIcon} />
+        {userType === 'student' ? (
+          <p> CSE({profile.batch || '...'}) </p>
+        ) : (
+          <p> {profile.position || '...'} </p>
+        )}
+        {userType === 'student' && (
+          <Grid
+            container
+            justify="space-between"
+            className={styles.infoWrapper}
+          >
+            <Grid container item justify="center" alignItems="center" xs={6}>
+              <Grid item>
+                <EmojiFlagsIcon className={styles.infoIcon} />
+              </Grid>
+              <Grid item style={{ paddingLeft: 15 }}>
+                <h4>Batch</h4>
+                <h4>{profile.batch || '...'}</h4>
+              </Grid>
             </Grid>
-            <Grid item style={{ paddingLeft: 15 }}>
-              <h4>Batch</h4>
-              <h4>{profile.batch || '...'}</h4>
+
+            <Grid container justify="center" alignItems="center" item xs={6}>
+              <Grid item>
+                <EmojiEventsIcon className={styles.infoIcon} />
+              </Grid>
+              <Grid item style={{ paddingLeft: 15 }}>
+                <h4>CGPA</h4>
+                <h4>{profile.cgpa || '...'}</h4>
+              </Grid>
             </Grid>
           </Grid>
-
-          <Grid container justify="center" alignItems="center" item xs={6}>
-            <Grid item>
-              <EmojiEventsIcon className={styles.infoIcon} />
-            </Grid>
-            <Grid item style={{ paddingLeft: 15 }}>
-              <h4>CGPA</h4>
-              <h4>{profile.cgpa || '...'}</h4>
-            </Grid>
-          </Grid>
-        </Grid>
+        )}
       </Grid>
 
       {/* <LineBreak /> */}

@@ -95,10 +95,10 @@ const Lectures = () => {
 
   useEffect(() => {
     axios.get(`${userType}/course/${courseId}/lecture`).then((res) => {
-      const lectures = res.data.map((assignment) => ({
-        fileName: 'Make A Website',
-        date: '5-01-2021',
-        fileType: 'ppt',
+      const lectures = res.data.map((lecture) => ({
+        fileName: lecture.name,
+        date: lecture.term,
+        fileType: lecture.fileType,
       }));
       setLectures(lectures);
     });
@@ -110,9 +110,9 @@ const Lectures = () => {
 
       {userType === 'student' ? (
         <Grid container spacing={3} className={classes.container}>
-          {Object.keys(lectures).map((lec, num) => (
+          {Object.keys(lectures).map((lec, idx) => (
             <div>
-              <Title title={Object.keys(lectures)[num]} />
+              <Title title={`Lecture - ${idx + 1}`} />
 
               <Grid item xs={12}>
                 <Paper className={classes.cardHolder}>
@@ -123,7 +123,7 @@ const Lectures = () => {
                     </span>
                   </p>
                   <p className={classes.text}>
-                    Date :
+                    Term :
                     <span className={classes.textValue}>
                       {lectures[lec].date}
                     </span>
@@ -134,7 +134,15 @@ const Lectures = () => {
                       {lectures[lec].fileType}
                     </span>
                   </p>
-                  <button className={classes.btn}> Download </button>
+                  <a
+                    href="https://docs.google.com/document/d/1vzLbTxz8U22i-qY61G91kFBSy5-p5R2u1EUmHW4brCY/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={classes.btn}
+                  >
+                    {' '}
+                    Download{' '}
+                  </a>
                 </Paper>
               </Grid>
             </div>

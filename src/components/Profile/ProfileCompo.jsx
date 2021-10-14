@@ -4,24 +4,13 @@ import { DropzoneDialog } from 'material-ui-dropzone';
 import styles from './Profile.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Title from '../utils/Title';
-
-const studentDetails = {
-  name: 'Nazrul Islam',
-  id: '171-054-042',
-  email: 'rakibpaucse@gmail.com',
-  phone: '01521333799',
-  batch: '171',
-  section: 'A',
-  sgpa: '4.00',
-  cgpa: '3.84',
-  CreditEarned: '135',
-  CourseCompleted: '57',
-};
+import axios from '../../config/axios';
 
 const ProfileCompo = () => {
   const dispatch = useDispatch();
   const picSrc = useSelector(({ profilePicReducer }) => profilePicReducer.img);
   const studentDetails = useSelector(({ ui }) => ui.profile);
+  const userType = useSelector(({ ui }) => ui.userType);
 
   const [open, setOpen] = useState(false);
   const [havePhoto, setPhoto] = useState(false);
@@ -38,7 +27,6 @@ const ProfileCompo = () => {
             className={styles.profileAvatar}
           />
         </div>
-
         <div className={styles.imgSetting}>
           {havePhoto ? (
             <>
@@ -60,8 +48,6 @@ const ProfileCompo = () => {
               Upload photo
             </button>
           )}
-
-          {/*  */}
           <DropzoneDialog
             acceptedFiles={['image/*']}
             cancelButtonText={'cancel'}
@@ -72,14 +58,27 @@ const ProfileCompo = () => {
             onClose={() => setOpen(false)}
             onSave={(files) => {
               const reader = new FileReader();
-              reader.onload = () => {
+              reader.onload = async () => {
                 if (reader.readyState === 2) {
+                  const base64 = reader.result;
                   dispatch({ type: 'CHANGE_IMG', payload: reader.result });
                   setPhoto(true);
+                  const blob = await fetch(base64).then((res) => res.blob());
+                  const formData = new FormData();
+                  formData.append('image', blob);
+                  axios
+                    .post('teacher/uploadImage', formData, {
+                      headers: {
+                        'Content-Type': 'multipart/form-data',
+                      },
+                    })
+                    .then((data) => {
+                      console.log(data);
+                    });
                 }
               };
-              reader.readAsDataURL(files[0]);
 
+              reader.readAsDataURL(files[0]);
               setOpen(false);
             }}
             showPreviews={true}
@@ -100,10 +99,12 @@ const ProfileCompo = () => {
                 <h3> {studentDetails.name} </h3>
               </div>
 
-              <div className={styles.infoHolder}>
-                <h2> ID : </h2>
-                <h3> {studentDetails.id} </h3>
-              </div>
+              {userType === 'student' && (
+                <div className={styles.infoHolder}>
+                  <h2> ID : </h2>
+                  <h3> {studentDetails.id} </h3>
+                </div>
+              )}
             </div>
 
             <div className={styles.infoHolder}>
@@ -112,10 +113,12 @@ const ProfileCompo = () => {
             </div>
 
             <div className={styles.infoBlock}>
-              <div className={styles.infoHolder}>
-                <h2> Batch: </h2>
-                <h3> {studentDetails.batch} </h3>
-              </div>
+              {userType === 'student' && (
+                <div className={styles.infoHolder}>
+                  <h2> Batch: </h2>
+                  <h3> {studentDetails.batch} </h3>
+                </div>
+              )}
 
               <div className={styles.infoHolder}>
                 <h2> Phone : </h2>
@@ -123,29 +126,50 @@ const ProfileCompo = () => {
               </div>
             </div>
 
-            <div className={styles.infoBlock}>
-              <div className={styles.infoHolder}>
-                <h2> SGPA : </h2>
-                <h3> {studentDetails.sgpa} </h3>
+            {userType === 'teacher' && (
+              <div className={styles.infoBlock}>
+                <div className={styles.infoHolder}>
+                  <h2> Position: </h2>
+                  <h3> {studentDetails.position} </h3>
+                </div>
               </div>
+            )}
+            {userType === 'teacher' && (
+              <div className={styles.infoBlock}>
+                <div className={styles.infoHolder}>
+                  <h2> No of Assigned Courses : </h2>
+                  <h3> {studentDetails.no_of_classes} </h3>
+                </div>
+              </div>
+            )}
 
-              <div className={styles.infoHolder}>
-                <h2> Credit Earned : </h2>
-                <h3> {studentDetails.credit_earned} </h3>
-              </div>
-            </div>
+            {userType === 'student' && (
+              <div className={styles.infoBlock}>
+                <div className={styles.infoHolder}>
+                  <h2> SGPA : </h2>
+                  <h3> {studentDetails.sgpa} </h3>
+                </div>
 
-            <div className={styles.infoBlock}>
-              <div className={styles.infoHolder}>
-                <h2> CGPA : </h2>
-                <h3> {studentDetails.cgpa} </h3>
+                <div className={styles.infoHolder}>
+                  <h2> Credit Earned : </h2>
+                  <h3> {studentDetails.credit_earned} </h3>
+                </div>
               </div>
+            )}
 
-              <div className={styles.infoHolder}>
-                <h2> Course Completed : </h2>
-                <h3> {studentDetails.course_completed} </h3>
+            {userType === 'student' && (
+              <div className={styles.infoBlock}>
+                <div className={styles.infoHolder}>
+                  <h2> CGPA : </h2>
+                  <h3> {studentDetails.cgpa} </h3>
+                </div>
+
+                <div className={styles.infoHolder}>
+                  <h2> Course Completed : </h2>
+                  <h3> {studentDetails.course_completed} </h3>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

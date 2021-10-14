@@ -14,7 +14,7 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import menuLists from './data/menu';
 import Login from './pages/Authentication/Login';
-// import Classroom from './components/Classes/Classroom';
+import Classroom from './components/Classes/Classroom';
 import axios from './config/axios';
 import { useEffect } from 'react';
 
@@ -70,10 +70,10 @@ const App = () => {
                 component={nav.component}
               />
             ))}
-            {/* <Route
-              path="/class/:courseCode/"
-              render={(props) => <Classroom socket={socket} {...props} />}
-            /> */}
+            <Route
+              path="/class/:courseCode/:mid"
+              render={(props) => <Classroom {...props} />}
+            />
             <Redirect to="/dashboard" />
           </Switch>
         </Suspense>

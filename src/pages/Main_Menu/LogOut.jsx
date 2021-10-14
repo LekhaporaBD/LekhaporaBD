@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { changeAuth } from '../../store/ui';
+import { changeAuth, resetState } from '../../store/ui';
 import axios from '../../config/axios';
 
 const LogOut = () => {
@@ -16,7 +16,8 @@ const LogOut = () => {
         authToken: '',
       }),
     );
-    axios.defaults.headers.common['Authorization'] = null;
+    dispatch(resetState());
+    // axios.defaults.headers.common['Authorization'] = null;
   })();
   return <Redirect to="/login" />;
 };
