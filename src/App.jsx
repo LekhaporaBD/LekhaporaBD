@@ -27,26 +27,25 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      dispatch(
-        changeAuth({
-          isAuthenticated: true,
-          authToken: token,
-        }),
-      );
+    async function setAuthToken() {
+      const token = await localStorage.getItem('token');
+      if (token) {
+        dispatch(
+          changeAuth({
+            isAuthenticated: true,
+            authToken: token,
+          }),
+        );
 
-      const profile_type = localStorage.getItem('profile_type');
-      if (profile_type === 'student_profile') {
-        dispatch(changeUserType({ userType: 'student' }));
-      } else if (profile_type === 'teacher_profile') {
-        dispatch(changeUserType({ userType: 'teacher' }));
+        const profile_type = localStorage.getItem('profile_type');
+        if (profile_type === 'student_profile') {
+          dispatch(changeUserType({ userType: 'student' }));
+        } else if (profile_type === 'teacher_profile') {
+          dispatch(changeUserType({ userType: 'teacher' }));
+        }
       }
-
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    } else {
-      axios.defaults.headers.common['Authorization'] = null;
     }
+    setAuthToken();
   }, [dispatch]);
 
   let route;

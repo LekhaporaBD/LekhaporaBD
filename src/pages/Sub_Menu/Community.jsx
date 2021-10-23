@@ -27,7 +27,7 @@ const Community = () => {
       <Header />
       <div style={{ width: matches ? '94%' : '70%', margin: '0 auto' }}>
         <AnnouncePost posts={posts} setPosts={setPosts} />
-        <PostList posts={posts} />
+        <PostList posts={posts} setPosts={setPosts} />
       </div>
     </>
   );

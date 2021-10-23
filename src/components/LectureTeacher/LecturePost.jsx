@@ -1,68 +1,132 @@
 import React, { useState } from 'react';
-import { TextField, Button, Avatar } from "@material-ui/core";
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { useSelector } from 'react-redux';
 
+import { TextField, Button, Avatar } from '@material-ui/core';
+import axios from '../../config/axios';
 
-import profilePhoto from "../../assets/teachers/teacher-3.webp";
-import styles from './LecturePost.module.scss'
+import profilePhoto from '../../assets/teachers/teacher-3.webp';
+import styles from './LecturePost.module.scss';
 
-const LecturePost = () => {
-    const [ isAnnounceClicked, setAnnounceClicked ] = useState(false);
-    if(isAnnounceClicked){
-      return (
-        <div className={styles.formWrapper}>
-          <TextField
-            id="outlined-multiline-static"
-            label="Make A lecture for your Students"
-            multiline
-            rows={4}
-            variant="filled"
-            className={styles.textField}
-          />
-          <div className={styles.buttonWrapper}>
-            <div>
-              <input
-                accept="image/*"
-                style={{display: 'none'}}
-                id="contained-button-file"
-                multiple
-                type="file"
-              />
-              <label htmlFor="contained-button-file">
-                <Button 
-                  variant="outlined"
-                  color="primary"
-                  className={`${styles.buttonAdd} ${styles.button}`}
-                  startIcon={<CloudUploadIcon />}
-                >
-                  Add
-                </Button>
-              </label>
-            </div>
-            <div>
-              <Button variant="contained" className={`${styles.buttonCancel} ${styles.button}`} size="large" onClick={() => {setAnnounceClicked(false)}}>
-                Cancel
-              </Button>
-              <Button variant="contained" className={`${styles.buttonPost} ${styles.button}`} size="large" color="primary">
-                Post
-              </Button>
-            </div>
+const LecturePost = ({ lectures, setLectures }) => {
+  const userType = useSelector(({ ui }) => ui.userType);
+  const courseId = useSelector(({ ui }) => ui.classroom.courseId);
+
+  const [isAnnounceClicked, setAnnounceClicked] = useState(false);
+  const [content, setContent] = useState('');
+  const [lectureFile, setLectureFile] = useState('');
+
+  if (isAnnounceClicked) {
+    return (
+      <div className={styles.formWrapper}>
+        <TextField
+          id="outlined-multiline-static"
+          label="Make A lecture for your Students"
+          multiline
+          rows={4}
+          variant="filled"
+          className={styles.textField}
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <div className={styles.buttonWrapper}>
+          <div>
+            <input
+              accept="application/pdf"
+              style={{ display: 'none' }}
+              id="lectures"
+              type="file"
+              onChange={(e) => {
+                const { files } = e.target;
+                const formData = new FormData();
+                formData.append('file', files[0], files[0].name);
+
+                axios
+                  .post('teacher/uploadFile', formData, {
+                    headers: {
+                      'Content-Type': 'multipart/form-data',
+                    },
+                  })
+                  .then((res) => {
+                    setLectureFile(res.data.file_url);
+                  });
+              }}
+            />
+            <label
+              htmlFor="lectures"
+              className={`${styles.buttonPost} ${styles.button}`}
+            >
+              Add Lecture
+            </label>
+          </div>
+          <div>
+            <Button
+              variant="contained"
+              className={`${styles.buttonCancel} ${styles.button}`}
+              size="large"
+              onClick={() => {
+                setAnnounceClicked(false);
+              }}
+            >
+              Cancel
+            </Button>
+            <Button
+              variant="contained"
+              className={`${styles.buttonPost} ${styles.button}`}
+              size="large"
+              color="primary"
+              onClick={(e) => {
+                const term =
+                  Math.ceil(Math.random() * 100) % 2 === 0
+                    ? 'Mid Term'
+                    : 'Final Term';
+
+                const lecture = {
+                  name: content,
+                  mark: '14',
+                  term,
+                  link: lectureFile,
+                  fileType: 'pdf',
+                };
+
+                axios.post(`${userType}/course/${courseId}/lecture`, lecture);
+
+                setLectures([
+                  ...lectures,
+                  {
+                    fileName: content,
+                    term,
+                    fileType: 'pdf',
+                    link: lectureFile,
+                  },
+                ]);
+                setContent('');
+                setLectureFile('');
+                setAnnounceClicked(false);
+              }}
+            >
+              Post
+            </Button>
           </div>
         </div>
-      )
-    }
-    else{
-      return (
-        <div className={styles.wrapper} onClick={() => {setAnnounceClicked(true)}}>
-          <Avatar
-            alt={'facultyName'}
-            src={profilePhoto}
-            className={styles.profileAvatar}
-          />
-          <h4 className={styles.title}>Share something with your class...</h4>
-        </div>
-      )
-    }
-}
+      </div>
+    );
+  } else {
+    return (
+      <div
+        className={styles.wrapper}
+        onClick={() => {
+          setAnnounceClicked(true);
+        }}
+      >
+        <Avatar
+          alt={'facultyName'}
+          src={profilePhoto}
+          className={styles.profileAvatar}
+        />
+        <h4 className={styles.title}>Share something with your class...</h4>
+      </div>
+    );
+  }
+};
 
-export default LecturePost
+export default LecturePost;

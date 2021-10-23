@@ -1,11 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Title from '../../components/utils/Title';
 import Header from '../../components/utils/header';
-import { useSelector } from 'react-redux';
 
 import LecturePost from '../../components/LectureTeacher/LecturePost';
 import PrevLecture from '../../components/LectureTeacher/PrevLecture';
@@ -64,26 +64,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const lectures = {
-  '1st Class': {
-    fileName: 'All About HTML',
-    date: '21-12-2020',
-    fileType: 'pdf',
-  },
-  '2nd Class': {
-    fileName: 'Learn About CSS',
-    date: '28-12-2020',
-    fileType: 'mp4',
-  },
-  '3rd Class': {
-    fileName: 'Make A Website',
-    date: '5-01-2021',
-    fileType: 'ppt',
-  },
-  '4th Class': { fileName: 'Learn Js', date: '8-01-2021', fileType: 'word' },
-  '5th Class': { fileName: 'Javascript', date: '8-01-2021', fileType: 'pdf' },
-};
-
 const Lectures = () => {
   const classes = useStyles();
   const matches = useMediaQuery('(max-width:1200px)');
@@ -97,8 +77,9 @@ const Lectures = () => {
     axios.get(`${userType}/course/${courseId}/lecture`).then((res) => {
       const lectures = res.data.map((lecture) => ({
         fileName: lecture.name,
-        date: lecture.term,
+        term: lecture.term,
         fileType: lecture.fileType,
+        link: lecture.link,
       }));
       setLectures(lectures);
     });
@@ -125,7 +106,7 @@ const Lectures = () => {
                   <p className={classes.text}>
                     Term :
                     <span className={classes.textValue}>
-                      {lectures[lec].date}
+                      {lectures[lec].term}
                     </span>
                   </p>
                   <p className={classes.text}>
@@ -135,13 +116,12 @@ const Lectures = () => {
                     </span>
                   </p>
                   <a
-                    href="https://docs.google.com/document/d/1vzLbTxz8U22i-qY61G91kFBSy5-p5R2u1EUmHW4brCY/edit?usp=sharing"
+                    href={lectures[lec].link}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={classes.btn}
                   >
-                    {' '}
-                    Download{' '}
+                    Download
                   </a>
                 </Paper>
               </Grid>
@@ -156,13 +136,13 @@ const Lectures = () => {
             marginTop: 50,
           }}
         >
-          <LecturePost />
+          <LecturePost lectures={lectures} setLectures={setLectures} />
           <p
             style={{ fontSize: 22, color: '#0d236d', margin: '40px 20px 20px' }}
           >
             Your Previous Announcements ...
           </p>
-          <PrevLecture />
+          <PrevLecture lectures={lectures} />
         </div>
       )}
     </>

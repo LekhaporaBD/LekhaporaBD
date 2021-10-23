@@ -75,7 +75,7 @@ const Sidebar = (props) => {
           <div className={styles.profilePicHolder}>
             <Avatar
               alt="Student ProfilePic"
-              src={profilePic}
+              src={profile.profile_picture || profilePic}
               className={styles.profileAvatar}
             />
           </div>

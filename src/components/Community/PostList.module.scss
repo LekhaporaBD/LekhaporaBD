@@ -1,4 +1,4 @@
-.postWrapper{
+.postWrapper {
   margin-bottom: 1rem;
   background-color: #fff;
   margin: 2rem 0;
@@ -6,7 +6,7 @@
   border-radius: 10px;
   border: 1px solid #ccc;
 }
-.post{
+.post {
   margin-bottom: 2rem;
   padding: 4rem 3rem 1rem;
 }
@@ -14,52 +14,57 @@
   display: flex;
   margin-bottom: 1rem;
 }
-.slug{
+.slug {
   margin-left: 1.5rem;
-  h6{
+  h6 {
     font-weight: normal;
     line-height: 1;
   }
 }
 
-.postContent{
+.postContent {
   font-size: 1.4rem;
 }
 
-.comments{
+.comments {
   width: 100%;
   border-top: 1px solid #ccc;
   padding: 2rem 3rem;
 }
 
-.comment{
+.comment {
   display: flex;
+  margin: 1rem 0;
 }
-.commentContent{
+.commentContent {
   margin-left: 2.5rem;
-  p{
-    font-size: 1.4rem
+  p {
+    font-size: 1.4rem;
   }
 }
-.timestamp{
+.timestamp {
   display: flex;
   align-items: center;
-  h6{
+  h6 {
     font-weight: normal;
     margin-left: 1rem;
   }
 }
-.postComment{
+.postComment {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 2rem 3rem;
   border-top: 1px solid #ccc;
 }
-.commentBox{
+.commentBox {
   width: 100%;
   margin-left: 2rem !important;
-  & > div{
+  font-size: 1.4rem;
+  & > div {
     border-radius: 2rem;
   }
+}
+.commentInput {
+  font-size: 1.4rem !important;
 }

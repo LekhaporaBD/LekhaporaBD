@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Sidebar from './Sidebar/Sidebar';
+import Loader from '../components/utils/Loader';
 import Fab from '@material-ui/core/Fab';
 import MenuIcon from '@material-ui/icons/Menu';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -10,6 +11,7 @@ import { setProfile } from '../store/ui';
 
 const Layout = (props) => {
   const [activeSidedrawer, setActiveSidedrawer] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const medium = useMediaQuery('(max-width:768px)');
 
   const userType = useSelector(({ ui }) => ui.userType);
@@ -21,8 +23,39 @@ const Layout = (props) => {
     });
   }, [userType, dispatch]);
 
+  (function () {
+    let numberOfAjaxCAllPending = 0;
+    axios.interceptors.request.use(
+      function (config) {
+        numberOfAjaxCAllPending++;
+        setShowLoader(true);
+
+        return config;
+      },
+      function (error) {
+        return Promise.reject(error);
+      },
+    );
+    axios.interceptors.response.use(
+      function (response) {
+        numberOfAjaxCAllPending--;
+        if (numberOfAjaxCAllPending === 0) {
+          setShowLoader(false);
+        }
+        return response;
+      },
+      function (error) {
+        numberOfAjaxCAllPending--;
+        if (numberOfAjaxCAllPending === 0) {
+          setShowLoader(false);
+        }
+        return Promise.reject(error);
+      },
+    );
+  })();
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', maxHeight: '100vh', maxWidth: '100vw' }}>
+      {showLoader && <Loader />}
       {medium && (
         <Fab
           size="medium"

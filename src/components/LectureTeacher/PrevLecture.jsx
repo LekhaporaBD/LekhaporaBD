@@ -1,55 +1,38 @@
-import React from 'react'
-import { Avatar } from "@material-ui/core";
-import styles from './PrevLecture.module.scss'
-import teacher3 from "../../assets/teachers/teacher-3.webp";
+import React from 'react';
+import { Avatar } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
-const PrevLectures = [ 
-    { 
-        date : 'June 8, 2020',
-        post : 'on 23 june , You have a class test.',
-        Link : 'www.google.com'
-    },
+import styles from './PrevLecture.module.scss';
+import teacher3 from '../../assets/teachers/teacher-3.webp';
 
-    { 
-        date : 'June 15, 2020',
-        post : 'I have to pospond todays class. We will arrange a makeup on next week',
-        Link : 'www.google.com'
-    },
+const PrevLecture = ({ lectures }) => {
+  const userName = useSelector(({ ui }) => ui.profile.name);
 
-    { 
-        date : 'March 22, 2022',
-        post : 'Tomorrow is the last date of Project submission.',
-        Link : 'www.google.com'
-    }
-     
-    ]
-
-const PrevLecture = () => {
-    return (
-        PrevLectures.map(post => (
-            <div className={styles.postWrapper}>
-            <div className={styles.comments}>
-              <div className={styles.comment}>
-                <Avatar
-                  alt={'facultyName'}
-                  src={teacher3}
-                />
-                <div className={styles.commentContent}>
-                  <div className={styles.timestamp}>
-                    <h5>Maria Afnan</h5>
-                    <h6> {post.date} </h6>
-                  </div>
-                  <p>
-                    { post.post}
-                  </p>
-                  <p>
-                    Download:  <a href={ post.Link }>{ post.Link }</a>
-                  </p>
-                </div>
-              </div>
+  return lectures.map((post) => (
+    <div className={styles.postWrapper}>
+      <div className={styles.comments}>
+        <div className={styles.comment}>
+          <Avatar alt={'facultyName'} src={teacher3} />
+          <div className={styles.commentContent}>
+            <div className={styles.timestamp}>
+              <h5>{userName}</h5>
+              <h6> {post.term} </h6>
             </div>
-            </div>
-    )))
-}
+            <p>{post.fileName}</p>
+            <iframe
+              style={{ marginTop: 15, overflow: 'hidden' }}
+              title={post.fileName}
+              src={post.link}
+              frameborder="0"
+              height="150"
+              width="150"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  ));
+};
 
-export default PrevLecture
+export default PrevLecture;

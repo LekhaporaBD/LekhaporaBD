@@ -1,15 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  menuType: 'main',
+  userType: '',
+  isAuthenticated: false,
+  authToken: '',
+  profile: {},
+  classroom: {},
+};
 const ui = createSlice({
   name: 'ui',
-  initialState: {
-    menuType: 'main',
-    userType: '',
-    isAuthenticated: false,
-    authToken: '',
-    profile: {},
-    classroom: {},
-  },
+  initialState,
   reducers: {
     changeMenuType: (ui, action) => {
       ui.menuType = action.payload.menuType;
@@ -28,9 +29,13 @@ const ui = createSlice({
       ui.classroom = action.payload.classroom;
     },
     resetState: (ui) => {
+      console.log('Resetting');
       ui.profile = {};
       ui.classroom = {};
-      ui.userType = '';
+      ui = initialState;
+    },
+    setProfilePicture: (ui, action) => {
+      ui.profile.profile_picture = action.payload;
     },
   },
 });
@@ -43,4 +48,5 @@ export const {
   resetState,
   setProfile,
   setClassroom,
+  setProfilePicture,
 } = ui.actions;

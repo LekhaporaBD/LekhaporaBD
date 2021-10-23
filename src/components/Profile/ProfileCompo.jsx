@@ -5,10 +5,11 @@ import styles from './Profile.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import Title from '../utils/Title';
 import axios from '../../config/axios';
+import { setProfile, setProfilePicture } from '../../store/ui';
 
 const ProfileCompo = () => {
   const dispatch = useDispatch();
-  const picSrc = useSelector(({ profilePicReducer }) => profilePicReducer.img);
+  // const picSrc = useSelector(({ profilePicReducer }) => profilePicReducer.img);
   const studentDetails = useSelector(({ ui }) => ui.profile);
   const userType = useSelector(({ ui }) => ui.userType);
 
@@ -23,7 +24,7 @@ const ProfileCompo = () => {
         <div className={styles.profilePicHolder}>
           <Avatar
             alt="Student ProfilePic"
-            src={picSrc}
+            src={studentDetails.profile_picture}
             className={styles.profileAvatar}
           />
         </div>
@@ -60,20 +61,18 @@ const ProfileCompo = () => {
               const reader = new FileReader();
               reader.onload = async () => {
                 if (reader.readyState === 2) {
-                  const base64 = reader.result;
-                  dispatch({ type: 'CHANGE_IMG', payload: reader.result });
+                  // dispatch({ type: 'CHANGE_IMG', payload: reader.result });
                   setPhoto(true);
-                  const blob = await fetch(base64).then((res) => res.blob());
                   const formData = new FormData();
-                  formData.append('image', blob);
+                  formData.append('image', files[0], files[0].name);
                   axios
                     .post('teacher/uploadImage', formData, {
                       headers: {
                         'Content-Type': 'multipart/form-data',
                       },
                     })
-                    .then((data) => {
-                      console.log(data);
+                    .then((res) => {
+                      dispatch(setProfilePicture(res.data.image_url));
                     });
                 }
               };

@@ -23,15 +23,16 @@ export const customHeaders = {
 
 export const baseUrl = `${baseDomain}`;
 
-export default axios.create({
+const Axios = axios.create({
   baseURL: baseUrl,
   headers: customHeaders,
 });
 
-export const serializeQuery = (query) => {
-  return Object.keys(query)
-    .map(
-      (key) => `${encodeURIComponent(key)}=${encodeURIComponent(query[key])}`,
-    )
-    .join('&');
-};
+Axios.interceptors.request.use(function (config) {
+  const token = localStorage.getItem('token');
+  config.headers.Authorization = `Bearer ${token}`;
+
+  return config;
+});
+
+export default Axios;
