@@ -19,6 +19,7 @@ const Comments = ({ serial, post, posts, setPosts }) => {
   const [comments, setComments] = useState({});
   const userType = useSelector(({ ui }) => ui.userType);
   const courseId = useSelector(({ ui }) => ui.classroom.courseId);
+  const profilePicture = useSelector(({ ui }) => ui.profile.profile_picture);
 
   const postComment = (id) => {
     const commentData = {
@@ -65,7 +66,7 @@ const Comments = ({ serial, post, posts, setPosts }) => {
         </div>
       )}
       <div className={styles.postComment}>
-        <Avatar alt={'facultyName'} src={teacher3} />
+        <Avatar alt={'facultyName'} src={profilePicture} />
         <FormControl className={styles.commentBox} variant="outlined">
           <OutlinedInput
             className={styles.commentInput}

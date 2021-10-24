@@ -12,6 +12,7 @@ const Dashboard = () => {
 
   const [classrooms, setClassrooms] = useState([]);
   const [summaries, setSummaries] = useState([]);
+  const profilePicture = useSelector(({ ui }) => ui.profile.profile_picture);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -29,7 +30,10 @@ const Dashboard = () => {
           courseCode: course.code,
           title: course.name,
           facultyName: course.code,
-          facultyPhoto: teacher2,
+          facultyPhoto:
+            userType === 'student'
+              ? course.teacher_default_pic
+              : profilePicture,
         });
         totalCredits += +course.credit;
       });

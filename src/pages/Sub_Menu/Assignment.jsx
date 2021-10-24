@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid, Paper, IconButton, Collapse } from '@material-ui/core';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import Title from '../../components/utils/Title';
 import Header from '../../components/utils/header';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close';
 import axios from '../../config/axios';
 import { useSelector } from 'react-redux';
+import AssignmentPost from '../../components/Assignment/AssignmentPost';
+import PrevAssignment from '../../components/Assignment/PrevAssignment';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -63,9 +67,12 @@ const useStyles = makeStyles((theme) => ({
 
 const Assignment = () => {
   const classes = useStyles();
+  const matches = useMediaQuery('(max-width:1200px)');
+
   const [open, setOpen] = useState(true);
   const [Assignments, setAssignments] = useState([]);
 
+  const userType = useSelector(({ ui }) => ui.userType);
   const courseId = useSelector(({ ui }) => ui.classroom.courseId);
 
   useEffect(() => {
@@ -82,66 +89,85 @@ const Assignment = () => {
   return (
     <>
       <Header data="Assignments" />
-
-      <Collapse in={open}>
-        <Alert
-          severity="info"
-          style={{
-            fontSize: 18,
-            marginTop: 30,
-            background: '#ebecf0',
-            boxShadow: ' inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF',
-            borderRadius: 8,
-          }}
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="medium"
-              onClick={() => {
-                setOpen(false);
+      {userType === 'student' ? (
+        <>
+          <Collapse in={open}>
+            <Alert
+              severity="info"
+              style={{
+                fontSize: 18,
+                marginTop: 30,
+                background: '#ebecf0',
+                boxShadow:
+                  ' inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF',
+                borderRadius: 8,
               }}
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="medium"
+                  onClick={() => {
+                    setOpen(false);
+                  }}
+                >
+                  <CloseIcon fontSize="medium" />
+                </IconButton>
+              }
             >
-              <CloseIcon fontSize="medium" />
-            </IconButton>
-          }
+              <AlertTitle style={{ fontSize: 28 }}>Info</AlertTitle>
+              You have a deadline today. <strong>check it out!</strong>
+            </Alert>
+          </Collapse>
+          <Grid container spacing={3} className={classes.container}>
+            {Object.keys(Assignments).map((asnmt, idx) => (
+              <div>
+                <Title title={`Assignment - ${idx + 1}`} />
+
+                <Grid item xs={12}>
+                  <Paper className={classes.cardHolder}>
+                    <p className={classes.text}>
+                      Assignment On :
+                      <span className={classes.textValue}>
+                        {Assignments[asnmt].AssignmentOn}
+                      </span>
+                    </p>
+                    <p className={classes.text}>
+                      Mark :
+                      <span className={classes.textValue}>
+                        {Assignments[asnmt].GivenOn}
+                      </span>
+                    </p>
+                    <p className={classes.text}>
+                      Submission Date :
+                      <span className={classes.textValue}>
+                        {Assignments[asnmt].SubmissionDate}
+                      </span>
+                    </p>
+                    <button className={classes.btn}> Submit </button>
+                  </Paper>
+                </Grid>
+              </div>
+            ))}
+          </Grid>
+        </>
+      ) : (
+        <div
+          style={{
+            width: matches ? '95%' : '70%',
+            margin: '0 auto',
+            marginTop: 50,
+          }}
         >
-          <AlertTitle style={{ fontSize: 28 }}>Info</AlertTitle>
-          You have a deadline today. <strong>check it out!</strong>
-        </Alert>
-      </Collapse>
-
-      <Grid container spacing={3} className={classes.container}>
-        {Object.keys(Assignments).map((asnmt, idx) => (
-          <div>
-            <Title title={`Assignment - ${idx + 1}`} />
-
-            <Grid item xs={12}>
-              <Paper className={classes.cardHolder}>
-                <p className={classes.text}>
-                  Assignment On :
-                  <span className={classes.textValue}>
-                    {Assignments[asnmt].AssignmentOn}
-                  </span>
-                </p>
-                <p className={classes.text}>
-                  Mark :
-                  <span className={classes.textValue}>
-                    {Assignments[asnmt].GivenOn}
-                  </span>
-                </p>
-                <p className={classes.text}>
-                  Submission Date :
-                  <span className={classes.textValue}>
-                    {Assignments[asnmt].SubmissionDate}
-                  </span>
-                </p>
-                <button className={classes.btn}> Submit </button>
-              </Paper>
-            </Grid>
-          </div>
-        ))}
-      </Grid>
+          <AssignmentPost lectures={Assignments} setLectures={setAssignments} />
+          <p
+            style={{ fontSize: 22, color: '#0d236d', margin: '40px 20px 20px' }}
+          >
+            Your Previous Assignments ...
+          </p>
+          <PrevAssignment classes={classes} lectures={Assignments} />
+        </div>
+      )}
     </>
   );
 };

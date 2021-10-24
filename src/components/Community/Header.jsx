@@ -1,18 +1,14 @@
 import React from 'react';
 import { Avatar } from '@material-ui/core';
+import { useSelector } from 'react-redux';
 
 import styles from './Header.module.scss';
 import bg from '../../assets/background/bg3.jpg';
-import teacher2 from '../../assets/teachers/teacher-2.png';
 
 const Header = () => {
-  const details = {
-    courseCode: 'CSE - 421',
-    title: 'Web Technology',
-    facultyName: 'Kazi Farzana',
-    facultyPhoto: teacher2,
-  };
-  const { courseCode, title, facultyName, facultyPhoto } = details;
+  const classroom = useSelector(({ ui }) => ui.classroom);
+
+  const { courseCode, title, facultyName, facultyPhoto } = classroom;
   const [dept, code] = courseCode.split(' - ');
   return (
     <div className={styles.classroom} style={{ backgroundImage: `url(${bg})` }}>

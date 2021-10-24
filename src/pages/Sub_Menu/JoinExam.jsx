@@ -161,6 +161,7 @@ const CreateExam = ({ classes }) => {
   return (
     <>
       <div className={classes.editorWrapper}>
+        <input type="text" />
         <Editor
           editorState={editorState}
           onEditorStateChange={setEditorState}

@@ -140,7 +140,7 @@ const Lectures = () => {
           <p
             style={{ fontSize: 22, color: '#0d236d', margin: '40px 20px 20px' }}
           >
-            Your Previous Announcements ...
+            Your Previous Lectures ...
           </p>
           <PrevLecture lectures={lectures} />
         </div>
