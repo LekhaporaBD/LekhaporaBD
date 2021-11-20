@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,32 +8,33 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tagline: {
-      display:'flex',
-      alignItems : 'center',
-      margin: '5rem 0 2rem',
-      justifyContent:'start',
-      color : '#2f4bc6',
-      width : '100%'
+    display: 'flex',
+    alignItems: 'center',
+    margin: '5rem 0 2rem',
+    justifyContent: 'start',
+    color: '#2f4bc6',
+    width: '100%',
   },
-  text:{
-      fontSize:32
+  text: {
+    fontSize: 32,
   },
-    line: {
-        background:'#d5d5d5', 
-        flexGrow:1 , height:2 ,
-        marginLeft:20
-    }
+  line: {
+    background: '#d5d5d5',
+    flexGrow: 1,
+    height: 2,
+    marginLeft: 20,
+  },
 }));
 
-const Title = ({title}) => {
-    const classes = useStyles();
+const Title = ({ title }) => {
+  const classes = useStyles();
 
-    return (
-            <div className={classes.tagline} >
-                    <p className={classes.text} > {`${title}.`} </p>
-                    <div className={classes.line} ></div>
-            </div>
-    )
-}
+  return (
+    <div className={classes.tagline}>
+      <p className={classes.text}> {`${title}.`} </p>
+      <div className={classes.line}></div>
+    </div>
+  );
+};
 
-export default Title
+export default Title;

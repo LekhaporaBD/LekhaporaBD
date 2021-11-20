@@ -12,7 +12,10 @@ const Post = ({ serial, post, posts, setPosts }) => {
     <div className={styles.postWrapper} key={post.id}>
       <div className={styles.post}>
         <div className={styles.postInfo}>
-          <Avatar alt={'facultyName'} src={teacher3} />
+          <Avatar
+            alt={'facultyName'}
+            src={post?.user?.profile?.profile_picture || teacher3}
+          />
           <div className={styles.slug}>
             <h5>{post?.user?.profile?.name || 'Rehnuma Tasnim'}</h5>
             <h6> {format(new Date(post.created_at), 'do MMMM, yyyy')}</h6>
