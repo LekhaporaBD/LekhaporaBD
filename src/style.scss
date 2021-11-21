@@ -515,3 +515,30 @@ iframe::-webkit-scrollbar {
     opacity: 1;
   }
 }
+
+
+
+///
+
+
+.background_main_color{
+  background-color: #800080;
+}
+.background_secondary_color{
+  background-color: #282c34;
+}
+.text_main_color{
+  background-color: #e6e5e8;
+}
+.text_secondary_color{
+  background-color: #800080;
+}
+footer{
+  position:fixed;
+  text-align: center;
+  bottom: 0px;
+  width: 400px;
+  padding: 3px;
+  background-color: #800080;
+  color: white;
+}

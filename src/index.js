@@ -21,7 +21,12 @@ import storage from 'redux-persist/lib/storage';
 import profilePicReducer from './store/users';
 import ui from './store/ui';
 
+import dashboardReducer from './video/store/reducers/dashboardReducer';
+import callReducer from './video/store/reducers/callReducer';
+
 import App from './App.jsx';
+
+import store from './mainStore'
 
 const persistConfig = {
   key: 'root',
@@ -29,13 +34,13 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ ui, profilePicReducer });
+const rootReducer = combineReducers({ ui, profilePicReducer , dashboard: dashboardReducer, call: callReducer });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = configureStore({
-  reducer: persistedReducer,
-  devTools: true,
-});
+// const store = configureStore({
+//   reducer: persistedReducer,
+//   devTools: true,
+// });
 const persistor = persistStore(store);
 const app = (
   <BrowserRouter>
