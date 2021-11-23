@@ -20,6 +20,8 @@ import storage from 'redux-persist/lib/storage';
 
 import profilePicReducer from './store/users';
 import ui from './store/ui';
+import dashboardReducer from './components/Video/store/reducers/dashboardReducer';
+import callReducer from './components/Video/store/reducers/callReducer';
 
 import App from './App.jsx';
 
@@ -29,7 +31,12 @@ const persistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({ ui, profilePicReducer });
+const rootReducer = combineReducers({
+  ui,
+  profilePicReducer,
+  dashboard: dashboardReducer,
+  call: callReducer,
+});
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({

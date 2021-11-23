@@ -15,7 +15,10 @@ import 'slick-carousel/slick/slick-theme.css';
 import menuLists from './data/menu';
 import Login from './pages/Authentication/Login';
 import Classroom from './components/Classes/Classroom';
+import Video from './components/Video/Dashboard/Dashboard';
+import VideoLogin from './components/Video/LoginPage/LoginPage';
 import axios from './config/axios';
+import { connectWithWebSocket } from './components/Video/utils/wssConnection/wssConnection';
 import { useEffect } from 'react';
 
 // const socket = io.connect('http://localhost:5000/');
@@ -25,6 +28,10 @@ const App = () => {
   const userType = useSelector(({ ui }) => ui.userType);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    connectWithWebSocket();
+  }, []);
 
   useEffect(() => {
     async function setAuthToken() {
@@ -73,6 +80,13 @@ const App = () => {
               path="/class/:courseCode/:mid"
               render={(props) => <Classroom {...props} />}
             />
+            <Route path="/video/dashboard">
+              <Video />
+            </Route>
+            <Route path="/video/login">
+              <VideoLogin />
+            </Route>
+
             <Redirect to="/dashboard" />
           </Switch>
         </Suspense>
