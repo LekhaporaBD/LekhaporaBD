@@ -1,3 +1,4 @@
+// var localStorage = require('local-storage');
 export const callStates = {
   CALL_UNAVAILABLE: 'CALL_UNAVAILABLE',
   CALL_AVAILABLE: 'CALL_AVAILABLE',
@@ -21,12 +22,9 @@ export const CALL_CLEAR_GROUP_CALL_DATA = 'CALL.CLEAR_GROUP_CALL_DATA';
 export const CALL_SET_CHAT_MESSAGE = 'CALL.SET_CHAT_MESSAGE';
 
 export const setLocalStream = (localStream) => {
-
-  var abc  = {...localStream}
-  var ss = JSON.stringify(abc)
-  console.log(localStream);
-  localStorage.setItem('localStream', JSON.stringify(localStream));
-
+ 
+  // console.log('sd' , localStream);
+  // localStorage.set('localStream', localStream);
   return {
     type: CALL_SET_LOCAL_STREAM,
     localStream

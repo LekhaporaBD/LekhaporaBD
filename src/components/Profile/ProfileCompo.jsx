@@ -34,7 +34,7 @@ const ProfileCompo = () => {
               <button
                 className={styles.btn}
                 onClick={(e) => {
-                  dispatch({ type: 'DEFAULT_IMG' });
+                  dispatch({ type: 'DEFAULT_IMG' }); 
                   setPhoto(false);
                 }}
               >

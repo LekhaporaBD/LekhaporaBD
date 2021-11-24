@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    fontSize: 25,
+    fontSize: 19,
   },
   textValue: {
     color: '#0d236d',

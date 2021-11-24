@@ -2,6 +2,9 @@
 import store from '../../../mainStore.js';
 import { setLocalStream, setCallState, callStates, setCallingDialogVisible, setCallerUsername, setCallRejected, setRemoteStream, setScreenSharingActive, resetCallDataState, setMessage } from '../../store/actions/callActions';
 import * as wss from '../wssConnection/wssConnection';
+import { useDispatch, useSelector } from 'react-redux';
+
+
 
 const preOfferAnswers = {
   CALL_ACCEPTED: 'CALL_ACCEPTED',
@@ -30,6 +33,8 @@ let dataChannel;
 export const getLocalStream = () => {
   navigator.mediaDevices.getUserMedia(defaultConstrains)
     .then(stream => {
+      // var s = {...stream}
+      // console.log(s);
       store.dispatch(setLocalStream(stream));
       store.dispatch(setCallState(callStates.CALL_AVAILABLE));
       createPeerConnection();

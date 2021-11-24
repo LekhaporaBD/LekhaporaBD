@@ -1,11 +1,13 @@
 import React, { useRef, useEffect } from 'react';
+// var localStorage = require('local-storage');
+
 
 const styles = {
   videoContainer: {
     width: '150px',
     height: '150px',
     borderRadius: '8px',
-    position: 'absolute',
+    position: 'absolute', 
     top: '5%',
     right: '23%'
   },
@@ -15,14 +17,19 @@ const styles = {
   }
 };
 
+const defaultConstrains = {
+  video: {
+    width: 480,
+    height: 360
+  },
+  audio: true
+};
+
+
 const LocalVideoView = props => {
+
   let { localStream } = props;
   const localVideoRef = useRef();
-
-  localStream = Object.keys(localStream).length === 0 ? JSON.parse(localStorage.getItem('localStream')) : localStream
-
-console.log(JSON.parse(localStorage.getItem('localStream')));
-console.log('localStream', localStream);
 
   useEffect(() => {
     if (localStream) {
@@ -32,7 +39,16 @@ console.log('localStream', localStream);
       localVideo.onloadedmetadata = () => {
         localVideo.play();
       };
+    }else{
+          navigator.mediaDevices.getUserMedia(defaultConstrains)
+    .then(stream => {
+      const localVideo = localVideoRef.current;
+      localVideo.srcObject = stream;
+
+      localVideo.onloadedmetadata = () => {
+        localVideo.play();
     }
+    })}
   }, [localStream]);
 
   return (

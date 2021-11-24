@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import LocalVideoView from '../LocalVideoView/LocalVideoView';
 import RemoteVideoView from '../RemoteVideoView/RemoteVideoView';
@@ -10,6 +10,9 @@ import ConversationButtons from '../ConversationButtons/ConversationButtons';
 import Messenger from '../Messenger/Messenger';
 
 const DirectCall = (props) => {
+
+  const [lStrem, setlStrem] = useState(null);
+
   const {
     localStream,
     remoteStream,
@@ -21,6 +24,30 @@ const DirectCall = (props) => {
     setDirectCallMessage,
     message
   } = props;
+
+
+  const defaultConstrains = {
+    video: {
+      width: 480,
+      height: 360
+    },
+    audio: true
+  };
+
+
+
+  //   navigator.mediaDevices.getUserMedia(defaultConstrains)
+  //   .then(stream => {
+  //     console.log(stream);
+  //     setlStrem(stream)
+  //   })
+  //   .catch(err => {
+  //     console.log('error occured when trying to get an access to get local stream');
+  //     console.log(err);
+  //   });
+  
+
+  // console.log('sad',lStrem);
 
   return (
     <>

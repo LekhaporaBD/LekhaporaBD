@@ -11,6 +11,8 @@ import ScreenShareIcon from '@material-ui/icons/ScreenShare';
 import StopScreenShareIcon from '@material-ui/icons/StopScreenShare';
 import CallEndIcon from '@material-ui/icons/CallEnd';
 import ChatIcon from '@material-ui/icons/Chat';
+import Styles from '../../pages/Authentication/Login.module.scss';
+import Header from '../../components/utils/header';
 
 import { message } from 'antd';
 // import 'antd/dist/antd.css';
@@ -555,14 +557,19 @@ class Video extends Component {
   render() {
     if (this.isChrome() === false) {
       return (
+        <div> 
+          <Header data='Create Class' />
+        
         <div
           style={{
-            background: 'white',
+            background: '#ebecf0',
             width: '30%',
             height: 'auto',
             padding: '20px',
             minWidth: '400px',
             textAlign: 'center',
+            boxShadow :'9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5), inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #ffffff',
+
             margin: 'auto',
             marginTop: '50px',
             justifyContent: 'center',
@@ -570,43 +577,48 @@ class Video extends Component {
         >
           <h1>Sorry, this works only with Google Chrome</h1>
         </div>
+        </div>
       );
     }
     return (
+      <div> 
+      <Header data='Create Class' />
       <div>
         {this.state.askForUsername === true ? (
           <div>
             <div
               style={{
-                background: 'white',
-                width: '30%',
+                background: '#ebecf0',
+                width: '40%',
                 height: 'auto',
-                padding: '20px',
+                padding: '20px 40px',
                 minWidth: '400px',
                 textAlign: 'center',
+                boxShadow :'9px 9px 16px rgba(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5), inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #ffffff',
+    
                 margin: 'auto',
                 marginTop: '50px',
                 justifyContent: 'center',
               }}
             >
               <p
-                style={{ margin: 0, fontWeight: 'bold', paddingRight: '50px' }}
+                style={{ margin: 0, fontWeight: 'bold', fontSize:27 , padding:20 , color:'#0d236d' }}
               >
                 Set your username
               </p>
-              <Input
+              <input
                 placeholder="Username"
                 value={this.state.username}
+                className={Styles.input}
                 onChange={(e) => this.handleUsername(e)}
               />
-              <Button
-                variant="contained"
-                color="primary"
+              <button
+                className={Styles.button}
                 onClick={this.connect}
-                style={{ margin: '20px' }}
+                style={{ margin: '20px' , padding:'13px 50px' , border:'1px solid' , color:'#0d236d' }}
               >
                 Connect
-              </Button>
+              </button>
             </div>
 
             <div
@@ -723,37 +735,44 @@ class Video extends Component {
                 )}
               </Modal.Body>
               <Modal.Footer className="div-send-msg">
-                <Input
+                <input
                   placeholder="Message"
+                  className={Styles.button}
                   value={this.state.message}
                   onChange={(e) => this.handleMessage(e)}
                 />
-                <Button
+                <button
                   variant="contained"
                   color="primary"
+                  className={Styles.button}
                   onClick={this.sendMessage}
                 >
                   Send
-                </Button>
+                </button>
               </Modal.Footer>
             </Modal>
 
             <div className="container">
               <div style={{ paddingTop: '20px' }}>
-                <Input value={window.location.href} disable="true"></Input>
-                <Button
-                  style={{
-                    backgroundColor: '#3f51b5',
-                    color: 'whitesmoke',
-                    marginLeft: '20px',
-                    marginTop: '10px',
-                    width: '120px',
-                    fontSize: '10px',
-                  }}
-                  onClick={this.copyUrl}
-                >
-                  Copy invite link
-                </Button>
+
+                <div style={{width:'45%' ,  margin:'0 auto'}}>
+                  <input  className={Styles.input} value={window.location.href} disable="true"></input> <br />
+                </div>
+
+                <div style={{width:'25%' ,  margin:'0 auto' , marginTop:15}}>
+                  <button
+                    style={{
+                      color:'#0d236d',
+                      border:'1px solid',
+                      padding:'12px 50px'
+                    }}
+                    className={Styles.button}
+                    onClick={this.copyUrl}
+                  >
+                    Copy invite link
+                  </button>
+                </div>
+
               </div>
 
               <Row
@@ -768,7 +787,7 @@ class Video extends Component {
                   muted
                   style={{
                     borderStyle: 'solid',
-                    borderColor: '#bdbdbd',
+                    borderColor: '#ffb979',
                     margin: '10px',
                     objectFit: 'fill',
                     width: '100%',
@@ -779,6 +798,7 @@ class Video extends Component {
             </div>
           </div>
         )}
+      </div>
       </div>
     );
   }
