@@ -39,14 +39,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    fontSize: 25,
+    fontSize: 20,
   },
   textValue: {
     color: '#0d236d',
   },
   btn: {
-    padding: '10px 30px',
-    fontSize: 20,
+    padding: '8px 25px',
+    fontSize: 16,
     borderRadius: 25,
     cursor: 'pointer',
     background: '#ebecf0',
@@ -127,7 +127,7 @@ const Assignment = () => {
                 <Grid item xs={12}>
                   <Paper className={classes.cardHolder}>
                     <p className={classes.text}>
-                      Assignment On :
+                      Assignment On : 
                       <span className={classes.textValue}>
                         {Assignments[asnmt].AssignmentOn}
                       </span>

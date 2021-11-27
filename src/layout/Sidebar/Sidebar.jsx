@@ -114,6 +114,37 @@ const Sidebar = (props) => {
             </Grid>
           </Grid>
         )}
+
+        {/* teacher */}
+
+        {userType === 'teacher' && (
+          <Grid
+            container
+            justify="space-between"
+            className={styles.infoWrapper}
+          >
+            <Grid container item justify="center" alignItems="center" xs={6}>
+              <Grid item>
+                <EmojiFlagsIcon className={styles.infoIcon} />
+              </Grid>
+              <Grid item style={{ paddingLeft: 15 }}>
+                <h4>Gender</h4>
+                <p>{profile.gender || '...'}</p>
+              </Grid>
+            </Grid>
+
+            <Grid container justify="center" alignItems="center" item xs={6}>
+              <Grid item>
+                <EmojiEventsIcon className={styles.infoIcon} />
+              </Grid>
+              <Grid item style={{ paddingLeft: 15 }}>
+                <h4>Teaching</h4>
+                <p>{profile.age / 10 || '...'} years</p>
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
+
       </Grid>
 
       {/* <LineBreak /> */}

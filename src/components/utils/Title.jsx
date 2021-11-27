@@ -12,11 +12,11 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     margin: '5rem 0 2rem',
     justifyContent: 'start',
-    color: '#2f4bc6',
+    color: '#0d236d',
     width: '100%',
   },
   text: {
-    fontSize: 32,
+    fontSize: 28,
   },
   line: {
     background: '#d5d5d5',

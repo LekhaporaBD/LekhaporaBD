@@ -97,11 +97,10 @@ const ProfileCompo = () => {
                 <h2> Name : </h2>
                 <h3> {studentDetails.name} </h3>
               </div>
-
               {userType === 'student' && (
                 <div className={styles.infoHolder}>
                   <h2> ID : </h2>
-                  <h3> {studentDetails.id} </h3>
+                  <h3> {`${studentDetails.batch}-00${studentDetails.id}-042`} </h3>
                 </div>
               )}
             </div>
@@ -157,17 +156,21 @@ const ProfileCompo = () => {
             )}
 
             {userType === 'student' && (
+              <>
               <div className={styles.infoBlock}>
                 <div className={styles.infoHolder}>
                   <h2> CGPA : </h2>
                   <h3> {studentDetails.cgpa} </h3>
                 </div>
+              </div>
 
+              <div className={styles.infoBlock}>
                 <div className={styles.infoHolder}>
                   <h2> Course Completed : </h2>
                   <h3> {studentDetails.course_completed} </h3>
                 </div>
               </div>
+              </>
             )}
           </div>
         </div>

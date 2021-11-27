@@ -12,6 +12,8 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
     fontSize: 20,
+    background: '#ebecf0',
+    boxShadow:'-5px -5px 20px #fff, 5px 5px 20px #babecc',
     '& th': {
       fontWeight: 'bold',
     },
@@ -42,10 +44,10 @@ export default function BasicTable() {
         <TableHead>
           <TableRow>
             <TableCell>Student Name</TableCell>
-            <TableCell align="right">ID</TableCell>
-            <TableCell align="right">CGPA</TableCell>
-            <TableCell align="right">MID Mark</TableCell>
-            <TableCell align="right">Final Mark</TableCell>
+            <TableCell align="center">ID</TableCell>
+            <TableCell align="center">CGPA</TableCell>
+            <TableCell align="center">MID Mark</TableCell>
+            <TableCell align="center">Final Mark</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

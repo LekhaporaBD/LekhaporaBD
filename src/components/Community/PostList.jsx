@@ -7,7 +7,6 @@ import styles from './PostList.module.scss';
 import Comments from './Comments';
 
 const Post = ({ serial, post, posts, setPosts }) => {
-  console.log(post);
   return (
     <div className={styles.postWrapper} key={post.id}>
       <div className={styles.post}>

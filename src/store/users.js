@@ -1,4 +1,4 @@
-import defaultImg from '../assets/default-avatar.png';
+import defaultImg from '../assets/defaultAvatar.png';
 
 const initialState = {
   img: defaultImg,
