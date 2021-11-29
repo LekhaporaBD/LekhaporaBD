@@ -3,6 +3,8 @@ import { format } from 'date-fns';
 import { Avatar } from '@material-ui/core';
 
 import teacher3 from '../../assets/teachers/teacher-3.webp';
+import defaultAvatar from '../../assets/defaultAvatar.png'
+
 import styles from './PostList.module.scss';
 import Comments from './Comments';
 
@@ -13,7 +15,7 @@ const Post = ({ serial, post, posts, setPosts }) => {
         <div className={styles.postInfo}>
           <Avatar
             alt={'facultyName'}
-            src={post?.user?.profile?.profile_picture || teacher3}
+            src={post?.user?.profile?.profile_picture || defaultAvatar}
           />
           <div className={styles.slug}>
             <h5>{post?.user?.profile?.name || 'Rehnuma Tasnim'}</h5>
