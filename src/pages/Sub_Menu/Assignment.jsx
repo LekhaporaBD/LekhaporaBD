@@ -78,6 +78,7 @@ const Assignment = () => {
   useEffect(() => {
     axios.get(`student/course/${courseId}/assignments`).then((res) => {
       const assignments = res.data.map((assignment) => ({
+        Id: assignment.id,
         AssignmentOn: assignment.name,
         GivenOn: assignment.mark,
         SubmissionDate: assignment.deadline,
@@ -127,7 +128,7 @@ const Assignment = () => {
                 <Grid item xs={12}>
                   <Paper className={classes.cardHolder}>
                     <p className={classes.text}>
-                      Assignment On : 
+                      Assignment On :
                       <span className={classes.textValue}>
                         {Assignments[asnmt].AssignmentOn}
                       </span>

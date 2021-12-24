@@ -6,7 +6,7 @@ const Classroom = () => {
       <iframe
         src="http://localhost:3000/"
         title="description"
-        allow="camera;microphone"
+        allow="camera;microphone;display-capture"
         style={{
           minHeight: '100vh',
           minWidth: 'calc(100vw - 50rem)',

@@ -11,7 +11,7 @@ import SendIcon from '@material-ui/icons/Send';
 import { Avatar } from '@material-ui/core';
 
 import teacher3 from '../../assets/teachers/teacher-3.webp';
-import defaultAvatar from '../../assets/defaultAvatar.png'
+import defaultAvatar from '../../assets/defaultAvatar.png';
 
 import axios from '../../config/axios';
 import styles from './PostList.module.scss';
@@ -53,11 +53,13 @@ const Comments = ({ serial, post, posts, setPosts }) => {
           {post.comments &&
             post.comments.map((comment, idx) => (
               <div className={styles.comment} key={idx}>
-                <Avatar alt={'facultyName'} 
-                  src={comment?.user?.profile?.profile_picture || defaultAvatar}/>
+                <Avatar
+                  alt={'facultyName'}
+                  src={comment?.user?.profile?.profile_picture || defaultAvatar}
+                />
                 <div className={styles.commentContent}>
                   <div className={styles.timestamp}>
-                    <h5>{comment?.user?.profile?.name || 'Rehnuma Tasnim'}</h5>
+                    <h5>{comment?.user?.profile?.name}</h5>
                     <h6>
                       {format(new Date(comment.created_at), 'do MMMM, yyyy')}
                     </h6>

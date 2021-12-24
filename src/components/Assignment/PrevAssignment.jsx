@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Grid, Paper } from '@material-ui/core';
+import Menu from '../../components/utils/Menu';
+import useHideOnClickOutside from '../../hooks/useHideOnClickOutside';
 
 const PrevLecture = ({ classes, lectures }) => {
+  const [showId, setShowId] = useState('');
+  const onEdit = () => {};
+  const onDelete = () => {};
+
+  const menuBtnRef = useHideOnClickOutside(() => {
+    if (showId !== '') {
+      setShowId('');
+    }
+  });
+
   return (
     <Grid
       container
@@ -13,6 +25,15 @@ const PrevLecture = ({ classes, lectures }) => {
         <div style={{ marginBottom: '2rem' }}>
           <Grid item xs={12}>
             <Paper className={classes.cardHolder}>
+              <Menu
+                ref={menuBtnRef}
+                showDropdown={lecture.Id === showId}
+                onClick={() => {
+                  setShowId(lecture.Id);
+                }}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
               <p
                 className={classes.text}
                 style={{ display: 'flex', flexDirection: 'column' }}
