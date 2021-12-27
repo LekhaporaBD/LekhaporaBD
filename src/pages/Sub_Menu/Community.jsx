@@ -22,6 +22,7 @@ const Community = () => {
     });
   }, [courseId, userType]);
 
+  console.log(posts);
   return (
     <>
       <Header />

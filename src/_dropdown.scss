@@ -55,9 +55,18 @@ $mobileSmall: 320px;
   position: relative;
 }
 
+.show-left {
+  right: 0;
+  transform-origin: right top;
+}
+
+.show-right {
+  left: 0;
+  transform-origin: left top;
+}
+
 .dropdown__menu {
   position: absolute;
-  left: 0;
   top: 60%;
   background-color: white;
   border-radius: 0.8rem;
@@ -67,7 +76,6 @@ $mobileSmall: 320px;
   min-width: 15rem;
   z-index: 9;
   transform: scale(0);
-  transform-origin: left top;
   transition: 0.3s;
 
   a {

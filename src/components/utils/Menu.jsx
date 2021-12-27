@@ -6,14 +6,16 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
 const Menu = forwardRef((props, ref) => {
-  const { showDropdown, onClick, onEdit, onDelete } = props;
+  const { show, showDropdown, onClick, onEdit, onDelete } = props;
   return (
     <div className="dropdown" ref={ref}>
       <IconButton aria-label="delete" onClick={onClick}>
         <MoreVertIcon fontSize="large" />
       </IconButton>
       <div
-        className="dropdown__menu"
+        className={`dropdown__menu ${
+          show === 'left' ? 'show-left' : 'show-right'
+        }`}
         style={{ transform: showDropdown ? 'scale(1)' : 'scale(0)' }}
       >
         <ul>
@@ -45,5 +47,9 @@ const Menu = forwardRef((props, ref) => {
     </div>
   );
 });
+
+Menu.defaultProps = {
+  show: 'right',
+};
 
 export default Menu;

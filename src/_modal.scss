@@ -1,0 +1,17 @@
+.modal {
+  .content {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+.ReactModal__Content {
+  background-color: #fff !important;
+}
