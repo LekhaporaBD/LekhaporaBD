@@ -41,14 +41,14 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   text: {
-    fontSize: 25,
+    fontSize: 20,
   },
   textValue: {
     color: '#0d236d',
   },
   btn: {
     padding: '10px 30px',
-    fontSize: 20,
+    fontSize: 17,
     borderRadius: 25,
     cursor: 'pointer',
     background: '#ebecf0',

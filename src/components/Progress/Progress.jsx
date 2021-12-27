@@ -33,7 +33,7 @@ const test = [
 const colors = ['#bdecff', '#42a9d6'];
 
 const nameShorter = (name) => {
-  let ar = name.split('_');
+  let ar = name.split(' ');
   return `${ar[0][0]}${ar[1][0]}`;
 };
 
@@ -57,30 +57,31 @@ const getDate = () => {
   return monthNames[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
 };
 
-const Progress = () => {
+const Progress = ({classroom}) => {
   return (
     <div className={styles.root}>
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Paper
             elevation={1}
-            className={`${styles.allClassess} ${styles.paper}`}
-          >
+            className={`${styles.allClassess} ${styles.paper}`} > 
+
             <h2> My Classess </h2> <Underline />
             <ul className={styles.course_holder}>
-              {Object.keys(courses).map((course) => (
+
+              {classroom && classroom.map((course) => (
                 <li className={styles.flex}>
                   <div className={styles.flex}>
                     <Avatar className={styles.course_avatar}>
-                      {nameShorter(course)}
+                      {nameShorter(course.name)}
                     </Avatar>
-                    <span> {course} </span>
+                    <span> {course.name} </span>
                   </div>
                   <div className={styles.flex}>
                     <h4>{Math.floor(Math.random() * 51) + 50}</h4>
-                    <ArrowForwardIosIcon
+                    {/* <ArrowForwardIosIcon
                       style={{ fill: 'red', margin: '0 6px' }}
-                    />
+                    /> */}
                   </div>
                 </li>
               ))}
@@ -105,7 +106,7 @@ const Progress = () => {
               src={Progress_svg}
               alt=""
               srcset=""
-              style={{ height: 300 }}
+              style={{ height: 230 }}
               className={styles.paper}
             />
           </Paper>
