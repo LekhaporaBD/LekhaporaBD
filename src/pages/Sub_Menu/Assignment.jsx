@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { useSelector } from 'react-redux';
 import { Grid, Paper, IconButton, Collapse } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import Title from '../../components/utils/Title';
 import Header from '../../components/utils/header';
 import { Alert, AlertTitle } from '@material-ui/lab';
 import CloseIcon from '@material-ui/icons/Close';
-import axios from '../../config/axios';
-import { useSelector } from 'react-redux';
 import AssignmentPost from '../../components/Assignment/AssignmentPost';
 import PrevAssignment from '../../components/Assignment/PrevAssignment';
+import axios from '../../config/axios';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -79,14 +79,15 @@ const Assignment = () => {
     axios.get(`student/course/${courseId}/assignments`).then((res) => {
       const assignments = res.data.map((assignment) => ({
         Id: assignment.id,
-        AssignmentOn: assignment.name,
-        GivenOn: assignment.mark,
-        SubmissionDate: assignment.deadline,
+        name: assignment.name,
+        mark: assignment.mark,
+        term: assignment.term,
+        deadline: assignment.deadline,
       }));
       setAssignments(assignments);
     });
   }, [courseId]);
-  console.log(Assignments);
+
   return (
     <>
       <Header data="Assignments" />
@@ -124,7 +125,6 @@ const Assignment = () => {
             {Object.keys(Assignments).map((asnmt, idx) => (
               <div>
                 <Title title={`Assignment - ${idx + 1}`} />
-
                 <Grid item xs={12}>
                   <Paper className={classes.cardHolder}>
                     <p className={classes.text}>
@@ -166,7 +166,11 @@ const Assignment = () => {
           >
             Your Previous Assignments ...
           </p>
-          <PrevAssignment classes={classes} lectures={Assignments} />
+          <PrevAssignment
+            classes={classes}
+            lectures={Assignments}
+            setAssignments={setAssignments}
+          />
         </div>
       )}
     </>

@@ -76,6 +76,7 @@ const Lectures = () => {
   useEffect(() => {
     axios.get(`${userType}/course/${courseId}/lecture`).then((res) => {
       const lectures = res.data.map((lecture) => ({
+        id: lecture.id,
         fileName: lecture.name,
         term: lecture.term,
         fileType: lecture.fileType,
@@ -88,7 +89,6 @@ const Lectures = () => {
   return (
     <>
       <Header data="Lectures" />
-
       {userType === 'student' ? (
         <Grid container spacing={3} className={classes.container}>
           {Object.keys(lectures).map((lec, idx) => (
@@ -142,7 +142,7 @@ const Lectures = () => {
           >
             Your Previous Lectures ...
           </p>
-          <PrevLecture lectures={lectures} />
+          <PrevLecture lectures={lectures} setLectures={setLectures} />
         </div>
       )}
     </>

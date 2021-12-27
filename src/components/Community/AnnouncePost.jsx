@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-
 import { TextField, Button, Avatar } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
@@ -14,7 +13,7 @@ const AnnouncePost = ({ posts, setPosts }) => {
 
   const userType = useSelector(({ ui }) => ui.userType);
   const courseId = useSelector(({ ui }) => ui.classroom.courseId);
-  const ProfilePicture = useSelector(({ ui }) => ui.profile.profile_picture);
+  const profile = useSelector(({ ui }) => ui.profile);
 
   if (isAnnounceClicked) {
     return (
@@ -68,13 +67,17 @@ const AnnouncePost = ({ posts, setPosts }) => {
                   body,
                 });
                 const newPosts = [
-                  ...posts,
                   {
-                    body,
+                    userId: profile?.id,
+                    userName: profile?.name,
+                    profilePicture: profile?.profile_picture,
+                    createdAt: new Date(),
+                    body: body,
                     comments: [],
                   },
+                  ...posts,
                 ];
-                setPosts(newPosts);
+                setPosts(newPosts.reverse());
                 setBody('');
               }}
             >
@@ -94,7 +97,9 @@ const AnnouncePost = ({ posts, setPosts }) => {
       >
         <Avatar
           alt={'facultyName'}
-          src={ ProfilePicture ? ProfilePicture : profilePhoto}
+          src={
+            profile?.profile_picture ? profile?.profile_picture : profilePhoto
+          }
           className={styles.profileAvatar}
         />
         <h4 className={styles.title}>Share something with your class...</h4>

@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     minWidth: 650,
     fontSize: 20,
     background: '#ebecf0',
-    boxShadow:'-5px -5px 20px #fff, 5px 5px 20px #babecc',
+    boxShadow: '-5px -5px 20px #fff, 5px 5px 20px #babecc',
     '& th': {
       fontWeight: 'bold',
     },
@@ -23,19 +23,7 @@ const useStyles = makeStyles({
   },
 });
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Nazrul Islam', '171-054-042', 3.84, 15, 45),
-  createData('Rakib Islam', '171-054-042', 3.84, 15, 45),
-  createData('Wahid Hoquee', '171-054-042', 3.84, 15, 45),
-  createData('Anonto Ashraf ', '171-054-042', 3.84, 15, 45),
-  createData('Wahid Ashraf ', '171-054-042', 3.84, 15, 45),
-];
-
-export default function BasicTable() {
+export default function BasicTable({ students }) {
   const classes = useStyles();
 
   return (
@@ -45,21 +33,21 @@ export default function BasicTable() {
           <TableRow>
             <TableCell>Student Name</TableCell>
             <TableCell align="center">ID</TableCell>
+            <TableCell align="center">SGPA</TableCell>
             <TableCell align="center">CGPA</TableCell>
-            <TableCell align="center">MID Mark</TableCell>
-            <TableCell align="center">Final Mark</TableCell>
+            <TableCell align="center">Credit Earned</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
+          {students.map(({ profile }) => (
+            <TableRow key={profile.name}>
               <TableCell component="th" scope="row">
-                {row.name}
+                {profile.name}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
+              <TableCell align="right">{profile.id}</TableCell>
+              <TableCell align="right">{profile.sgpa}</TableCell>
+              <TableCell align="right">{profile.cgpa}</TableCell>
+              <TableCell align="right">{profile.credit_earned}</TableCell>
             </TableRow>
           ))}
         </TableBody>

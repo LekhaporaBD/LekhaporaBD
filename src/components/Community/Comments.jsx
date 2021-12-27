@@ -10,7 +10,6 @@ import FormControl from '@material-ui/core/FormControl';
 import SendIcon from '@material-ui/icons/Send';
 import { Avatar } from '@material-ui/core';
 
-import teacher3 from '../../assets/teachers/teacher-3.webp';
 import defaultAvatar from '../../assets/defaultAvatar.png';
 
 import axios from '../../config/axios';
@@ -20,10 +19,11 @@ const Comments = ({ serial, post, posts, setPosts }) => {
   const [comments, setComments] = useState({});
   const userType = useSelector(({ ui }) => ui.userType);
   const courseId = useSelector(({ ui }) => ui.classroom.courseId);
-  const profilePicture = useSelector(({ ui }) => ui.profile.profile_picture);
+  const { name, profile_picture } = useSelector(({ ui }) => ui.profile);
   console.log(post);
 
   const postComment = (id) => {
+    console.log(id);
     const commentData = {
       title: Math.random(),
       body: comments[`comment-${id}`],
@@ -36,10 +36,17 @@ const Comments = ({ serial, post, posts, setPosts }) => {
     const newPosts = [...posts];
     newPosts[serial] = {
       ...newPosts[serial],
-      comments: newPosts[serial].comments.concat(commentData),
+      comments: newPosts[serial].comments.concat({
+        ...commentData,
+        user: {
+          profile: {
+            profile_picture: profile_picture,
+          },
+        },
+      }),
     };
 
-    setPosts(newPosts);
+    setPosts(newPosts.reverse());
     setComments({
       ...comments,
       [`comment-${id}`]: '',
@@ -59,7 +66,7 @@ const Comments = ({ serial, post, posts, setPosts }) => {
                 />
                 <div className={styles.commentContent}>
                   <div className={styles.timestamp}>
-                    <h5>{comment?.user?.profile?.name}</h5>
+                    <h5>{comment?.user?.profile?.name || name}</h5>
                     <h6>
                       {format(new Date(comment.created_at), 'do MMMM, yyyy')}
                     </h6>
@@ -71,18 +78,18 @@ const Comments = ({ serial, post, posts, setPosts }) => {
         </div>
       )}
       <div className={styles.postComment}>
-        <Avatar alt={'facultyName'} src={profilePicture} />
+        <Avatar alt={'facultyName'} src={profile_picture} />
         <FormControl className={styles.commentBox} variant="outlined">
           <OutlinedInput
             className={styles.commentInput}
-            name={`comment-${post.id}`}
-            value={comments[`comment-${post.id}`]}
+            name={`comment-${post.postId}`}
+            value={comments[`comment-${post.postId}`]}
             onChange={(e) => setComments({ [e.target.name]: e.target.value })}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
                   onClick={() => {
-                    postComment(post.id);
+                    postComment(post.postId);
                   }}
                   // onMouseDown={handleMouseDownPassword}
                   edge="end"

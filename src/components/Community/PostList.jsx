@@ -1,7 +1,9 @@
 import React, { useState, Fragment } from 'react';
+import { useSelector } from 'react-redux';
 import { format } from 'date-fns';
-import { TextField, Button, Avatar } from '@material-ui/core';
 import Modal from 'react-modal';
+
+import { TextField, Button, Avatar } from '@material-ui/core';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 
 import Menu from '../../components/utils/Menu';
@@ -12,11 +14,12 @@ import defaultAvatar from '../../assets/defaultAvatar.png';
 
 import styles from './PostList.module.scss';
 import Comments from './Comments';
+import axios from '../../config/axios';
 
 const customStyles = {
   content: {
     top: '50%',
-    left: '50%',
+    left: '60%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
@@ -28,21 +31,30 @@ const customStyles = {
 const Post = ({ serial, post, posts, setPosts }) => {
   const [showId, setShowId] = useState('');
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [body, setBody] = useState(post.body);
 
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
-  }
+  const userType = useSelector(({ ui }) => ui.userType);
+  const profile = useSelector(({ ui }) => ui.profile);
 
   function closeModal() {
     setIsOpen(false);
+    setShowId('');
   }
 
   const onEdit = () => {
     setIsOpen(true);
   };
 
-  const onDelete = () => {};
+  const onDelete = () => {
+    axios.delete(
+      `https://as.mutualempressa.com/lekapora/public/api/${userType}/post/${post.postId}`,
+    );
+    setShowId('');
+    const newPosts = posts
+      .reverse()
+      .filter((item) => item.postId !== post.postId);
+    setPosts(newPosts);
+  };
 
   const menuBtnRef = useHideOnClickOutside(() => {
     if (showId !== '') {
@@ -54,7 +66,6 @@ const Post = ({ serial, post, posts, setPosts }) => {
     <Fragment>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Edit Post"
@@ -67,7 +78,8 @@ const Post = ({ serial, post, posts, setPosts }) => {
             rows={4}
             variant="filled"
             className={styles.textField}
-            // onChange={(e) => setBody(e.target.value)}
+            value={body}
+            onChange={(e) => setBody(e.target.value)}
           />
           <div className={styles.buttonWrapper}>
             <div>
@@ -104,19 +116,21 @@ const Post = ({ serial, post, posts, setPosts }) => {
                 size="large"
                 color="primary"
                 onClick={() => {
-                  // setAnnounceClicked(false);
-                  // axios.post(`${userType}/course/${courseId}/post`, {
-                  //   body,
-                  // });
-                  // const newPosts = [
-                  //   ...posts,
-                  //   {
-                  //     body,
-                  //     comments: [],
-                  //   },
-                  // ];
-                  // setPosts(newPosts);
-                  // setBody('');
+                  axios.put(
+                    `https://as.mutualempressa.com/lekapora/public/api/${userType}/post/${post.postId}`,
+                    {
+                      body,
+                    },
+                  );
+                  const newPosts = [...posts];
+                  const newPost = newPosts.find(
+                    (item) => post.postId === item.postId,
+                  );
+                  newPost.body = body;
+                  setPosts(newPosts.reverse());
+                  setShowId('');
+                  setIsOpen(false);
+                  setBody('');
                 }}
               >
                 Post
@@ -131,23 +145,25 @@ const Post = ({ serial, post, posts, setPosts }) => {
             <div style={{ display: 'flex', flexGrow: 1 }}>
               <Avatar
                 alt={'facultyName'}
-                src={post?.user?.profile?.profile_picture || defaultAvatar}
+                src={post?.profilePicture || defaultAvatar}
               />
               <div className={styles.slug}>
-                <h5>{post?.user?.profile?.name || 'Rehnuma Tasnim'}</h5>
-                <h6> {format(new Date(post.created_at), 'do MMMM, yyyy')}</h6>
+                <h5>{post?.userName || 'Unknown'}</h5>
+                <h6> {format(new Date(post?.createdAt), 'do MMMM, yyyy')}</h6>
               </div>
             </div>
-            <Menu
-              ref={menuBtnRef}
-              show="left"
-              showDropdown={post.Id === showId}
-              onClick={() => {
-                setShowId(post.Id);
-              }}
-              onEdit={onEdit}
-              onDelete={onDelete}
-            />
+            {post.userId === profile.id && (
+              <Menu
+                ref={menuBtnRef}
+                show="left"
+                showDropdown={post.Id === showId}
+                onClick={() => {
+                  setShowId(post.Id);
+                }}
+                onEdit={onEdit}
+                onDelete={onDelete}
+              />
+            )}
           </div>
           <p className={styles.postContent}>{post.body}</p>
         </div>
@@ -163,7 +179,7 @@ const Post = ({ serial, post, posts, setPosts }) => {
 };
 
 const PostList = ({ posts, setPosts }) => {
-  return posts.map((post, idx) => {
+  return posts?.reverse()?.map((post, idx) => {
     return (
       <Post
         key={idx}

@@ -20,6 +20,7 @@ const Announce = () => {
   useEffect(() => {
     axios.get(`${userType}/course/${courseId}/notification`).then((res) => {
       const announcements = res.data.map((post) => ({
+        id: post.id,
         date: format(new Date(post.created_at), 'do MMMM, yyyy'),
         body: post.body,
       }));
@@ -41,7 +42,7 @@ const Announce = () => {
         <p style={{ fontSize: 22, color: '#0d236d', margin: '40px 20px 20px' }}>
           Your Previous Announcements ...
         </p>
-        <PrevAnnounces announces={announces} />
+        <PrevAnnounces announces={announces} setAnnounces={setAnnounces} />
       </div>
     </div>
   );

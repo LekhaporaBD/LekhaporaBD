@@ -18,7 +18,17 @@ const Community = () => {
 
   useEffect(() => {
     axios.get(`${userType}/course/${courseId}/post`).then((res) => {
-      setPosts(res.data);
+      console.log(res.data);
+      const posts = res.data.map((post) => ({
+        userId: post?.user?.profile?.id,
+        userName: post?.user?.profile?.name,
+        profilePicture: post?.user?.profile?.profile_picture,
+        createdAt: post?.created_at,
+        body: post?.body,
+        comments: post?.comments,
+        postId: post?.id,
+      }));
+      setPosts(posts);
     });
   }, [courseId, userType]);
 
