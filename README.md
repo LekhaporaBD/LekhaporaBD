@@ -1,9 +1,6 @@
-
-
 ### `Live Link`
 
-Netlify :  https://lekhapora.netlify.app/
-
+Netlify : https://lekhapora.netlify.app/
 
 ### `What I Learn`
 
