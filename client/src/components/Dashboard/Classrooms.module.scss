@@ -1,0 +1,158 @@
+.classrooms {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 7rem 4.5rem;
+  @media (max-width: 1500px) {
+    padding: 7rem 1.5rem;
+  }
+  @media (max-width: 950px) {
+    padding: 7rem 0.5rem;
+  }
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.classroomWrapper {
+  margin: 0 0 8rem 0 !important;
+
+  @media (max-width: 1300px) {
+    max-width: 34.5% !important;
+    margin: 0 0 6rem 0 !important;
+  }
+  @media (max-width: 900px) {
+    max-width: 100% !important;
+  }
+
+  &:nth-child(1) > div.classroom > div.hero {
+    background-image: url('../../assets/background/bg3.jpg');
+  }
+  &:nth-child(2) > div.classroom > div.hero {
+    background-image: url('../../assets/background/bg7.jpg');
+  }
+  &:nth-child(3) > div.classroom > div.hero {
+    background-image: url('../../assets/background/bg4.jpg');
+  }
+}
+
+.classroom {
+  background-color: #ebecf0;
+  width: 30rem;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #ffffff;
+  border-radius: 14px;
+  text-align: center;
+  @media (max-width: 1500px) {
+    width: 27rem;
+  }
+  @media (max-width: 1300px) {
+    width: 25rem;
+  }
+  @media (max-width: 1240px) {
+    min-width: 28rem;
+  }
+  @media (max-width: 1050px) {
+    min-width: 25rem;
+  }
+  @media (max-width: 900px) {
+    width: 80%;
+  }
+}
+
+.hero {
+  height: 20rem;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-radius: 14px 14px 0 0;
+}
+
+.course {
+  color: #fff;
+  font-size: 2.2rem;
+  transform: translateY(0.5rem);
+}
+
+.courseCode {
+  position: absolute;
+  top: -3.5rem;
+  right: 2rem;
+  // background-color: #353b48;
+  // color: #fff;
+  background-color: #ebecf0;
+  color: #202020;
+  // border: 2px solid #fff;
+  width: 7.5rem;
+  height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  border-radius: 14px;
+
+  & > span {
+    display: block;
+    text-align: center;
+  }
+}
+.dept {
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 300;
+  letter-spacing: 3px;
+}
+.code {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.content {
+  position: relative;
+}
+.profileAvatar {
+  width: 10rem !important;
+  height: 10rem !important;
+  border: 2px solid white;
+  position: absolute;
+  top: -4rem;
+  margin: auto;
+}
+.teacher {
+  font-size: 1.8rem;
+  text-align: center;
+  transform: translateY(-3.5rem);
+}
+.button {
+  // background-color: #fff;
+  font-size: 1.6rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid;
+  border-radius: 5rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  width: 15rem;
+  margin: 0 auto 3rem auto;
+  text-align: center;
+  display: block;
+
+  background: #ebecf0;
+  cursor: pointer;
+  color: #0d236d;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+  }
+
+  &:active {
+    box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+  }
+}

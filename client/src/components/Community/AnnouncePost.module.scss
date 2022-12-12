@@ -1,0 +1,85 @@
+.wrapper{
+  background-color: #ebecf0;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer; 
+  border-radius: 10px;
+  // border: 1px solid #ccc;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  overflow: hidden;
+  &:hover h4{
+    color: #a06900;
+  }
+}
+
+.title{
+  margin-left: 2rem;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #999;
+}
+
+.formWrapper{
+  background-color: #ebecf0;
+  padding: 6rem 7rem;
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 10px;
+  // border: 1px solid #ccc;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  overflow: hidden;
+}
+.textField{
+  width: 100%;
+  margin: auto;
+  // font-size: 1.6rem;
+  & >div{
+    background-color: #ebecf0;
+    box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+
+  }
+  & label{
+    font-size: 1.5rem;
+  }
+  & textarea{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    line-height: 2.5rem;
+  }
+}
+
+.buttonWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  & button{
+    font-size: 1.2rem;
+    margin-left: 2rem;
+  }
+}
+
+.buttonAdd{
+  margin-left: 0rem;
+  font-size: 1.3rem;
+
+  background-color: #ebecf0 !important;
+  border: 1px solid #8199e2;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  color: #0d246c !important;
+  padding: 8px 20px !important;
+}
+
+.buttonPost{
+  // color: #a06900 !important;
+  background-color: #ebecf0 !important;
+  border: 1px solid green;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  color: green !important;
+}
+
+.buttonCancel{
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  background-color: #ebecf0 !important;
+  color: red !important;
+}

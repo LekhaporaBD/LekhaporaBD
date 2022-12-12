@@ -1,0 +1,167 @@
+.postWrapper {
+  margin-bottom: 1rem;
+  margin: 2rem 0;
+  overflow: hidden;
+  border-radius: 10px;
+
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  background: #ebecf0;
+}
+.post {
+  margin-bottom: 2rem;
+  padding: 4rem 3rem 1rem;
+}
+.postInfo {
+  display: flex;
+  margin-bottom: 1rem;
+}
+.slug {
+  margin-left: 1.5rem;
+  h6 {
+    font-weight: normal;
+    line-height: 1;
+  }
+}
+
+.postContent {
+  font-size: 1.8rem;
+}
+
+.comments {
+  width: 100%;
+  padding: 2rem 3rem;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.comment {
+  display: flex;
+}
+.commentContent {
+  margin-left: 2.5rem;
+  p {
+    font-size: 1.4rem;
+  }
+}
+.timestamp {
+  display: flex;
+  align-items: center;
+  h6 {
+    font-weight: normal;
+    margin-left: 1rem;
+  }
+}
+.postComment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 3rem;
+  border-top: 1px solid #ccc;
+}
+.commentBox {
+  width: 100%;
+  margin-left: 2rem !important;
+  & > div {
+    border-radius: 2rem;
+  }
+}
+
+$color-shadow: #babecc;
+$color-white: #fff;
+$color-bg: #ebecf0;
+$color-red: #ae1100;
+
+.wrapper {
+  background-color: $color-bg;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  margin-top: 20px;
+
+  h4 {
+    font-size: 20px;
+  }
+  &:hover h4 {
+    color: #006da0;
+  }
+}
+
+.title {
+  margin-left: 2rem;
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: #999;
+}
+
+.formWrapper {
+  background-color: $color-bg;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  padding: 6rem 7rem;
+  text-align: center;
+  font-size: 1.6rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+.textField {
+  width: 60rem;
+  margin: auto;
+  // font-size: 1.6rem;
+  & > div {
+    background-color: #f7f7f7;
+  }
+  & label {
+    font-size: 1.5rem;
+  }
+  & textarea {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    line-height: 2.5rem;
+  }
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  & button {
+    font-size: 1.2rem;
+    margin-left: 2rem;
+  }
+}
+
+.buttonAdd {
+  margin-left: 0rem;
+}
+
+.button {
+  font-weight: bold;
+  box-shadow: -5px -5px 20px $color-white, 5px 5px 20px $color-shadow !important;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+  background: #ebecf0 !important;
+  padding: 10px 20px !important;
+  font-size: 15px !important;
+
+  &:hover {
+    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow !important;
+  }
+}
+
+.buttonCancel {
+  color: $color-red !important;
+  border: 1px solid !important;
+}
+
+.buttonPost {
+  color: #0d236d !important;
+  border: 1px solid !important;
+}

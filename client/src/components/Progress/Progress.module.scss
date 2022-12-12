@@ -1,0 +1,102 @@
+.root{
+    // background-color: #fdfdf9;
+    width: 100%;
+    height: 100vh;
+    padding: 30px
+}
+
+.allClassess{
+    // width: 25%;
+    padding: 20px;
+    border-radius: 15px;
+
+    h2{
+        text-align: center;
+    }
+}
+
+.course_holder{
+    margin-top: 15px;
+
+    li{
+        align-items: center;
+        padding: 10px 10px;
+
+        .course_avatar{
+            // margin: 10px;
+            // background: rgb(65, 142, 144);
+            background: #42a9d6;
+        }
+
+        &:hover{
+            // background-color: #eafeff;
+            // border: 1px solid #ccc;
+            box-shadow: -5px -5px 20px #FFF, 5px 5px 20px #BABECC;
+            border-radius: 7px
+        }
+    }
+}
+
+.course_name{
+    margin: 5px;
+    font-size: 12px;
+}
+
+
+.details{
+    padding: 30px;
+}
+
+.attendance{
+    padding: 20px;
+    border-radius: 15px;
+
+    h2{
+        text-align: center;
+    }
+}
+
+.pie{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px 0;
+    border-radius: 15px;
+}
+
+.chip{
+    display: flex;
+    flex-wrap: wrap;
+    // width: 81%;
+    align-items: center;
+    justify-content: space-around;
+    padding: 15px;
+ 
+}
+
+.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+.timeline{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.date{
+    padding: 20px 0;
+    font-size: 25px;
+    color: #42a9d6
+}
+
+.paper{
+    box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF !important;
+    background: #ebecf0 !important;
+    border-radius: 14px
+}
+

@@ -1,0 +1,257 @@
+// General COLORS VARIABLES
+$black: #272727;
+$greyTextColor: #a1a1a1;
+
+// Fonts
+$font: 'Asap', sans-serif;
+
+// Site Colors
+$primaryColor: #fe5209;
+$red: #c62727;
+$orange: #80c627;
+$darkBlue: #3e4d59;
+$textColor: #112433;
+$lightTextColor: #666666;
+$lightBgGrey: #f6f6f6;
+$darkGrey: #dbdbdb;
+$shadowGrey: #ececec;
+
+// Padding
+$sectionPadding: 130px;
+
+// Breakpoints
+$desktopLarge: 1440px;
+$desktopNormal: 1200px;
+$desktopSmall: 1024px;
+$tabletLarge: 991px;
+$tablet: 768px;
+$mobilexLarge: 640px;
+$mobileLarge: 426px;
+$mobileMedium: 375px;
+$mobileSmall: 320px;
+
+@mixin minBreakpoint($size) {
+  @media screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin maxBreakpoint($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+
+@mixin buttonReset() {
+  outline: 0;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  appearance: none;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.show-left {
+  right: 0;
+  transform-origin: right top;
+}
+
+.show-right {
+  left: 0;
+  transform-origin: left top;
+}
+
+.dropdown__menu {
+  position: absolute;
+  top: 60%;
+  background-color: white;
+  border-radius: 0.8rem;
+  box-shadow: 1px 2px 4px $shadowGrey;
+  border: 1px solid $lightBgGrey;
+  padding: 1rem;
+  min-width: 15rem;
+  z-index: 9;
+  transform: scale(0);
+  transition: 0.3s;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: $textColor;
+    padding: 1rem;
+    border-radius: 0.8rem;
+    &:hover {
+      background-color: rgba($color: $textColor, $alpha: 0.05);
+    }
+
+    svg {
+      margin-right: 1rem;
+    }
+  }
+
+  .stats {
+    border: 0;
+    padding: 0;
+  }
+
+  &--show {
+    transform: scale(1);
+  }
+}
+
+%btn {
+  outline: 0;
+  border: 0;
+  background: none;
+  appearance: none;
+  font-family: $font;
+  padding: 0 25px;
+  height: 4.5rem;
+  border-radius: 5px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  i {
+    margin-right: 1rem;
+    &::before {
+      font-weight: 400 !important;
+    }
+  }
+}
+
+.btn-group {
+  display: flex;
+  margin-left: 20px;
+  > * + * {
+    margin-left: 1rem;
+  }
+}
+
+.btn-tabs {
+  box-shadow: 1px 2px 4px $shadowGrey;
+  border: 1px solid $lightBgGrey;
+  background-color: white;
+  border-radius: 0.8rem;
+  display: flex;
+  > * {
+    border-radius: 0;
+    flex: 1;
+
+    &.active {
+      background-color: $primaryColor;
+      color: white;
+      pointer-events: none;
+    }
+    &:first-child {
+      border-radius: 0.8rem 0 0 0.8rem;
+    }
+    &:last-child {
+      border-radius: 0 0.8rem 0.8rem 0;
+    }
+  }
+}
+
+.btn-big {
+  @extend %btn;
+  height: 70px;
+  padding: 0 65px;
+  font-size: 20px;
+  font-weight: 500;
+  @include maxBreakpoint($mobilexLarge) {
+    font-size: 18px;
+    height: 50px;
+    padding: 0 30px;
+  }
+}
+
+// Solid Buttons
+.btn-primary {
+  @extend %btn;
+  background: $primaryColor;
+  color: white;
+  &:hover {
+    background-color: lighten($color: $primaryColor, $amount: 5);
+  }
+}
+
+.btn-secondary {
+  @extend %btn;
+  background: $darkBlue;
+  color: white;
+  &:hover {
+    background-color: lighten($color: $darkBlue, $amount: 5);
+  }
+}
+
+.btn-white {
+  @extend %btn;
+  background-color: white;
+  color: $primaryColor;
+  border: 1px solid transparent;
+  &:hover {
+    background-color: darken($color: white, $amount: 5);
+  }
+}
+
+.btn-grey {
+  @extend %btn;
+  background-color: $lightBgGrey;
+  color: $darkBlue;
+  border: 1px solid $darkGrey;
+  &:hover {
+    background-color: darken($color: $lightBgGrey, $amount: 5);
+  }
+}
+
+// Outline Buttons
+%btn-outline {
+  @extend %btn;
+  background-color: white;
+  border: 1px solid transparent;
+}
+
+.btn-outline-primary {
+  @extend %btn-outline;
+  border-color: $primaryColor;
+  color: $primaryColor;
+  transition: 0.3s;
+  &:hover {
+    background-color: $primaryColor;
+    color: white !important;
+    border: 1px solid transparent;
+    & a {
+      color: white !important;
+    }
+  }
+}
+
+.btn-outline-secondary {
+  @extend %btn-outline;
+  border-color: $red;
+  color: $red;
+  transition: 0.3s;
+  &:hover {
+    background-color: $red;
+    color: white;
+    border: 1px solid transparent;
+  }
+}
+
+.btn-outline-weight {
+  @extend %btn-outline;
+  border-color: $darkGrey;
+  color: $primaryColor;
+  transition: 0.3s;
+  &:hover {
+    background-color: $primaryColor;
+    color: white;
+    border: 1px solid transparent;
+  }
+}

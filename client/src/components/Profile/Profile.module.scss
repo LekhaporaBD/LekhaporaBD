@@ -1,0 +1,113 @@
+.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.upload {
+  align-items: center;
+  padding: 2.3rem 2rem;
+  margin: 0 auto;
+  width: 85%;
+  // box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  box-shadow: 9px 9px 16px rgba(163, 177, 198, 0.6),
+    -9px -9px 16px rgba(255, 255, 255, 0.5),
+    inset 3px 3px 7px rgba(136, 165, 191, 0.48), inset -3px -3px 7px #ffffff;
+
+  .imgSetting {
+    margin-top: 20px;
+  }
+}
+
+._profilePicHolder {
+  width: 11rem !important;
+  height: 11rem !important;
+  background: #5254ca;
+  border-radius: 50%;
+  border: 1px solid;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+.profileAvatar {
+  text-align: center;
+  width: 11rem !important;
+  height: 11rem !important;
+  border: 1px solid;
+}
+
+.info {
+  width: 95%;
+  padding-top: 0.5rem;
+}
+
+.imgSetting {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.btn {
+  font-size: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  // background: #CCF2FF;
+  // border: 1px solid #00c3ff;
+  border: 1px solid #0d236d;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+
+  cursor: pointer;
+  border-radius: 3.5rem;
+  font-family: 'Nunito', sans-serif;
+}
+
+.tagline {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 5rem 0 2rem;
+  color: #0d236d;
+  font-size: 2.8rem;
+  // flex-basis:auto
+}
+
+.infoBlock {
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: 1200px) {
+    display: block;
+  }
+}
+
+.infoHolder {
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  h2 {
+    padding-right: 2rem;
+    font-size: 2.3rem;
+  }
+
+  h3 {
+    color: #0d236d;
+    font-size: 2rem;
+    font-weight: lighter;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .infoHolder {
+    h2 {
+      font-size: 1.8rem;
+    }
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+}
